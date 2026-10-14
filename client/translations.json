@@ -1263,6 +1263,170 @@
     "zh-CN": "图纸和检查结果属于公司数据；在批准的位置备份，仅向团队分享配对链接，需要持续保存的任务不要使用隐私浏览模式",
     "en": "Drawings and inspection results are company data; back up in approved storage, share pairing links only with the team, and avoid private browsing for work that must persist"
   },
+  "ต้องตรวจปัญหานี้ก่อน": {
+    "zh-CN": "请先检查此问题",
+    "en": "Check this issue first"
+  },
+  "อ่านข้อความผิดพลาดและตรวจชนิดไฟล์ สิทธิ์หรือการเชื่อมต่อ ข้อมูลเดิมยังไม่ควรถูกล้าง": {
+    "zh-CN": "阅读错误并检查文件类型、权限或连接；不要清除原有数据",
+    "en": "Read the error and check file format, access or connection; keep existing data intact"
+  },
+  "กำลังทำงานให้คุณ": {
+    "zh-CN": "正在处理中",
+    "en": "Working on it"
+  },
+  "รอขั้นตอนปัจจุบันให้เสร็จ ไม่ต้องกดซ้ำ คุณยังดูข้อมูลเดิมได้": {
+    "zh-CN": "等待当前步骤完成，无需重复点击，仍可查看原有数据",
+    "en": "Wait for this operation to finish without clicking again; existing data remains available"
+  },
+  "มีผลตรวจที่ต้องเทียบกัน": {
+    "zh-CN": "有检查结果需要比较",
+    "en": "Some results need comparison"
+  },
+  "เก็บหลักฐานและส่งออกสำรองก่อน ตรวจรุ่นที่ต่างกัน ห้ามส่งซ้ำเพื่อเขียนทับอัตโนมัติ": {
+    "zh-CN": "先保留证据并导出备份，比较不同版本，不要重复发送以自动覆盖",
+    "en": "Keep evidence and export a backup; compare versions rather than resending to overwrite automatically"
+  },
+  "ผลตรวจยังอยู่ในเครื่อง": {
+    "zh-CN": "检查结果仍在本机",
+    "en": "Results remain on this device"
+  },
+  "ตอนนี้ไม่ได้เชื่อมต่อ ส่งออกสำรองไว้ แล้วกลับมาส่งผ่านลิงก์เดิมเมื่อเซิร์ฟเวอร์พร้อม": {
+    "zh-CN": "目前未连接，请导出备份，服务器就绪后通过原链接同步",
+    "en": "You are disconnected; export a backup, then synchronize through the same link when the server is available"
+  },
+  "เริ่มจากชุดนำเสนอที่เตรียมแล้ว": {
+    "zh-CN": "先打开已准备的演示包",
+    "en": "Start with a prepared presentation"
+  },
+  "เลือก ITCAD-presentation JSON ไม่ใช่ DWG ไฟล์เปิดในเบราว์เซอร์และไม่อัปโหลดเพื่อวิเคราะห์ใหม่": {
+    "zh-CN": "选择 ITCAD-presentation JSON 而非 DWG；文件在浏览器打开，不上传进行新分析",
+    "en": "Choose ITCAD-presentation JSON rather than DWG; it opens locally in the browser without uploading for new analysis"
+  },
+  "ตรวจรายการนี้ตามหลักฐาน": {
+    "zh-CN": "根据证据检查此项",
+    "en": "Inspect this item using evidence"
+  },
+  "ตอบ checklist แนบหลักฐานตามเกณฑ์ และบันทึกเมื่อพร้อม ผลทดลองไม่รวมงานจริง ส่วนผลจริงยังต้องส่งเซิร์ฟเวอร์": {
+    "zh-CN": "填写清单并附合规证据，准备好再保存；试用结果不计入实际工作，实际结果仍需同步到服务器",
+    "en": "Complete checks and attach required evidence before saving; trial results do not affect actual work, and actual results still require synchronization"
+  },
+  "มีรายการที่ยังรอส่ง": {
+    "zh-CN": "有待同步的项目",
+    "en": "Some items are waiting to synchronize"
+  },
+  "บันทึกในเครื่องแล้วไม่ได้แปลว่าส่งสำเร็จ ตรวจคิว ส่งข้อมูล และตรวจผลตอบกลับก่อนปิดงาน": {
+    "zh-CN": "本机保存不等于同步成功；结束前检查队列、同步并确认响应",
+    "en": "Saving locally does not mean synchronization succeeded; review the queue, send and verify the response before finishing"
+  },
+  "ผลพร้อมให้ตรวจทาน": {
+    "zh-CN": "结果可供审核",
+    "en": "Results are ready for review"
+  },
+  "ตรวจคำเตือนและหลักฐานก่อนเปิดใช้ การตรวจไฟล์ผ่านไม่ได้อนุมัติแบบก่อสร้าง": {
+    "zh-CN": "启用前检查警告和证据；文件验证通过并不等于施工图批准",
+    "en": "Review warnings and evidence before activation; passing file verification does not approve a construction drawing"
+  },
+  "เลือกต้นฉบับหรือชุดแบบเดิม": {
+    "zh-CN": "选择源文件或现有图纸包",
+    "en": "Choose a source or an existing package"
+  },
+  "DWG ใหม่ต้องมีตัวแปลงพร้อมใช้งาน ถ้าจะตรวจชุดเดิม เลือกตรวจความครบถ้วนได้โดยไม่เปิด AutoCAD": {
+    "zh-CN": "新 DWG 需要可用转换器；现有图纸包可检查完整性而不启动 AutoCAD",
+    "en": "New DWG needs a working converter; existing packages can be checked without launching AutoCAD"
+  },
+  "เตรียมก่อนออกหน้างาน": {
+    "zh-CN": "出发前做好准备",
+    "en": "Prepare before visiting the site"
+  },
+  "ขณะออนไลน์เลือกแผ่นที่จำเป็น เตรียมชุดออฟไลน์ แล้วทดสอบเปิดซ้ำหลังตัดเน็ตก่อนเดินทาง": {
+    "zh-CN": "在线时选择所需图纸并准备离线包，出发前断网测试重新打开",
+    "en": "While online, select required sheets and prepare an offline pack; test reopening without connectivity before departure"
+  },
+  "ค้นจากรหัสหรือข้อความต้นฉบับ": {
+    "zh-CN": "按编号或源文本搜索",
+    "en": "Search original identifiers or text"
+  },
+  "ลอง tag ตู้ ชั้นหรือข้อความจีน รายการอาจมาจากหลายแผ่น ให้เทียบกับภาพก่อนเลือกจุด": {
+    "zh-CN": "尝试设备编号、机柜、楼层或中文文本；列表可能跨图纸，选点前需核对图像",
+    "en": "Try tags, racks, floors or Chinese text; candidates may span sheets, so compare the reference before selecting"
+  },
+  "ส่งผลตรวจอย่างตรวจสอบได้": {
+    "zh-CN": "同步并核实检查结果",
+    "en": "Synchronize and verify results"
+  },
+  "เชื่อมต่อเซิร์ฟเวอร์เดิม กดส่งแล้วตรวจรายการรอส่งและ conflict อย่าล้างข้อมูลที่ยังส่งไม่ครบ": {
+    "zh-CN": "连接原服务器，同步后检查待发送项及冲突，不要清除未同步数据",
+    "en": "Connect to the same server, send and inspect pending items/conflicts; never clear unsynchronized data"
+  },
+  "เก็บชุดสำรองที่ตรวจย้อนกลับได้": {
+    "zh-CN": "保留可追溯备份",
+    "en": "Keep a traceable backup"
+  },
+  "ไฟล์ส่งออกมีข้อมูลบริษัท เก็บในที่อนุญาต Snapshot แสดงเฉพาะข้อมูล ณ เวลาส่งออก": {
+    "zh-CN": "导出文件包含公司数据，需保存在批准的位置；快照仅显示导出时的数据",
+    "en": "Exports contain company data; store them in an approved location; snapshots reflect their export time"
+  },
+  "ตรวจทานได้ แต่ยังไม่ใช่ตรวจรับ": {
+    "zh-CN": "可审核，但不能用于验收",
+    "en": "Review is available; acceptance is not approved"
+  },
+  "แบบยังไม่ผ่านเกณฑ์ตรวจรับ ไม่ใช่โปรแกรมเสีย เลือกพื้นที่และตรวจข้อสังเกตได้โดยคงคำเตือนไว้": {
+    "zh-CN": "图纸未达到验收条件，并非程序故障；可选择区域并记录问题，但需保留警告",
+    "en": "The drawing has not met acceptance gates; the app is working; select an area and review observations while retaining warnings"
+  },
+  "เลือกพื้นที่ที่กำลังทำงาน": {
+    "zh-CN": "选择当前工作区域",
+    "en": "Choose the area you are working on"
+  },
+  "เลือกแผ่นและหมวดก่อนค้นจุดตรวจ เปลี่ยนภาษาได้โดยไม่เปลี่ยนข้อความหรือหน่วยในแบบ": {
+    "zh-CN": "先选择图纸和专业再查找检查点；切换语言不会改变图纸文本或单位",
+    "en": "Select a sheet and system before searching inspection items; language changes preserve drawing text and units"
+  },
+  "ผู้ช่วยหน้างาน": {
+    "zh-CN": "现场助手",
+    "en": "Field assistant"
+  },
+  "ย่อผู้ช่วย": {
+    "zh-CN": "收起助手",
+    "en": "Minimize assistant"
+  },
+  "ชี้ตำแหน่งแล้ว": {
+    "zh-CN": "已标出位置",
+    "en": "Location highlighted"
+  },
+  "ชี้ให้ดู": {
+    "zh-CN": "指示位置",
+    "en": "Show me where"
+  },
+  "คู่มือเต็ม": {
+    "zh-CN": "完整指南",
+    "en": "Full guide"
+  },
+  "คำแนะนำจากสถานะในเครื่อง ไม่ส่งข้อมูล ไม่บันทึกหรืออนุมัติงานแทนคุณ": {
+    "zh-CN": "根据本机状态提供建议，不发送数据，也不替您保存或批准工作",
+    "en": "Advice uses local state; it does not transmit data, save results or approve work for you"
+  },
+  "เปิดหรือย่อผู้ช่วยหน้างาน": {
+    "zh-CN": "打开或收起现场助手",
+    "en": "Open or minimize field assistant"
+  },
+  "ช่วยแนะนำ": {
+    "zh-CN": "帮助",
+    "en": "Guide me"
+  },
+  "มีเรื่องให้ตรวจสอบ": {
+    "zh-CN": "有事项需要检查",
+    "en": "An item needs attention"
+  },
+  "เปิดหรือเปลี่ยนชุดนำเสนอ": {
+    "zh-CN": "打开或更换演示包",
+    "en": "Open or replace presentation"
+  },
+  "แสดงเพิ่ม": {
+    "zh-CN": "显示更多",
+    "en": "Show more"
+  },
   "เลือกแผ่นที่จะนำไปตรวจ แล้วเตรียมชุดออฟไลน์": {
     "zh-CN": "选择现场检查图纸，然后准备离线包",
     "en": "Select field sheets, then prepare the offline pack"

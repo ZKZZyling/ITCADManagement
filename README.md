@@ -38,6 +38,8 @@ npm start
 
 ## New workspaces in 0.5.0
 
+The [contextual field assistant](docs/field-assistant.md) provides paperclip-inspired guidance from current page state in English, Thai and Simplified Chinese. It can point to controls and explain recovery without sending data to an AI service or performing inspection actions for the user.
+
 - **Local analysis:** separate loopback admin service and durable single-worker queue; verify every scene part, cancel/retry, and explicitly activate review packages. Original drawings remain unchanged.
 - **Management:** read-only viewer links, multilingual evidence dashboard, and private checksum-verified presentation bundles.
 - **Isolated trial:** demonstrate checklist entry using real snapshot references without writing production progress.

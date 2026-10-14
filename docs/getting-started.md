@@ -29,7 +29,7 @@ Names are hints; format and source identity are validated. Never edit JSON to by
 
 ## Guidance and recovery
 
-All five workspaces provide their purpose, expandable steps, format guidance, full-app entry instructions, troubleshooting, synchronization/storage explanations and accuracy/privacy notes in Thai, Simplified Chinese and English. Original drawing text and user evidence remain unchanged.
+Open the floating paperclip assistant in any of the five workspaces. It follows the current page, focused control and application status. **Show me where** highlights the relevant control; **Full guide** provides steps, format guidance, startup, troubleshooting and accuracy/privacy notes in Thai, Simplified Chinese and English. Original drawing text and user evidence remain unchanged. See [assistant behavior and validation](field-assistant.md).
 
 An empty management page needs a presentation file. A format/checksum/size failure needs a verified export. A 502 team link needs server/provider/current-link verification, not corporate DNS, VPN or ERP changes. Pending results stay local; conflicts require comparison. Back up before changing origins, devices or storage.
 

@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Replaced large inline onboarding with an original paperclip-inspired contextual assistant across field, analysis, management, offline and trial workspaces. Added live local-state/focus advice, safe control highlighting, expandable guides, keyboard dismissal and multilingual accessibility.
+- Collapsed loaded management imports, compacted summary cards and bounded actual offline candidate rendering with progressive expansion and deferred filtering.
+- Guarded manual field synchronization against duplicate/in-flight actions. Preserved trial isolation, private data boundaries and engineering gates.
+
 - Added contextual multilingual onboarding and troubleshooting to all five workspaces. Clarified that static presentation imports prepared snapshots locally and does not analyze uploaded DWG or host the full inspection backend.
 - Added a complete workspace/format/startup guide and corrected obsolete documentation about read-only manager authorization.
 
