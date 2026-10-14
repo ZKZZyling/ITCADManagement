@@ -61,3 +61,5 @@ Thailand and mainland China require tests from the actual networks/devices. A gl
 Existing pairing tokens, SQLite records, and active packages can remain in their operational data directory. Back up scripts and SQLite while the owned server is stopped before changing runtime paths. Machine-specific deployment bridges and configurations are private, not portable repository defaults.
 
 Remaining release gates include approved construction revisions, legend/SPEC/ITP/BOQ review, native reference fidelity, project security policy, physical tablet/phone testing, and China-network acceptance. The software does not automatically establish these gates.
+
+The static builder replaces only its fixed ignored `dist/manager` output, packages manager/trial dependencies, and versions all dependency/precache requests to avoid stale negative CDN cache entries. `.node-version` selects the tested Node 24 major for hosting builds.

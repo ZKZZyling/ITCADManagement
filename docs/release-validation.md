@@ -26,10 +26,12 @@ Dependency audit covers npm's current advisory database, not a security guarante
 
 ## 0.5.0 local validation
 
-- Build and code-only static artifact generation passed; 27 Node tests passed.
+- Build and code-only static artifact generation passed; 28 Node tests passed.
 - Added queue/activation/hash, source containment, malformed-part, restart, admin token/Origin, viewer-write denial, private-bundle export, and sandbox sync-denial coverage.
 - PowerShell syntax passed for 21 scripts. Existing control-state and tunnel-origin regressions remain publication gates.
 - Browser tests imported a real private snapshot locally, rendered its reference, saved an isolated multilingual trial, and reloaded that trial with the preview server stopped. The live factory record count remained unchanged.
 - A prepared production package passed verification of every referenced scene file; this is output verification, not native source or construction approval. Detailed company evidence remains in private runtime reports.
 - A temporary live tunnel returned 502 during repeat testing. A stable static shell/private snapshot is the presentation path; temporary-provider reliability is unresolved.
 - No physical tablet/phone, camera, mainland-China network, enterprise identity, approved revision, or fresh binary DWG conversion acceptance is claimed.
+
+Static deployment testing found cached negative CDN responses: affected files returned 404 without a query and 200 under a fresh release query. Static imports, navigation, and offline precache requests now use release-specific cache keys. Artifact tests verify the complete management/trial dependency closure.

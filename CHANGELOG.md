@@ -2,6 +2,8 @@
 
 ## 0.5.0 — 2026-10-14
 
+- Hardened static deployment against CDN-cached 404 responses with release-specific dependency/page requests, a complete management-only dependency closure, and an artifact regression test. Pinned the hosting Node major to the tested version 24.
+
 - Added a separate loopback analysis admin service with a durable single-worker queue, source containment, subprocess cancellation, restart interruption, and explicit hash-verified review-package activation.
 - Added read-only management authorization, source-scoped summaries, and private presentation export/import with image checksums and a bounded file size.
 - Added an isolated local trial workspace with separate IndexedDB, no production synchronization, and backend rejection of explicitly marked trial records.
