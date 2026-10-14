@@ -1,0 +1,966 @@
+{
+  "กำลังเปิดข้อมูล CAD…": {
+    "zh-CN": "正在加载 CAD 数据…",
+    "en": "Loading CAD data…"
+  },
+  "รหัสเปิดเซิร์ฟเวอร์ไม่ถูกต้อง": {
+    "zh-CN": "服务器配对码无效",
+    "en": "Invalid server pairing code"
+  },
+  "ไม่สามารถเปิดข้อมูล CAD": {
+    "zh-CN": "无法加载 CAD 数据",
+    "en": "Cannot load CAD data"
+  },
+  "เปิดข้อมูลสำหรับตรวจทานแล้ว • ตรวจสอบรุ่นแบบก่อนใช้หน้างาน": {
+    "zh-CN": "已加载审阅数据 • 现场使用前请核对图纸版本",
+    "en": "Review data loaded • Verify revision before field use"
+  },
+  "ไม่พบข้อมูลแผ่น": {
+    "zh-CN": "未找到图纸数据",
+    "en": "Sheet data not found"
+  },
+  "โหลดส่วนแบบไม่ครบ": {
+    "zh-CN": "图纸分块加载不完整",
+    "en": "Drawing parts did not load completely"
+  },
+  "เปิดพื้นที่ที่สกัดได้แล้ว •": {
+    "zh-CN": "已加载提取区域 •",
+    "en": "Extracted area loaded •"
+  },
+  "วัตถุ": {
+    "zh-CN": "个对象",
+    "en": "objects"
+  },
+  "บันทึกร่างไม่สำเร็จ:": {
+    "zh-CN": "草稿保存失败：",
+    "en": "Draft save failed:"
+  },
+  "แสดงเฉพาะหมวดที่เลือก · ปิดผังอาคารและหมวดอื่นชั่วคราว เปิดกลับได้ด้วยตัวเลือกด้านซ้าย · ตรวจเทียบภาพอ้างอิงด้วย": {
+    "zh-CN": "仅显示所选专业 • 建筑底图和其他分类暂时隐藏，可在左侧重新显示 • 请对照参考图",
+    "en": "Selected category only • Context and other categories hidden; restore on the left • Compare with reference"
+  },
+  "ไม่สามารถสร้างภาพจากเซิร์ฟเวอร์": {
+    "zh-CN": "服务器无法生成图像",
+    "en": "Cannot render server image"
+  },
+  "วัตถุ · ภาพจากเซิร์ฟเวอร์": {
+    "zh-CN": "个对象 • 服务器图像",
+    "en": "objects • Server image"
+  },
+  "ภาพตรวจทานจากเซิร์ฟเวอร์ ·": {
+    "zh-CN": "服务器审阅图像 •",
+    "en": "Server review image •"
+  },
+  "KB · ยังไม่ใช่ภาพรับรองจาก AutoCAD": {
+    "zh-CN": "KB • 非经认证的 AutoCAD 原图",
+    "en": "KB • Not a certified AutoCAD reference"
+  },
+  "ไม่แสดงภาพ: คำขอล่าสุดไม่สำเร็จ": {
+    "zh-CN": "未显示图像：最近一次请求失败",
+    "en": "Image hidden: latest request failed"
+  },
+  "วัตถุในมุมมอง": {
+    "zh-CN": "个可见对象",
+    "en": "objects in view"
+  },
+  "แนวสายเสนอ / คอมเมนต์": {
+    "zh-CN": "建议布线路径 / 批注",
+    "en": "Proposed cable route / comment"
+  },
+  "จุดตรวจที่เลือก": {
+    "zh-CN": "所选检查点",
+    "en": "Selected inspection point"
+  },
+  "บันทึกในเครื่องแล้ว": {
+    "zh-CN": "已保存到本机",
+    "en": "Saved on this device"
+  },
+  "ส่งถึงเซิร์ฟเวอร์แล้ว": {
+    "zh-CN": "已同步到服务器",
+    "en": "Synced to server"
+  },
+  "เก็บข้อมูลในเครื่องไว้แล้ว •": {
+    "zh-CN": "已保留本机数据 •",
+    "en": "Local data retained •"
+  },
+  "ยังไม่ได้ส่ง •": {
+    "zh-CN": "尚未同步 •",
+    "en": "Not yet synced •"
+  },
+  "ส่งข้อมูลสำเร็จ": {
+    "zh-CN": "同步成功",
+    "en": "Sync completed"
+  },
+  "รายการ": {
+    "zh-CN": "条记录",
+    "en": "records"
+  },
+  "เลือกโฟลเดอร์ชุดแบบที่มี drawing.json": {
+    "zh-CN": "请选择包含 drawing.json 的图纸包文件夹",
+    "en": "Select a drawing package containing drawing.json"
+  },
+  "ข้อมูลอ้างอิงแบบไม่ถูกต้อง": {
+    "zh-CN": "图纸引用数据无效",
+    "en": "Invalid drawing reference"
+  },
+  "อัปโหลดไม่สำเร็จ": {
+    "zh-CN": "上传失败",
+    "en": "Upload failed"
+  },
+  "อัปโหลดชุดแบบ": {
+    "zh-CN": "正在上传图纸包",
+    "en": "Uploading drawing package"
+  },
+  "นำเข้าชุดแบบแล้ว": {
+    "zh-CN": "图纸包已导入",
+    "en": "Drawing package imported"
+  },
+  "เก็บรูปในเครื่องแล้ว • กดบันทึกผลเพื่อผูกกับรายการ": {
+    "zh-CN": "照片已保存到本机 • 请保存检查结果以关联照片",
+    "en": "Photo saved locally • Save the inspection to attach it"
+  },
+  "ลองอีกครั้ง": {
+    "zh-CN": "重试",
+    "en": "Retry"
+  },
+  "พื้นที่ตรวจงาน · โรงงานระยอง": {
+    "zh-CN": "现场检查 • 罗勇工厂",
+    "en": "Field inspection • Rayong factory"
+  },
+  "ออนไลน์": {
+    "zh-CN": "网络已连接",
+    "en": "Network connected"
+  },
+  "ออฟไลน์": {
+    "zh-CN": "网络未连接",
+    "en": "Network disconnected"
+  },
+  "ส่งข้อมูล": {
+    "zh-CN": "同步数据",
+    "en": "Sync data"
+  },
+  "รอส่ง": {
+    "zh-CN": "待同步",
+    "en": "Pending sync"
+  },
+  "ไม่มีรายการรอส่ง": {
+    "zh-CN": "无待同步记录",
+    "en": "No pending sync"
+  },
+  "จัดการแบบ": {
+    "zh-CN": "图纸管理",
+    "en": "Manage drawings"
+  },
+  "ข้อมูลสำหรับ ChatGPT": {
+    "zh-CN": "导出供 ChatGPT 审阅",
+    "en": "Export for ChatGPT"
+  },
+  "ชุดแบบตรวจทาน": {
+    "zh-CN": "审阅图纸包",
+    "en": "Review drawing package"
+  },
+  "เลือกแผ่นแบบ": {
+    "zh-CN": "选择图纸",
+    "en": "Select drawing sheet"
+  },
+  "ชุดแบบอนุมัติแล้ว": {
+    "zh-CN": "图纸包已批准",
+    "en": "Drawing package approved"
+  },
+  "ห้ามใช้ตรวจรับ · ชุดแบบยังไม่พร้อม": {
+    "zh-CN": "禁止用于验收 • 图纸包尚未就绪",
+    "en": "Not for acceptance • Package not ready"
+  },
+  "ข้อจำกัดข้อมูล": {
+    "zh-CN": "数据限制",
+    "en": "Data limitations"
+  },
+  "ชุดแบบยังไม่ผ่านตรวจพร้อมหน้างาน · ใช้ตรวจทานได้ แต่ยังห้ามลงผลผ่านตรวจรับ": {
+    "zh-CN": "图纸包尚未通过现场就绪核查 • 可供审阅，禁止确认验收通过",
+    "en": "Package readiness not approved • Review only; acceptance blocked"
+  },
+  "ดูผลตรวจข้อมูล": {
+    "zh-CN": "查看数据核查结果",
+    "en": "View data checks"
+  },
+  "แบบสำหรับตรวจทาน — ยังไม่รับรองภาพต้นฉบับ": {
+    "zh-CN": "审阅图纸 — 原图一致性尚未认证",
+    "en": "Review drawing — Source image not certified"
+  },
+  "มีคำเตือนฟอนต์จากขั้นตอนสกัด · ต้องตรวจกรอบและสัญลักษณ์กับต้นฉบับ · ระยะตามแบบไม่ใช่ความยาวสายติดตั้งจริง · มีวัตถุที่ไม่รองรับ": {
+    "zh-CN": "提取过程有字体警告 • 请对照原图核查图框与符号 • 图纸长度不等于实际安装线缆长度 • 存在不支持的对象",
+    "en": "Font warnings • Verify frames and symbols against source • Drawing distance is not installed cable length • Unsupported objects exist"
+  },
+  "กรอบและการจับคู่ชื่อแผ่นยังต้องยืนยัน · ฟอนต์ การหมุนและรูปแบบข้อความอาจต่างจากต้นฉบับ · ต้องตรวจเทียบภาพ AutoCAD และผู้รับผิดชอบอนุมัติรุ่นแบบก่อนตรวจรับ": {
+    "zh-CN": "图框与图名匹配尚待确认 • 字体、旋转和文本格式可能与原图不同 • 验收前须对照 AutoCAD 参考图并批准图纸版本",
+    "en": "Frames and sheet titles need verification • Fonts, rotation and formatting may differ • Verify AutoCAD reference and approved revision before acceptance"
+  },
+  "นำเข้าและเปิดบนแท็บเล็ต": {
+    "zh-CN": "导入及平板使用",
+    "en": "Import and tablet access"
+  },
+  "เว็บ .site ต้องเข้าสู่ระบบ ChatGPT ที่ได้รับสิทธิ์ ส่วนเซิร์ฟเวอร์ในโรงงานใช้ลิงก์จับคู่ ไม่ต้องล็อกอิน ChatGPT ข้อมูลของสองระบบแยกกัน": {
+    "zh-CN": ".site 网站需要获授权的 ChatGPT 登录；工厂服务器使用配对链接，无需 ChatGPT 登录。两套系统的数据独立",
+    "en": "The .site requires authorized ChatGPT sign-in; the factory server uses pairing links without ChatGPT. Data is separate"
+  },
+  "โหมดปัจจุบัน:": {
+    "zh-CN": "当前模式：",
+    "en": "Current mode:"
+  },
+  "เซิร์ฟเวอร์สร้างภาพตามมุมมอง แท็บเล็ตไม่โหลด geometry ทั้งแผ่น": {
+    "zh-CN": "服务器按视窗生成图像，平板无需加载整张图纸几何数据",
+    "en": "Server renders the viewport; tablet avoids full-sheet geometry"
+  },
+  "ออนไลน์: เบราว์เซอร์โหลดข้อมูลแผ่นแบบเพื่อแสดงภาพ": {
+    "zh-CN": "浏览器加载图纸数据以显示图像",
+    "en": "Browser loads drawing data for display"
+  },
+  "เปิดอินเทอร์เน็ต: ดับเบิลคลิก Start-Cloud-ITField.cmd แล้วคัดลอกลิงก์ด้านล่าง · นำเข้า DWG/DXF ด้วย Prepare-Drawing.cmd ชุดเดิมใช้ได้โดยไม่เปิด AutoCAD; DWG ใหม่ต้องมี ODA File Converter หรือ DXF/PDF จากผู้ออกแบบ": {
+    "zh-CN": "互联网访问：使用桌面的 IT Field Control，启动后复制团队配对链接 • 导入请用 Prepare-Drawing.cmd；现有图纸包无需启动 AutoCAD，新 DWG 需 ODA File Converter 或设计方提供 DXF/PDF",
+    "en": "Internet access: use Desktop IT Field Control and copy the team link • Import with Prepare-Drawing.cmd; existing package needs no AutoCAD, new DWG requires ODA File Converter or designer DXF/PDF"
+  },
+  "ลิงก์ Cloudflare สำหรับหน้างาน": {
+    "zh-CN": "现场 Cloudflare 链接",
+    "en": "Cloudflare field link"
+  },
+  "· เปิดได้ทันที ไม่ต้องล็อกอิน ChatGPT · ผู้มีลิงก์นี้เข้าถึงและบันทึกในพื้นที่เดียวกันได้": {
+    "zh-CN": "• 无需 ChatGPT 登录 • 持有链接者可访问及编辑同一工作区",
+    "en": "• No ChatGPT sign-in • Link holders can access and edit the same workspace"
+  },
+  "ลิงก์ Cloudflare": {
+    "zh-CN": "Cloudflare 链接",
+    "en": "Cloudflare link"
+  },
+  "ลิงก์ชั่วคราวเปลี่ยนเมื่อเริ่ม Tunnel ใหม่ เครื่องเซิร์ฟเวอร์ต้องเปิดและต่ออินเทอร์เน็ตอยู่": {
+    "zh-CN": "重新启动 Tunnel 时临时链接可能改变；服务器须保持开机并联网",
+    "en": "Temporary link may change when Tunnel restarts; server must stay on and online"
+  },
+  "แท็บเล็ตต้องอยู่เครือข่ายเดียวกัน • ลิงก์นี้มีรหัสจับคู่เฉพาะเซิร์ฟเวอร์": {
+    "zh-CN": "平板须连接同一网络 • 链接包含服务器配对码",
+    "en": "Tablet must share the network • Link contains the server pairing code"
+  },
+  "ลิงก์แท็บเล็ต": {
+    "zh-CN": "平板链接",
+    "en": "Tablet link"
+  },
+  "อัปโหลดชุดแบบที่เตรียมแล้ว": {
+    "zh-CN": "上传已准备的图纸包",
+    "en": "Upload prepared drawing package"
+  },
+  "ปิด": {
+    "zh-CN": "关闭",
+    "en": "Close"
+  },
+  "เลือกงานที่ต้องดู": {
+    "zh-CN": "选择专业",
+    "en": "Choose system"
+  },
+  "ผังอาคารจาง": {
+    "zh-CN": "淡化建筑底图",
+    "en": "Faint building context"
+  },
+  "แสดงหมวดที่ยังไม่ยืนยัน": {
+    "zh-CN": "显示未确认分类",
+    "en": "Show unconfirmed categories"
+  },
+  "ค้นหาอุปกรณ์": {
+    "zh-CN": "搜索设备",
+    "en": "Search equipment"
+  },
+  "ค้นตู้ / tag / ข้อความจีน": {
+    "zh-CN": "搜索机柜 / 标签 / 中文原文",
+    "en": "Search cabinet / tag / Chinese text"
+  },
+  "หลักฐานข้อความ ·": {
+    "zh-CN": "原图文字证据 •",
+    "en": "Source text evidence •"
+  },
+  "แสดงเพิ่ม (": {
+    "zh-CN": "显示更多（",
+    "en": "Show more ("
+  },
+  "รายการ)": {
+    "zh-CN": "条）",
+    "en": "records)"
+  },
+  "ส่งออกรายการตรวจ": {
+    "zh-CN": "导出检查记录",
+    "en": "Export inspections"
+  },
+  "สลับภาพอ้างอิงและภาพกรองงาน": {
+    "zh-CN": "切换参考图与专业筛选图",
+    "en": "Switch reference and filtered view"
+  },
+  "กลับภาพกรองงาน": {
+    "zh-CN": "返回专业筛选图",
+    "en": "Return to filtered view"
+  },
+  "ภาพอ้างอิง AutoCAD": {
+    "zh-CN": "AutoCAD 参考图",
+    "en": "AutoCAD reference"
+  },
+  "เครื่องมือ CAD ใช้ข้อมูลย่อ อาจไม่ครบพื้นหลัง ห้ามใช้ตรวจรับแทนต้นฉบับ": {
+    "zh-CN": "CAD 工具使用简化数据，底图可能不完整，禁止代替原图验收",
+    "en": "CAD tools use simplified data; background may be incomplete; not for acceptance"
+  },
+  "กลับโหมดตรวจงาน": {
+    "zh-CN": "返回检查模式",
+    "en": "Return to inspection"
+  },
+  "เครื่องมือ CAD (แบบย่อ)": {
+    "zh-CN": "CAD 工具（简化）",
+    "en": "CAD tools (simplified)"
+  },
+  "รายละเอียด": {
+    "zh-CN": "详细信息",
+    "en": "Details"
+  },
+  "ภาพ CAD ที่สกัดสำหรับตรวจทาน ไม่ใช่ภาพรับรองต้นฉบับ": {
+    "zh-CN": "提取的 CAD 审阅图，并非经认证的原图",
+    "en": "Extracted CAD review image; not a certified source"
+  },
+  "ซูมเข้า": {
+    "zh-CN": "放大",
+    "en": "Zoom in"
+  },
+  "ซูมออก": {
+    "zh-CN": "缩小",
+    "en": "Zoom out"
+  },
+  "ภาพรวม": {
+    "zh-CN": "全图",
+    "en": "Fit view"
+  },
+  "ระยะจากจุดแตะตามแบบ · ไม่ใช้รับรอง": {
+    "zh-CN": "图纸点选距离 • 不用于认证",
+    "en": "Tapped drawing distance • Not certified"
+  },
+  "เลือก": {
+    "zh-CN": "选择",
+    "en": "Select"
+  },
+  "เลื่อน": {
+    "zh-CN": "平移",
+    "en": "Pan"
+  },
+  "วัด": {
+    "zh-CN": "测量",
+    "en": "Measure"
+  },
+  "ปักจุดตรวจ": {
+    "zh-CN": "添加检查点",
+    "en": "Place inspection point"
+  },
+  "เสนอแนวสาย": {
+    "zh-CN": "建议布线路径",
+    "en": "Propose cable route"
+  },
+  "ยังวัดไม่ได้: หน่วยแบบไม่ยืนยัน": {
+    "zh-CN": "无法测量：图纸单位未确认",
+    "en": "Cannot measure: units unconfirmed"
+  },
+  "หน่วย": {
+    "zh-CN": "单位",
+    "en": "Units"
+  },
+  "ตรวจงาน": {
+    "zh-CN": "现场检查",
+    "en": "Inspection"
+  },
+  "จุดที่เลือก": {
+    "zh-CN": "所选检查点",
+    "en": "Selected point"
+  },
+  "ผลตรวจ (": {
+    "zh-CN": "检查记录（",
+    "en": "Inspections ("
+  },
+  "ยังไม่มีรายการตรวจ": {
+    "zh-CN": "暂无检查记录",
+    "en": "No inspections yet"
+  },
+  "มีข้อมูลต่างรุ่นกัน เก็บคำตอบไว้แล้ว ส่งออกข้อมูลก่อนตรวจเทียบ": {
+    "zh-CN": "存在版本冲突，回答已保留，请先导出再核对",
+    "en": "Version conflict; answers retained. Export before comparison"
+  },
+  "ดาวน์โหลดข้อมูลที่ขัดแย้ง": {
+    "zh-CN": "下载冲突数据",
+    "en": "Download conflict data"
+  },
+  "หลักฐานจากแบบ / จุดตรวจ": {
+    "zh-CN": "图纸证据 / 检查点",
+    "en": "Drawing evidence / inspection point"
+  },
+  "รหัสอ้างอิง": {
+    "zh-CN": "参考编号",
+    "en": "Reference ID"
+  },
+  "สถานะงาน": {
+    "zh-CN": "工作状态",
+    "en": "Work status"
+  },
+  "รายการตรวจ · ต้องยืนยัน SPEC": {
+    "zh-CN": "检查清单 • 须确认 SPEC",
+    "en": "Checklist • Verify SPEC"
+  },
+  "ยังไม่ตรวจ": {
+    "zh-CN": "未检查",
+    "en": "Unchecked"
+  },
+  "ผ่าน": {
+    "zh-CN": "通过",
+    "en": "Pass"
+  },
+  "ไม่ผ่าน": {
+    "zh-CN": "未通过",
+    "en": "Fail"
+  },
+  "ไม่เกี่ยวข้อง": {
+    "zh-CN": "不适用",
+    "en": "Not applicable"
+  },
+  "ผู้รับผิดชอบ": {
+    "zh-CN": "负责人",
+    "en": "Assignee"
+  },
+  "หมายเหตุ / ประเด็นประสาน": {
+    "zh-CN": "备注 / 协调事项",
+    "en": "Notes / coordination"
+  },
+  "หมายเหตุ": {
+    "zh-CN": "备注",
+    "en": "Notes"
+  },
+  "บันทึกหลักฐานและงานที่ต้องแก้…": {
+    "zh-CN": "记录证据及待整改事项…",
+    "en": "Record evidence and required corrections…"
+  },
+  "ถ่าย / แนบรูป": {
+    "zh-CN": "拍摄 / 附加照片",
+    "en": "Take / attach photo"
+  },
+  "บันทึกผลตรวจ": {
+    "zh-CN": "保存检查结果",
+    "en": "Save inspection"
+  },
+  "ผลตรวจเป็นข้อมูลผู้ใช้ แยกจากการอนุมัติแบบและการรับรองวิศวกรรม": {
+    "zh-CN": "检查结果为用户记录，不等同于图纸批准或工程认证",
+    "en": "User inspection records do not constitute drawing approval or engineering certification"
+  },
+  "เลือกจุดบนแบบ": {
+    "zh-CN": "选择图纸上的位置",
+    "en": "Select a point on the drawing"
+  },
+  "แตะวัตถุหรือปักจุด เพื่อเปิดรายการตรวจและบันทึกหลักฐาน": {
+    "zh-CN": "点选对象或添加检查点，以打开清单并记录证据",
+    "en": "Tap an object or place a point to open the checklist and record evidence"
+  },
+  "เปิดเครื่องมือ CAD แบบย่อแล้ว · ใช้ตรวจทานเท่านั้น": {
+    "zh-CN": "简化 CAD 工具已打开 • 仅供审阅",
+    "en": "Simplified CAD tools open • Review only"
+  },
+  "เครื่องมือ CAD:": {
+    "zh-CN": "CAD 工具：",
+    "en": "CAD tools:"
+  },
+  "หลักฐานหน้างาน": {
+    "zh-CN": "现场证据",
+    "en": "Field evidence"
+  },
+  "พื้นที่นี้ยังไม่มีภาพอ้างอิงจาก AutoCAD": {
+    "zh-CN": "此区域尚无 AutoCAD 参考图",
+    "en": "No AutoCAD reference for this area"
+  },
+  "ภาพอ้างอิง · ตรวจเทียบต้นฉบับ": {
+    "zh-CN": "参考图像 • 对照原图",
+    "en": "Reference image • Compare with source"
+  },
+  "ขยาย": {
+    "zh-CN": "放大",
+    "en": "Enlarge"
+  },
+  "ย่อ": {
+    "zh-CN": "缩小",
+    "en": "Reduce"
+  },
+  "พอดี": {
+    "zh-CN": "适合窗口",
+    "en": "Fit"
+  },
+  "เปิด PDF": {
+    "zh-CN": "打开 PDF",
+    "en": "Open PDF"
+  },
+  "กรอบพื้นที่ยังต้องตรวจยืนยัน · ฟอนต์และรุ่นแบบยังไม่รับรอง · โหมดนี้ใช้ดูภาพ ไม่มีการปักจุดหรือวัดพิกัดบนภาพ": {
+    "zh-CN": "区域边界尚待核查 • 字体和图纸版本尚未认证 • 此模式仅查看图像，不能在图像上添加坐标检查点或测量",
+    "en": "Area boundaries need verification • Fonts and revision not certified • Image viewing only; no coordinate pins or measurement"
+  },
+  "กำลังเปิดภาพที่เซิร์ฟเวอร์เตรียมไว้…": {
+    "zh-CN": "正在加载服务器预处理图像…",
+    "en": "Loading server-prepared image…"
+  },
+  "ภาพอ้างอิง:": {
+    "zh-CN": "参考图像：",
+    "en": "Reference image:"
+  },
+  "โหลดภาพอ้างอิงไม่สำเร็จ ตรวจเซิร์ฟเวอร์": {
+    "zh-CN": "参考图加载失败，请检查服务器",
+    "en": "Reference image failed; check server"
+  },
+  "ภาพรวมทุกหมวด": {
+    "zh-CN": "全部专业",
+    "en": "All systems"
+  },
+  "ควบคุมการเข้าออก": {
+    "zh-CN": "门禁系统",
+    "en": "Access control"
+  },
+  "ไฟฟ้า · ต้องยืนยันขอบเขต IT": {
+    "zh-CN": "电力 • 须确认 IT 范围",
+    "en": "Power • Confirm IT scope"
+  },
+  "ราง / ท่อ": {
+    "zh-CN": "桥架 / 管道",
+    "en": "Tray / conduit"
+  },
+  "งานประสาน": {
+    "zh-CN": "协调事项",
+    "en": "Coordination"
+  },
+  "ยังไม่จัดหมวด": {
+    "zh-CN": "未分类",
+    "en": "Unclassified"
+  },
+  "รอติดตั้ง": {
+    "zh-CN": "待安装",
+    "en": "Planned"
+  },
+  "ติดตั้งแล้ว": {
+    "zh-CN": "已安装",
+    "en": "Installed"
+  },
+  "ทดสอบแล้ว": {
+    "zh-CN": "已测试",
+    "en": "Tested"
+  },
+  "ผ่านตรวจ": {
+    "zh-CN": "验收通过",
+    "en": "Accepted"
+  },
+  "ติดขัด": {
+    "zh-CN": "受阻",
+    "en": "Blocked"
+  },
+  "ตำแหน่งตรงกับแบบที่อนุมัติ": {
+    "zh-CN": "位置符合已批准图纸",
+    "en": "Location matches approved drawing"
+  },
+  "รหัส / ป้ายทั้งสองปลายตรงกัน": {
+    "zh-CN": "两端编号 / 标签一致",
+    "en": "IDs / labels match at both ends"
+  },
+  "เส้นทางและการติดตั้งตรงข้อกำหนด": {
+    "zh-CN": "路径及安装符合要求",
+    "en": "Route and installation meet requirements"
+  },
+  "ไฟเลี้ยง / ปลายทางตรวจสอบแล้ว": {
+    "zh-CN": "电源 / 终端已核查",
+    "en": "Power / endpoint checked"
+  },
+  "แนบผลทดสอบตามเกณฑ์โครงการ": {
+    "zh-CN": "附项目标准要求的测试结果",
+    "en": "Attach tests meeting project criteria"
+  },
+  "จุดและปลายทางตรงแบบ": {
+    "zh-CN": "点位及终端符合图纸",
+    "en": "Points and endpoints match drawing"
+  },
+  "Label / cable ID ทั้งสองปลาย": {
+    "zh-CN": "两端标签 / 线缆编号",
+    "en": "Labels / cable IDs at both ends"
+  },
+  "ชนิดสายและการเข้าหัวตรง SPEC": {
+    "zh-CN": "线缆类型及端接符合 SPEC",
+    "en": "Cable type and termination match SPEC"
+  },
+  "Rack / patch panel / port mapping": {
+    "zh-CN": "机柜 / 配线架 / 端口对应",
+    "en": "Rack / patch panel / port mapping"
+  },
+  "แนบผล certification หรือผล Fiber ตาม SPEC": {
+    "zh-CN": "附符合 SPEC 的认证测试或光纤测试结果",
+    "en": "Attach certification or fiber tests per SPEC"
+  },
+  "ตำแหน่งและ mounting ตรงแบบ": {
+    "zh-CN": "位置和安装方式符合图纸",
+    "en": "Location and mounting match drawing"
+  },
+  "รหัสกล้อง / ปลายทาง network": {
+    "zh-CN": "摄像机编号 / 网络终端",
+    "en": "Camera ID / network endpoint"
+  },
+  "มุมภาพและสิ่งกีดขวาง": {
+    "zh-CN": "视角及遮挡物",
+    "en": "View angle and obstructions"
+  },
+  "ไฟ / PoE และการเชื่อมต่อ": {
+    "zh-CN": "电源 / PoE 及连接",
+    "en": "Power / PoE and connectivity"
+  },
+  "ทดสอบภาพ / บันทึก / playback ตาม SPEC": {
+    "zh-CN": "按 SPEC 测试图像 / 录像 / 回放",
+    "en": "Test image / recording / playback per SPEC"
+  },
+  "ตำแหน่ง reader / controller / lock": {
+    "zh-CN": "读卡器 / 控制器 / 锁的位置",
+    "en": "Reader / controller / lock location"
+  },
+  "รหัสและสายปลายทาง": {
+    "zh-CN": "编号及终端线缆",
+    "en": "IDs and endpoint cables"
+  },
+  "การติดตั้งและจุดประสานประตู": {
+    "zh-CN": "安装及门系统协调点",
+    "en": "Installation and door coordination"
+  },
+  "ไฟสำรอง / interface ตามแบบ": {
+    "zh-CN": "备用电源 / 接口符合图纸",
+    "en": "Backup power / interface per drawing"
+  },
+  "ทดสอบโดยผู้รับผิดชอบตาม ITP": {
+    "zh-CN": "由负责人按 ITP 测试",
+    "en": "Responsible person tests per ITP"
+  },
+  "วงจรและต้นทางไฟอ้างอิงได้": {
+    "zh-CN": "可追溯回路及电源起点",
+    "en": "Circuit and power source traceable"
+  },
+  "Label DB / circuit / outlet": {
+    "zh-CN": "配电箱 / 回路 / 插座标签",
+    "en": "DB / circuit / outlet labels"
+  },
+  "อุปกรณ์และ rating ตรงแบบ": {
+    "zh-CN": "设备及额定值符合图纸",
+    "en": "Equipment and ratings match drawing"
+  },
+  "Grounding / UPS / PDU ตาม scope": {
+    "zh-CN": "按范围核查接地 / UPS / PDU",
+    "en": "Grounding / UPS / PDU within scope"
+  },
+  "แนบผลตรวจจากผู้รับผิดชอบไฟฟ้า": {
+    "zh-CN": "附电气负责人的检查结果",
+    "en": "Attach electrical owner's inspection results"
+  },
+  "Route / elevation ตรงแบบ": {
+    "zh-CN": "路径 / 标高符合图纸",
+    "en": "Route / elevation match drawing"
+  },
+  "Label และจุดต้นทางปลายทาง": {
+    "zh-CN": "标签及起终点",
+    "en": "Labels and start/end points"
+  },
+  "Support / sleeve / การเข้าถึง": {
+    "zh-CN": "支架 / 套管 / 可接近性",
+    "en": "Support / sleeve / accessibility"
+  },
+  "Separation / firestop ตาม SPEC": {
+    "zh-CN": "按 SPEC 核查间距 / 防火封堵",
+    "en": "Separation / firestop per SPEC"
+  },
+  "รูปก่อนปิดงานซ่อนและผู้ตรวจ": {
+    "zh-CN": "隐蔽工程封闭前照片及检查人",
+    "en": "Photos before concealed closure and inspector"
+  },
+  "ความคืบหน้า": {
+    "zh-CN": "进度概览",
+    "en": "Progress overview"
+  },
+  "ภาษา": {
+    "zh-CN": "语言",
+    "en": "Language"
+  },
+  "รายการในชุดแบบนี้": {
+    "zh-CN": "本图纸包记录数",
+    "en": "Records in this package"
+  },
+  "สรุปจำนวนจุดตรวจ ไม่ใช่เปอร์เซ็นต์งานก่อสร้าง": {
+    "zh-CN": "检查点记录汇总，并非施工完成百分比",
+    "en": "Inspection counts, not construction completion percentage"
+  },
+  "ยังไม่มี BOQ / ขอบเขตงานที่อนุมัติสำหรับเป็นฐานคำนวณ": {
+    "zh-CN": "尚无已批准 BOQ / 工作范围作为计算基准",
+    "en": "No approved BOQ / scope baseline for completion calculations"
+  },
+  "ปรับปรุงล่าสุด": {
+    "zh-CN": "最近更新",
+    "en": "Last updated"
+  },
+  "ข้อมูลในเครื่องที่ยังรอส่งรวมอยู่ในสรุปนี้": {
+    "zh-CN": "本汇总包含本机尚未同步的记录",
+    "en": "Summary includes local records pending sync"
+  },
+  "รีเฟรชข้อมูลจากเซิร์ฟเวอร์": {
+    "zh-CN": "从服务器刷新",
+    "en": "Refresh from server"
+  },
+  "ยังไม่ได้รับข้อมูลจากเซิร์ฟเวอร์": {
+    "zh-CN": "尚未收到服务器数据",
+    "en": "No server data received yet"
+  },
+  "รับข้อมูลจากเซิร์ฟเวอร์ล่าสุด": {
+    "zh-CN": "最近一次服务器读取",
+    "en": "Last server refresh"
+  },
+  "เปิดหน้าสรุปไม่ได้ยกระดับสิทธิเป็นผู้ดูอย่างเดียว": {
+    "zh-CN": "打开概览不会将权限改为只读",
+    "en": "Overview does not enforce read-only access"
+  },
+  "ยังไม่ได้จับคู่เครื่องนี้ กรุณาเปิดลิงก์สำหรับทีมจากเครื่องเซิร์ฟเวอร์ที่มี #pair=… ท้ายลิงก์ · ไม่ต้องล็อกอิน ChatGPT": {
+    "zh-CN": "本设备尚未配对，请打开服务器提供的包含 #pair=… 的团队链接 • 无需 ChatGPT 登录",
+    "en": "Device not paired. Open the server team link containing #pair=… • No ChatGPT sign-in required"
+  },
+  "พื้นที่นี้มีวัตถุมาก กรุณาเปิดภาพอ้างอิง AutoCAD หรือซูมเข้า ระบบไม่ได้ตัดวัตถุออกเพื่อให้แสดงเร็ว": {
+    "zh-CN": "此区域对象过多，请打开 AutoCAD 参考图或放大；系统未为加速而删除对象",
+    "en": "Area too dense. Open AutoCAD reference or zoom in; objects are not omitted for speed"
+  },
+  "เซิร์ฟเวอร์กำลังสร้างภาพ กรุณารอสักครู่แล้วลองอีกครั้ง": {
+    "zh-CN": "服务器正在生成图像，请稍后重试",
+    "en": "Server is rendering. Retry shortly"
+  },
+  "ต้องเปิดลิงก์จับคู่จากเครื่องเซิร์ฟเวอร์ หรือเข้าสู่ระบบสำหรับเว็บออนไลน์": {
+    "zh-CN": "请打开服务器配对链接，或登录在线网站",
+    "en": "Open server pairing link or sign in to the hosted site"
+  },
+  "ข้อมูลต่างรุ่นกัน ข้อมูลในเครื่องยังเก็บไว้ กรุณาตรวจเทียบก่อนส่งอีกครั้ง": {
+    "zh-CN": "版本冲突，本机数据已保留，请核对后再同步",
+    "en": "Version conflict. Local data retained; compare before resending"
+  },
+  "กรุณาตรวจทุกรายการก่อนเลือกผ่านตรวจ": {
+    "zh-CN": "选择验收通过前请完成全部检查项",
+    "en": "Complete all checks before acceptance"
+  },
+  "กรุณาระบุเหตุผลสำหรับรายการที่ไม่เกี่ยวข้อง": {
+    "zh-CN": "请说明不适用项的理由",
+    "en": "Explain not-applicable items"
+  },
+  "เชื่อมต่อเซิร์ฟเวอร์ไม่ได้ ตรวจเครือข่ายและสถานะเซิร์ฟเวอร์": {
+    "zh-CN": "无法连接服务器，请检查网络及服务器状态",
+    "en": "Cannot reach server. Check network and server status"
+  },
+  "ข้อมูลใหญ่เกินขนาดที่เซิร์ฟเวอร์รับได้": {
+    "zh-CN": "数据超过服务器接收限制",
+    "en": "Data exceeds server limit"
+  },
+  "ชุดแบบยังไม่ผ่านการตรวจพร้อมหน้างาน จึงยังลงผลผ่านตรวจรับไม่ได้": {
+    "zh-CN": "图纸包尚未通过现场就绪核查，无法确认验收通过",
+    "en": "Package readiness not approved; acceptance blocked"
+  },
+  "รหัสจับคู่ไม่ถูกต้อง ใช้ลิงก์จากเครื่องเซิร์ฟเวอร์อีกครั้ง": {
+    "zh-CN": "配对码无效，请重新使用服务器链接",
+    "en": "Invalid pairing code. Use the server link again"
+  },
+  "เครือข่ายเชื่อมต่อ": {
+    "zh-CN": "网络已连接",
+    "en": "Network connected"
+  },
+  "เครือข่ายไม่เชื่อมต่อ": {
+    "zh-CN": "网络未连接",
+    "en": "Network disconnected"
+  },
+  "เริ่มใช้งานใน 3 ขั้นตอน": {
+    "zh-CN": "三步开始使用",
+    "en": "Get started in 3 steps"
+  },
+  "เข้าใจแล้ว": {
+    "zh-CN": "我知道了",
+    "en": "Got it"
+  },
+  "เลือกแบบและหมวดงาน": {
+    "zh-CN": "选择图纸和专业",
+    "en": "Choose a drawing and system"
+  },
+  "ตรวจชื่อแผ่นและรุ่นแบบก่อนเริ่ม": {
+    "zh-CN": "开始前核对图名和版本",
+    "en": "Check the sheet title and revision first"
+  },
+  "เลือกจุดตรวจ": {
+    "zh-CN": "选择检查点",
+    "en": "Choose an inspection point"
+  },
+  "ค้นหา tag หรือข้อความจากรายการ แล้วเปิดจุดที่ต้องตรวจ": {
+    "zh-CN": "在列表中搜索标签或文字，然后打开检查点",
+    "en": "Search tags or text in the list, then open a point"
+  },
+  "ตรวจ แนบรูป และบันทึก": {
+    "zh-CN": "检查、附照片并保存",
+    "en": "Inspect, attach photos and save"
+  },
+  "ตอบตามหลักฐานจริง รายการรอส่งยังอยู่ในเครื่อง": {
+    "zh-CN": "按实际证据填写，待发送记录保留在本机",
+    "en": "Use actual evidence; pending records stay on this device"
+  },
+  "เริ่มเลือกจุดตรวจ": {
+    "zh-CN": "开始选择检查点",
+    "en": "Choose an inspection point"
+  },
+  "ภาพอ้างอิงใช้ดูต้นฉบับ จุดตรวจและการวัดใช้ภาพสกัดที่ต้องตรวจเทียบ": {
+    "zh-CN": "参考图用于查看原图；检查点和测量使用提取图，须与原图核对",
+    "en": "Use reference images to review the source; points and measurements use extracted geometry that needs comparison"
+  },
+  "จุดนี้ไม่มีพิกัดที่ยืนยันได้ กรุณาตรวจเทียบต้นฉบับ": {
+    "zh-CN": "该点无可确认坐标，请核对原图",
+    "en": "This point has no confirmed coordinates; compare the source drawing"
+  },
+  "ข้อมูลต่างรุ่นกัน เก็บผลไว้ในเครื่องแล้ว กรุณาตรวจเทียบ": {
+    "zh-CN": "数据版本冲突，结果已保留在本机，请核对",
+    "en": "Version conflict: results remain on this device; review before sending"
+  },
+  "บันทึกในเครื่องแล้ว ยังรอส่ง": {
+    "zh-CN": "已保存在本机，等待发送",
+    "en": "Saved on this device; awaiting upload"
+  },
+  "เครื่องมือเพิ่มเติม": {
+    "zh-CN": "更多工具",
+    "en": "More tools"
+  },
+  "วิธีใช้งาน": {
+    "zh-CN": "使用指南",
+    "en": "How to use"
+  },
+  "เลือกพื้นที่ / จุดตรวจ": {
+    "zh-CN": "选择区域 / 检查点",
+    "en": "Choose area / point"
+  },
+  "รายการค้นหาครอบคลุมทุกแผ่นและทุกหมวด เพื่อไม่ตัดหลักฐานที่ยังจัดหมวดไม่ได้": {
+    "zh-CN": "搜索列表包含所有图纸和专业，以保留尚未分类的证据",
+    "en": "Search covers every sheet and system to retain unclassified evidence"
+  },
+  "กำลังดูภาพต้นฉบับ: เลือกจุดจากรายการเพื่อเปิดแบบตรวจทานและเช็กลิสต์": {
+    "zh-CN": "正在查看原图：从列表选择点以打开提取图和检查清单",
+    "en": "Viewing the source image: choose a listed point to open extracted geometry and its checklist"
+  },
+  "ภาพสกัดสำหรับตรวจทาน: แตะวัตถุหรือปักจุด แล้วตอบรายการตรวจตามหลักฐาน": {
+    "zh-CN": "提取图仅供核对：点击对象或标记检查点，再按证据填写清单",
+    "en": "Extracted review geometry: select an object or place a point, then inspect using actual evidence"
+  },
+  "กำลังบันทึก…": {
+    "zh-CN": "正在保存…",
+    "en": "Saving…"
+  },
+  "รายการนี้เก็บในเครื่องและยังรอส่ง": {
+    "zh-CN": "该记录保存在本机，等待发送",
+    "en": "This record is saved on this device and awaiting upload"
+  },
+  "รายการนี้ไม่มีคิวรอส่ง": {
+    "zh-CN": "该记录没有待发送队列",
+    "en": "This record has no pending upload"
+  },
+  "ร่างยังไม่เป็นผลตรวจ กดบันทึกเมื่อพร้อม": {
+    "zh-CN": "草稿尚非检查结果，完成后请保存",
+    "en": "This is a draft; save when ready"
+  },
+  "ยังไม่ใช่ภาพรับรองจาก AutoCAD": {
+    "zh-CN": "并非经认证的 AutoCAD 原图",
+    "en": "Not a certified Reference image"
+  },
+  "Model — ทั้งพื้นที่ที่สกัดได้": {
+    "zh-CN": "Model — 全部提取区域",
+    "en": "Model — all extracted areas"
+  },
+  "เลือกแผ่นที่จะนำไปตรวจ แล้วเตรียมชุดออฟไลน์": {
+    "zh-CN": "选择现场检查图纸，然后准备离线包",
+    "en": "Select field sheets, then prepare the offline pack"
+  },
+  "กำลังเตรียมแบบ": {
+    "zh-CN": "正在准备图纸",
+    "en": "Preparing drawings"
+  },
+  "ชุดออฟไลน์พร้อม ภาพครบและ checksum ผ่าน": {
+    "zh-CN": "离线包已就绪，图像齐全且校验通过",
+    "en": "Offline pack ready; images complete and checksums verified"
+  },
+  "นำเข้าผลแล้ว ไม่เขียนทับรายการเดิม": {
+    "zh-CN": "已导入结果，未覆盖现有记录",
+    "en": "Results imported; existing records were not overwritten"
+  },
+  "ยังมีรายการรอส่งหรือข้อมูลขัดแย้ง": {
+    "zh-CN": "仍有待发送或版本冲突的记录",
+    "en": "Pending uploads or version conflicts remain"
+  },
+  "ตรวจออฟไลน์": {
+    "zh-CN": "离线检查",
+    "en": "Offline inspection"
+  },
+  "เปิดโหมดออนไลน์": {
+    "zh-CN": "打开在线模式",
+    "en": "Open online mode"
+  },
+  "เตรียม / นำเข้าชุดแบบ": {
+    "zh-CN": "准备 / 导入图纸包",
+    "en": "Prepare / import drawing pack"
+  },
+  "ผลตรวจ / ส่งกลับ": {
+    "zh-CN": "检查结果 / 发送",
+    "en": "Results / send back"
+  },
+  "โหมดนี้เก็บผลในเครื่อง ไม่ส่งอัตโนมัติ ภาพอ้างอิงไม่มีพิกัดที่รับรอง ห้ามตรวจรับแทนแบบอนุมัติ": {
+    "zh-CN": "此模式将结果保存在本机，不自动发送；参考图坐标未经认证，不可代替批准图纸验收",
+    "en": "Results stay on this device without automatic upload; reference coordinates are not certified and cannot replace approved drawings for acceptance"
+  },
+  "เตรียมชุดแบบก่อนออกหน้างาน และส่งออกไฟล์สำรองหลังตรวจ": {
+    "zh-CN": "到现场前准备图纸包，检查后导出备份文件",
+    "en": "Prepare the pack before fieldwork and export a backup after inspection"
+  },
+  "โหลดรายชื่อแบบจากเซิร์ฟเวอร์": {
+    "zh-CN": "从服务器加载图纸列表",
+    "en": "Load sheet list from server"
+  },
+  "เตรียมชุดออฟไลน์": {
+    "zh-CN": "准备离线包",
+    "en": "Prepare offline pack"
+  },
+  "นำเข้าชุดแบบหรือผลตรวจจากไฟล์": {
+    "zh-CN": "从文件导入图纸包或检查结果",
+    "en": "Import a drawing pack or results file"
+  },
+  "แผ่นพร้อมในเครื่อง": {
+    "zh-CN": "张图纸已保存在本机",
+    "en": "sheets available on this device"
+  },
+  "ส่งออกชุดแบบสำรอง": {
+    "zh-CN": "导出图纸包备份",
+    "en": "Export drawing pack backup"
+  },
+  "ต้องเปิดเว็บผ่าน HTTPS หรือ localhost ก่อนหนึ่งครั้ง ข้อมูลอยู่แยกตามชื่อเว็บ ลิงก์ชั่วคราวใหม่ต้องนำเข้าชุดแบบอีกครั้ง": {
+    "zh-CN": "必须先通过 HTTPS 或 localhost 打开网站；数据按网站地址分别保存，新临时链接需重新导入图纸包",
+    "en": "Open through HTTPS or localhost once first; data is stored per website origin, so a new temporary link needs the pack imported again"
+  },
+  "ไฟล์สำรองมีข้อมูลบริษัท เก็บและส่งเฉพาะทีมที่ได้รับอนุญาต": {
+    "zh-CN": "备份包含公司数据，仅保存或发送给授权团队",
+    "en": "Backup files contain company data; keep and share only with the authorized team"
+  },
+  "ส่งข้อมูลเมื่อเชื่อมต่อเซิร์ฟเวอร์": {
+    "zh-CN": "连接服务器后发送数据",
+    "en": "Send when connected to the server"
+  },
+  "ส่งออกผลตรวจพร้อมรูป": {
+    "zh-CN": "导出检查结果和照片",
+    "en": "Export results with photos"
+  },
+  "ข้อมูลขัดแย้งไม่ถูกเขียนทับ ส่งออกไฟล์แล้วตรวจเทียบก่อนส่งอีกครั้ง": {
+    "zh-CN": "不覆盖冲突数据，导出后核对再发送",
+    "en": "Conflicting data is not overwritten; export and compare before sending again"
+  },
+  "ลิงก์ทีมชั่วคราวสำหรับหน้างาน": {
+    "zh-CN": "现场团队临时链接",
+    "en": "Temporary field-team link"
+  },
+  "ลิงก์ทีมชั่วคราว": {
+    "zh-CN": "团队临时链接",
+    "en": "Temporary team link"
+  },
+  "กลับภาพแบบ": {
+    "zh-CN": "返回图纸",
+    "en": "Back to drawing"
+  }
+}

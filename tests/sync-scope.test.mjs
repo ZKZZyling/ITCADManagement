@@ -1,0 +1,2 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {syncScope} from '../client/sync-scope.mjs';
+test('Offline sends only the selected source/dataset; normal sync keeps its existing all-queue behavior',()=>{const r=[{id:'aaa-v1-p',sourceSHA256:'aaa'},{id:'aaa-v2-p',sourceSHA256:'aaa'},{id:'bbb-v1-p',sourceSHA256:'bbb'}];assert.deepEqual(syncScope(r,{sourceSHA256:'aaa',datasetId:'v1'}),[r[0]]);assert.equal(syncScope(r,null),r)});

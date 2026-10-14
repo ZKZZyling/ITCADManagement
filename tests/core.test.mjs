@@ -1,0 +1,10 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {validateRecord} from '../lib/validation.mjs';import {distance,segmentDistance,visible,bounds,csv} from '../client/model.mjs';
+const record=()=>({id:'handle-123',opId:'abcde12345-12345-12345',status:'installed',version:0,sourceSHA256:'a'.repeat(64),notes:'ตรวจตำแหน่ง',checks:[{id:'loc',label:'ตำแหน่ง',result:'pass'}],photos:[]});
+test('measurement uses drawing coordinates and Euclidean distance',()=>assert.equal(distance([0,0],[3000,4000]),5000));
+test('selection can find long segments away from endpoints',()=>assert.equal(segmentDistance([500,3],[0,0],[1000,0]),3));
+test('filters retain unknown candidates and optionally context',()=>{assert.equal(visible({system:'unknown'},'data',true,true),true);assert.equal(visible({system:'unknown'},'data',true,false),false);assert.equal(visible({system:'power'},'data'),false);assert.equal(visible({system:'context'},'data',true),true)});
+test('bounds preserve negative/native coordinates',()=>assert.deepEqual(bounds({points:[[-3,4],[9,-6]]}),[-3,-6,9,4]));
+test('inspection requires traceable source and supported answers',()=>{assert.equal(validateRecord(record()).status,'installed');assert.throws(()=>validateRecord({...record(),sourceSHA256:'bad'}));assert.throws(()=>validateRecord({...record(),checks:[{id:'a',label:'x',result:'bogus'}]}));});
+test('acceptance cannot bypass unchecked items and NA needs reason',()=>{assert.throws(()=>validateRecord({...record(),status:'accepted',checks:[{id:'a',label:'x',result:'unchecked'}]}));assert.throws(()=>validateRecord({...record(),notes:'',checks:[{id:'a',label:'x',result:'na'}]}));});
+test('CSV safely preserves Thai Chinese quotes and line breaks',()=>{const output=csv([{title:'ตู้ "机柜"\n18U'}]);assert.ok(output.startsWith('\uFEFF'));assert.ok(output.includes('""机柜""'));assert.ok(output.includes('\n18U'))});
+test('CSV prevents formula activation in exported notes',()=>assert.ok(csv([{notes:'=1+1'}]).includes("\"'=1+1\"")));

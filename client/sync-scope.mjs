@@ -1,0 +1,1 @@
+export function syncScope(records,drawing){if(!drawing)return records;const prefix=drawing.sourceSHA256+'-'+(drawing.datasetId?drawing.datasetId+'-':'');return records.filter(x=>x.sourceSHA256===drawing.sourceSHA256&&x.id.startsWith(prefix))}

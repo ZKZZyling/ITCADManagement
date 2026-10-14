@@ -1,0 +1,24 @@
+เลือกแผ่นที่จะนำไปตรวจ แล้วเตรียมชุดออฟไลน์|选择现场检查图纸，然后准备离线包|Select field sheets, then prepare the offline pack
+กำลังเตรียมแบบ|正在准备图纸|Preparing drawings
+ชุดออฟไลน์พร้อม ภาพครบและ checksum ผ่าน|离线包已就绪，图像齐全且校验通过|Offline pack ready; images complete and checksums verified
+นำเข้าผลแล้ว ไม่เขียนทับรายการเดิม|已导入结果，未覆盖现有记录|Results imported; existing records were not overwritten
+ยังมีรายการรอส่งหรือข้อมูลขัดแย้ง|仍有待发送或版本冲突的记录|Pending uploads or version conflicts remain
+ตรวจออฟไลน์|离线检查|Offline inspection
+เปิดโหมดออนไลน์|打开在线模式|Open online mode
+เตรียม / นำเข้าชุดแบบ|准备 / 导入图纸包|Prepare / import drawing pack
+ผลตรวจ / ส่งกลับ|检查结果 / 发送|Results / send back
+โหมดนี้เก็บผลในเครื่อง ไม่ส่งอัตโนมัติ ภาพอ้างอิงไม่มีพิกัดที่รับรอง ห้ามตรวจรับแทนแบบอนุมัติ|此模式将结果保存在本机，不自动发送；参考图坐标未经认证，不可代替批准图纸验收|Results stay on this device without automatic upload; reference coordinates are not certified and cannot replace approved drawings for acceptance
+เตรียมชุดแบบก่อนออกหน้างาน และส่งออกไฟล์สำรองหลังตรวจ|到现场前准备图纸包，检查后导出备份文件|Prepare the pack before fieldwork and export a backup after inspection
+โหลดรายชื่อแบบจากเซิร์ฟเวอร์|从服务器加载图纸列表|Load sheet list from server
+เตรียมชุดออฟไลน์|准备离线包|Prepare offline pack
+นำเข้าชุดแบบหรือผลตรวจจากไฟล์|从文件导入图纸包或检查结果|Import a drawing pack or results file
+แผ่นพร้อมในเครื่อง|张图纸已保存在本机|sheets available on this device
+ส่งออกชุดแบบสำรอง|导出图纸包备份|Export drawing pack backup
+ต้องเปิดเว็บผ่าน HTTPS หรือ localhost ก่อนหนึ่งครั้ง ข้อมูลอยู่แยกตามชื่อเว็บ ลิงก์ชั่วคราวใหม่ต้องนำเข้าชุดแบบอีกครั้ง|必须先通过 HTTPS 或 localhost 打开网站；数据按网站地址分别保存，新临时链接需重新导入图纸包|Open through HTTPS or localhost once first; data is stored per website origin, so a new temporary link needs the pack imported again
+ไฟล์สำรองมีข้อมูลบริษัท เก็บและส่งเฉพาะทีมที่ได้รับอนุญาต|备份包含公司数据，仅保存或发送给授权团队|Backup files contain company data; keep and share only with the authorized team
+ส่งข้อมูลเมื่อเชื่อมต่อเซิร์ฟเวอร์|连接服务器后发送数据|Send when connected to the server
+ส่งออกผลตรวจพร้อมรูป|导出检查结果和照片|Export results with photos
+ข้อมูลขัดแย้งไม่ถูกเขียนทับ ส่งออกไฟล์แล้วตรวจเทียบก่อนส่งอีกครั้ง|不覆盖冲突数据，导出后核对再发送|Conflicting data is not overwritten; export and compare before sending again
+ลิงก์ทีมชั่วคราวสำหรับหน้างาน|现场团队临时链接|Temporary field-team link
+ลิงก์ทีมชั่วคราว|团队临时链接|Temporary team link
+กลับภาพแบบ|返回图纸|Back to drawing
