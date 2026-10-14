@@ -1,26 +1,28 @@
 # Offline workspace
 
-เปิด `/field/offline.html` เป็นหน้าต่างแยกได้จากเว็บหลัก ใช้ IndexedDB เดียวกับเว็บหลักเมื่อ origin เดียวกัน ต้องเตรียมผ่าน HTTPS หรือ localhost ขณะยังต่อ server อยู่
+Open `/field/offline.html` in a separate window from the main application. Both pages share IndexedDB only when using the same browser origin. Prepare through HTTPS or localhost while the server is reachable.
 
-## ขั้นตอน
+## Workflow
 
-1. เลือกแผ่น (สูงสุด 25 แผ่น) แล้วเตรียม pack; ดาวน์โหลด PNG ทุกแผ่น, ตรวจ PNG signature, SHA-256 และ decode รูป
-2. Cache shell ของ build ปัจจุบัน และบันทึก pack ใน IndexedDB; อย่าออกหน้างานหากยังเตรียมไม่ครบ
-3. ปิดเน็ตแล้ว reload offline page; ต้องเห็นรูปและรายการก่อนถือว่าพร้อมในอุปกรณ์นั้น
-4. บันทึก checklist/notes/status และรูป; ภาพถูกย่อเป็น JPEG สูงสุดด้านละ 1600 px; บันทึก record+outbox แบบ atomic ใน browser
-5. Export pack และ results (รวมรูป) ไปเก็บที่ได้รับอนุญาต แล้วส่งข้อมูลเมื่อพร้อมออนไลน์; sync เฉพาะ source/dataset ปัจจุบัน
+1. Select up to 25 sheets and prepare the pack. Every PNG is downloaded and checked for signature, SHA-256, and image decoding.
+2. Cache the current build's application shell and save the pack in IndexedDB. Do not leave for site with an incomplete pack.
+3. Disconnect and reload the offline page. Verify readable images and asset lists on that particular device.
+4. Save checklist answers, notes, statuses, and photos. Photos are resized to JPEG with a maximum dimension of 1600 px. Record and outbox writes are atomic within the browser.
+5. Export the pack and results, including photos, to approved storage. Reconnect and synchronize explicitly; offline synchronization is scoped to the current source and dataset.
 
-## ขอบเขตข้อมูล
+## Storage boundaries
 
-- pack JSON จำกัด 80 MB; ไม่ใช่ raw DWG และไม่ได้ย่อ CAD ทั้งโรงงานลงมือถือ
-- เก็บ asset text list ทั้งหมด เพราะความสัมพันธ์ asset↔frame ยังไม่ยืนยัน จึงอาจมีรายการที่อยู่คนละแผ่น
-- การใช้ IndexedDB ไม่เท่ากับ backup; private browsing, browser eviction, Clear Data และอุปกรณ์เสียอาจทำให้สูญหาย
-- Service Worker ใช้ network-first สำหรับ GET `/field/` และ fallback cache build ปัจจุบันบน network error/5xx; ไม่ cache API/CAD ทุกอย่างโดยปริยาย
-- ไม่มี automatic background sync; ผู้ใช้กดส่งเองและตรวจ pending/conflicts
-- dynamic CAD engine ไม่อยู่ใน offline shell; offline เป็นภาพอ้างอิงและ checklist ไม่ใช่ DWG editor
+- Pack JSON is limited to 80 MB. It is not raw DWG or a complete factory CAD model compressed onto a phone.
+- The asset text list includes all candidates because asset-to-frame relationships are not certified; some entries may belong to other sheets.
+- IndexedDB is not a backup. Private browsing, storage eviction, clearing browser data, or device loss can erase unsynchronized evidence.
+- Service Workers use network-first GET requests for `/field/`, with the current build's shell as fallback on network errors or HTTP 5xx. API and CAD data are not all cached implicitly.
+- There is no automatic background synchronization. Inspectors send results explicitly and inspect conflicts.
+- The dynamic CAD engine is not included in the offline shell. Offline mode provides reference images and checklists, not DWG editing.
 
-## ลิงก์เปลี่ยน / ย้ายอุปกรณ์
+## URL changes and device transfer
 
-Origin ใหม่มี IndexedDB คนละชุด ต้องเปิด origin เก่าเพื่อ export pack+results แล้ว import ที่ origin ใหม่ซึ่งจับคู่แล้ว Source SHA และ dataset ต้องตรง; existing record ไม่ถูก overwrite; accepted results ไม่รับ import ใน workflow นี้ หลัง import ให้ตรวจครบแล้ว sync เอง อย่าคาดว่าฟรี tunnel เดิมจะย้อนกลับมาได้เสมอ จึงควร export ก่อน URL เปลี่ยน
+A new origin has a separate IndexedDB store. Export pack and results from the old origin, then import them into the paired new origin. Source SHA and dataset must match. Existing records are not overwritten, and accepted results cannot be imported in this workflow. Verify imported evidence before explicitly synchronizing.
 
-Pack และ results เป็นข้อมูลบริษัท อ่านได้จาก JSON ผู้ถือไฟล์เข้าถึงเนื้อหาได้; ไม่มี encryption at rest ของ export ในรุ่นนี้ ควรใช้ที่เก็บและสิทธิ์ตามบริษัท
+Free tunnel URLs may disappear permanently. Export before a URL changes rather than relying on recovering the old origin later.
+
+Pack and results files contain company data readable as JSON. Export encryption at rest is not implemented. Use company-approved storage and access controls.

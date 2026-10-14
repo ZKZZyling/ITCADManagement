@@ -1,31 +1,31 @@
-# คู่มือสำหรับผู้ตรวจและผู้จัดการ
+# Field inspection and manager guide
 
-## ก่อนออกตรวจ
+## Before leaving for site
 
-1. ขอผู้รับผิดชอบยืนยัน revision/approval และเกณฑ์ checklist; ตรวจชื่อแบบ source hash และคำเตือนบนหน้าเว็บ
-2. เลือกภาษา ไทย / 简体中文 / English; เปิดคู่มือ 3 ขั้นตอนจาก UI; เลือกแผ่นที่ต้องใช้
-3. ค้น tag/layer/ข้อความเดิม แล้วเทียบ legend กับภาพอ้างอิง; อย่าใช้ผลจัดหมวดอัตโนมัติแทน legend
-4. เตรียม offline pack, เปิดทดสอบหลังตัดเน็ต และ export สำรองก่อนเดินทาง
-5. ตรวจแบตเตอรี่/พื้นที่อุปกรณ์และลิงก์ทีมปัจจุบัน; ลิงก์ที่มี pair token ส่งเฉพาะทีมที่อนุญาต
+1. Have the responsible person confirm drawing revision, approval, and checklist criteria. Check the drawing name, source hash, and visible warnings.
+2. Select English, Thai, or Simplified Chinese, open the three-step guide, and select the required sheets.
+3. Search original tags, layers, or text and compare against the legend and reference image. Automated classification does not replace legend verification.
+4. Prepare an offline pack, test it after disconnecting, and export a backup before departure.
+5. Check battery, device storage, and the current team link. Share paired links only with authorized team members.
 
-## ระหว่างตรวจ
+## During inspection
 
-เลือกแผ่น → ค้นอุปกรณ์ → เลือกรายการ → ใส่ผล checklist, status, assignee, notes และรูป → กดบันทึก ผลยังอยู่ใน browser queue จนส่งสำเร็จ สถานะ pass/installed/tested เป็นผลที่ผู้ตรวจใส่เอง ต้องแนบหลักฐานตาม SPEC/ITP
+Select a sheet → search for an asset → open its checklist → enter answers, status, assignee, notes, and photos → save. Records remain in the browser queue until synchronization succeeds. Pass/installed/tested values are entered by inspectors and require the evidence specified by the project's SPEC and ITP.
 
-รายการ `unknown` และงานประสานยังแสดงได้เพื่อไม่ตัดหลักฐานที่ยังจัดหมวดไม่ได้ การซ่อน context ทำให้เห็นงาน IT ชัดขึ้นแต่ต้องกลับดูภาพรวมก่อนตัดสินเส้นทาง/ระยะและความขัดแย้ง
+Keep unknown and coordination candidates available to avoid losing unclassified evidence. Hiding architectural context can clarify IT scope, but return to the overall view before assessing routes, distances, or conflicts.
 
-ภาพอ้างอิงใช้ดู/ซูม ไม่มีปักพิกัดหรือวัดระยะบนภาพ เพราะยังไม่ยืนยัน mapping ภาพ↔DWG โหมด geometry มีหน่วยจากข้อมูลแบบ; ห้ามใช้ระยะ derived เป็น cable takeoff/ตรวจรับโดยไม่มีการตรวจเทียบ
+Reference images support viewing and zooming, not coordinate pins or measurement, because image-to-DWG mapping has not been certified. Geometry mode uses drawing units; derived distances must not be treated as cable takeoffs or acceptance evidence without verification.
 
-## หลังตรวจ
+## After inspection
 
-กลับออนไลน์ใน origin เดิม → ส่งรายการค้าง → ตรวจจำนวน pending/conflict → export results สำรอง ห้ามล้าง browser data ก่อนยืนยันผลทั้งหมดบน server และไฟล์สำรอง อย่าส่งซ้ำพร้อมกันหลายแท็บ
+Reconnect in the same browser origin, send pending records, inspect pending/conflict counts, and export results for backup. Do not clear browser data until all results have been confirmed on the server and in backup. Avoid simultaneous synchronization from multiple tabs.
 
-Conflict 409 หมายถึง version บน server เปลี่ยนแล้ว ร่างยังคงอยู่ ให้เทียบข้อมูลและเลือกผลที่ถูกต้อง ไม่ overwrite อัตโนมัติ
+HTTP 409 means the server version has changed. Local evidence is retained. Compare the records and resolve the correct result; there is no automatic overwrite.
 
-## ผู้จัดการและหัวหน้าจีน
+## Managers and multilingual teams
 
-เลือก 简体中文 แล้วดูรายการตามสถานะและช่วงแบบเดียวกัน ยอด progress นับรายการที่มี record ใน source SHA + dataset ปัจจุบันเท่านั้น ไม่ใช่เปอร์เซ็นต์ construction completion เนื่องจากไม่มี approved BOQ denominator
+Select the preferred UI language and review records by status within the same source SHA and dataset. Progress counts cover recorded inspection items only; they are not construction completion percentages because an approved bill-of-quantities denominator is unavailable.
 
-**中文操作:** 选择语言 → 选择图纸 → 搜索设备编号 → 查看检查记录及待同步数量。离线检查前先准备图纸包，并在断网状态测试。演示图纸不能用于施工。所有配对用户共享工作空间，当前没有只读管理者角色。
+The UI language does not alter drawing text, tags, units, notes, or assignee names. All paired users currently share one workspace. There are no individual user roles or server-enforced read-only manager permissions.
 
-ภาษา UI ไม่เปลี่ยนข้อความแบบจีน, tag, หน่วย, notes หรือผู้รับผิดชอบ เพื่อให้คงหลักฐานต้นฉบับ รุ่นนี้ไม่มีรายชื่อ user/role หรือ read-only dashboard ที่ enforce บน server
+For Simplified Chinese users, the same workflow applies: select language, select a sheet, search an identifier, then review the record and pending synchronization count. Prepare and test offline packs before disconnecting. Synthetic demo drawings cannot be used for construction.

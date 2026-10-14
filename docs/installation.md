@@ -1,23 +1,23 @@
-# การติดตั้งและการเริ่มต้นใหม่
+# Installation and upgrades
 
 ## Requirements
 
-- Windows 10/11 สำหรับ controller / `.cmd`; Node core server ทดสอบอัตโนมัติได้บน Windows/Linux
-- Node 22.13+ ต้องมี `node:sqlite`; ใช้รุ่น LTS ที่ยังได้รับ security updates และตรวจ `node --version`
-- npm, Git, browser ที่รองรับ IndexedDB, Cache Storage, Service Workers และ Web Crypto
-- Windows OpenSSH Client เมื่อต้องการ localhost.run; ไม่ต้องใส่ private SSH key ของบริษัท
-- Python 3.11+ และ dependencies ใน `requirements.txt` เฉพาะเมื่อเตรียม CAD ไม่จำเป็นสำหรับดูชุดสาธิต
-- ODA File Converter ติดตั้งแยกและตรวจสิทธิ์ใช้งานเฉพาะเมื่ออ่าน DWG; ไม่ bundle converter หรือ AutoCAD
+- Windows 10/11 for the controller and `.cmd` launchers. Core server CI runs on Windows and Linux.
+- Node.js 22.13+ with `node:sqlite`. Use a supported LTS release and verify `node --version`.
+- npm, Git, and a browser supporting IndexedDB, Cache Storage, Service Workers, and Web Crypto.
+- Windows OpenSSH Client for localhost.run. Company private SSH keys are not required.
+- Python 3.11+ and `requirements.txt` only for CAD preparation; not required for the demo viewer.
+- Separately installed ODA File Converter, with appropriate usage rights, for DWG conversion. Neither ODA nor AutoCAD is bundled.
 
 ## Install
 
-Clone ลงโฟลเดอร์ที่เขียนได้ หลีกเลี่ยง network share ที่ไม่มีการทดสอบ SQLite locking โฟลเดอร์ที่มี space รองรับโดย Windows scripts ใช้ `Setup-ITField.cmd` หรือ `npm ci; npm run build; npm run demo` รันแต่ละคำสั่งและตรวจ exit code ก่อนคำสั่งถัดไป
+Clone into a writable directory. Avoid network shares with unverified SQLite locking. Windows scripts quote project paths to accommodate spaces. Run `Setup-ITField.cmd`, or run `npm ci`, `npm run build`, and `npm run demo` individually, checking each exit code.
 
-Setup ไม่ติดตั้ง Node/Git/SSH ให้เอง และไม่มีสิทธิ์ administrator โดยอัตโนมัติ หาก PowerShell policy ของบริษัทห้าม scripts ให้ฝ่าย IT อนุมัติตามนโยบายบริษัท ไม่แก้ global execution policy
+Setup does not install Node, Git, or SSH, or grant administrator privileges. If company policy blocks PowerShell scripts, request approval through the company's normal process; do not weaken global execution policy.
 
-## Network / environment
+## Network and environment
 
-Default Node bind คือ `127.0.0.1:42873`; controller ใช้ port 42873 ตายตัว การเปลี่ยน `ITFIELD_PORT` ใช้กับ CLI `npm start` เท่านั้นและต้องปรับ tooling ที่ผูก port ก่อนใช้ controller
+The default bind address is `127.0.0.1:42873`. The Windows controller uses port 42873. `ITFIELD_PORT` changes only the CLI server; adapt port-bound launcher/tunnel tooling before using a different port with the controller.
 
 ```powershell
 $env:ITFIELD_HOST='127.0.0.1'
@@ -25,12 +25,12 @@ $env:ITFIELD_PORT='42874'
 npm start
 ```
 
-`.env.example` เป็นตัวอย่าง; server ไม่โหลด `.env` อัตโนมัติ สำหรับ LAN ต้องตั้ง `ITFIELD_HOST=0.0.0.0` เองและกำหนด firewall ตาม policy การเปิดผ่าน LAN HTTP ใช้ Service Worker ออฟไลน์ไม่ได้ ยกเว้น localhost จึงควรใช้ HTTPS ที่ได้รับอนุญาตสำหรับ tablet
+`.env.example` is a reference; the server does not load `.env` automatically. LAN access requires an explicit `ITFIELD_HOST=0.0.0.0` setting and company-approved firewall rules. LAN HTTP generally cannot provide Service Worker offline support; use approved HTTPS for tablets. Localhost is a secure-context exception.
 
-Controller สร้างไฟล์ส่วนตัวใน `data/`; cache/temp ของ launcher อยู่ `.runtime/temp` ไม่ย้าย Windows global TEMP หรือ app credential การติดตั้งบน removable SSD ต้องให้เจ้าของเครื่องตรวจ volume identity และพื้นที่ก่อนทุกครั้ง ตัว portable repo ไม่ผูก GUID ของ SSD เครื่องใดเครื่องหนึ่ง
+Private runtime files are stored in `data/`; launcher temporary files use `.runtime/temp`. Windows global TEMP and application credentials are not relocated. For removable storage, verify drive identity and available space before use. The portable repository is not tied to one workstation's SSD volume GUID.
 
 ## Upgrade
 
-หยุด services ของโปรเจคก่อน; backup `data/` ทั้งชุดไปยังตำแหน่งที่บริษัทอนุญาต; เก็บ browser results export ของแต่ละอุปกรณ์; pull/update source; `npm ci`, build และทดสอบ ชุดสาธิตจะไม่แทนที่ active-package ที่มีอยู่ ตรวจ source/dataset เดิมก่อน sync หลัง update
+Stop the project services before replacing dependencies. Back up the entire `data/` directory to an authorized destination and export unsynchronized browser results from each device. Update source, run `npm ci`, build, and verify. Demo setup preserves an existing active package. Check source and dataset identity before synchronizing after an upgrade.
 
-ไม่มี automated rollback/migration recovery ทุกกรณี รุ่น IndexedDB ปัจจุบันคือ v2; SQLite schema เริ่มต้นสร้างด้วย `CREATE TABLE IF NOT EXISTS` ดู architecture ก่อนแก้ schema
+There is no universal automatic rollback or migration recovery. IndexedDB currently uses schema v2; SQLite initialization uses `CREATE TABLE IF NOT EXISTS`. Review the architecture before changing schemas.

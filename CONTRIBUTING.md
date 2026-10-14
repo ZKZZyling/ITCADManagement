@@ -1,5 +1,7 @@
 # Contributing
 
+English is the primary language for documentation, commit subjects/bodies, pull requests, issues, and release notes. The owner has authorized automatic publication of verified project updates; follow [AGENTS.md](AGENTS.md) and the [publication workflow](docs/publishing.md). Application translations and original evidence retain their intended languages.
+
 Use a feature branch, meaningful commits and a pull request explaining the user-visible problem, final behavior and verification. Default assistant branch prefix is `codex/`. Never upload private drawings as tests; create synthetic fixtures with explicit labels. Keep original evidence text and identifiers unchanged; translations belong in the locale catalog.
 
 Before changes: read architecture and limitations; run baseline build/tests. After changes: add meaningful regression tests for demonstrated risk, run build/tests and release scan, update docs and changelog. Do not write assertions that merely restate implementation or claim real field acceptance from mocks.
