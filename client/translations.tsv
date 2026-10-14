@@ -384,3 +384,8 @@ DWG ใหม่ต้องมีตัวแปลงพร้อมใช้�
 ตรวจชื่อแผ่นกับหัวเรื่องในแบบก่อนใช้งาน	Compare the sheet name with extracted drawing titles before use	使用前核对图纸名称与提取的标题
 ค้นหาคำอธิบาย	Search drawing explanations	搜索图纸说明
 สรุปหมวดวัตถุ ไม่ใช่จำนวนอุปกรณ์	Object category summary, not equipment quantities	对象分类汇总，并非设备数量
+เน้นทั้งกลุ่ม	Highlight source group	突出整个源对象组
+ยกเลิกเน้นกลุ่ม	Clear group highlight	取消组高亮
+กลุ่มต้นฉบับ	Source object group	源对象组
+ส่วนย่อย ไม่ใช่จำนวนอุปกรณ์	parts, not equipment quantities	子对象，并非设备数量
+พื้นหลัง / กรอบแบบ	Background / drawing frames	背景 / 图框

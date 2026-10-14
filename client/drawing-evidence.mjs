@@ -1,8 +1,8 @@
 // Local terminology and traceable candidate classification; no connectivity inference.
-import {segmentDistance} from './model.mjs';
+import {segmentDistance,bounds} from './model.mjs';
 export const TERMS=[
  ['rack',/弱电机柜|弱电间\/机柜|机柜|\brack\b/i,'data','ตู้แร็ก / ตู้ระบบสื่อสาร','机柜','Rack / communications cabinet'],
- ['switch',/交换机|\bswitch\b/i,'data','สวิตช์เครือข่าย','网络交换机','Network switch'],
+ ['switch',/交换机|\b\d*poe\b|\bswitch\b/i,'data','สวิตช์เครือข่าย','网络交换机','Network switch'],
  ['patch',/配线架|patch\s*panel|RJ45/i,'data','แผงกระจายสาย / จุดต่อ RJ45','配线架 / RJ45连接','Patch panel / RJ45 connection'],
  ['fiber',/光纤|\bfib(?:er|re)\b|LC跳线/i,'data','สายใยแก้ว / จุดต่อใยแก้ว','光纤 / 光纤连接','Fiber / fiber connection'],
  ['copper',/CAT\s*[5678]|六类|六配|网线/i,'data','สายสัญญาณเครือข่าย','网络线缆','Network cabling'],
@@ -11,12 +11,14 @@ export const TERMS=[
  ['camera',/摄像机|摄像头|\bcamera\b|CCTV/i,'cctv','กล้องวงจรปิด','摄像机','CCTV camera'],
  ['recorder',/\bNVR\b|\bDVR\b|录像机|视频监控/i,'cctv','เครื่องบันทึก / ระบบภาพวงจรปิด','录像机 / 视频监控','Recorder / surveillance system'],
  ['access',/门禁|读卡器|电锁|access\s*control/i,'access','ระบบควบคุมการเข้าออก','门禁系统','Access control'],
+ ['server',/服务器|IPSAN|存储|\bserver\b|storage/i,'data','เซิร์ฟเวอร์ / ระบบจัดเก็บข้อมูล','服务器 / 存储系统','Server / storage system'],
+ ['workstation',/工作站|\bworkstation\b/i,'data','เครื่องสถานีงาน','工作站','Workstation'],
  ['pathway',/线槽|桥架|JDG\d*|线管|conduit|cable\s*tray/i,'pathway','รางสาย / ท่อร้อยสาย','线槽 / 桥架 / 线管','Cable tray / conduit'],
  ['power',/\bPDU\b|\bUPS\b|取电|电源|接地|grounding/i,'power','ไฟเลี้ยง / PDU / งานประสานไฟฟ้า','供电 / PDU / 电气协调','Power / PDU / electrical coordination'],
  ['room',/机房|弱电间|工作站|工作区|电梯井|门卫|厂房|楼层|屋顶|^\d+F$/i,'coordination','ห้อง / พื้นที่ / ชั้น / งานประสาน','房间 / 区域 / 楼层协调','Room / area / floor coordination'],
 ];
-const ROLE_LABELS={geometry:['เรขาคณิต / ยังไม่ระบุหน้าที่','几何 / 用途未确认','Geometry / purpose unresolved'],annotation:['ข้อความทั่วไป / ยังไม่มีคำแปลเฉพาะ','一般文字 / 专业译文待确认','General annotation / specific translation pending'],symbol:['สัญลักษณ์จากกลุ่มต้นฉบับ','原始对象组符号','Symbol from source group'],'rack-enclosure':['กรอบตู้จากข้อความภายใน · ต้องยืนยัน','依据内部文字识别的机柜框 · 待确认','Rack enclosure from contained label / review required'],'route-unverified':['แนวเส้น · ประเภทสายยังไม่ยืนยัน','线段 / 线缆类型待确认','Linework / cable type unresolved'],'route-candidate':['แนวสายข้อมูลจากข้อความใกล้เส้น · ต้องยืนยัน','邻近文字提示的数据线段 · 待确认','Data route from nearby label / review required']};
-const EVIDENCE_LABELS={'source-text':['ข้อความต้นฉบับตรงคำศัพท์','原文术语匹配','Direct source terminology'],'same-source-handle':['ข้อความในกลุ่ม handle เดียวกัน','同一源handle的文字','Text within the same source handle'],'existing-layer-candidate':['หมวดเดิมจาก layer · ต้องทบทวน','原图层分类 · 待复核','Original layer category / review required'],'enclosed-rack-label-candidate':['ข้อความตู้ภายในกรอบ · ความสัมพันธ์เชิงพื้นที่','框内机柜文字 / 空间关系','Contained rack label / spatial association'],'near-cable-label-not-connectivity':['ข้อความสายใกล้เส้น · ไม่ยืนยันการต่อกัน','邻近线缆文字 / 不确认连通','Nearby cable label / connectivity not confirmed']};
+const ROLE_LABELS={'drawing-frame':['กรอบแบบ / ตารางชั้น · ไม่ใช่อุปกรณ์','图纸框 / 楼层表 · 非设备','Drawing frame / floor table, not equipment'],geometry:['เรขาคณิต / ยังไม่ระบุหน้าที่','几何 / 用途未确认','Geometry / purpose unresolved'],annotation:['ข้อความทั่วไป / ยังไม่มีคำแปลเฉพาะ','一般文字 / 专业译文待确认','General annotation / specific translation pending'],symbol:['สัญลักษณ์จากกลุ่มต้นฉบับ','原始对象组符号','Symbol from source group'],'rack-enclosure':['กรอบตู้จากข้อความภายใน · ต้องยืนยัน','依据内部文字识别的机柜框 · 待确认','Rack enclosure from contained label / review required'],'route-unverified':['แนวเส้น · ประเภทสายยังไม่ยืนยัน','线段 / 线缆类型待确认','Linework / cable type unresolved'],'route-candidate':['แนวสายข้อมูลจากข้อความใกล้เส้น · ต้องยืนยัน','邻近文字提示的数据线段 · 待确认','Data route from nearby label / review required']};
+const EVIDENCE_LABELS={'source-frame-boundary':['กรอบสี่เหลี่ยมต้นฉบับ · การจับคู่แผ่นยังต้องยืนยัน','原始矩形边界 · 图纸关联待确认','Source rectangular boundary / sheet association pending'],'native-block-name':['ชื่อ block จาก DXF ต้นฉบับ','原始DXF块名称','Native DXF block name'],'source-text':['ข้อความต้นฉบับตรงคำศัพท์','原文术语匹配','Direct source terminology'],'same-source-handle':['ข้อความในกลุ่ม handle เดียวกัน','同一源handle的文字','Text within the same source handle'],'existing-layer-candidate':['หมวดเดิมจาก layer · ต้องทบทวน','原图层分类 · 待复核','Original layer category / review required'],'enclosed-rack-label-candidate':['ข้อความตู้ภายในกรอบ · ความสัมพันธ์เชิงพื้นที่','框内机柜文字 / 空间关系','Contained rack label / spatial association'],'near-cable-label-not-connectivity':['ข้อความสายใกล้เส้น · ไม่ยืนยันการต่อกัน','邻近线缆文字 / 不确认连通','Nearby cable label / connectivity not confirmed']};
 export function roleLabel(role,locale='en'){const a=ROLE_LABELS[role];if(a)return a[locale==='th'?0:locale==='zh-CN'?1:2];return TERMS.find(r=>r[0]===role)?.[locale==='th'?3:locale==='zh-CN'?4:5]||role}
 export function evidenceLabel(code,locale='en'){const a=EVIDENCE_LABELS[code];return a?.[locale==='th'?0:locale==='zh-CN'?1:2]||code}
 export function describeText(text,locale='en'){
@@ -38,17 +40,19 @@ export function explainText(text){
 }
 export function enrichScene(input){
  const notes=input.filter(o=>o.kind==='text'&&!o.sourceHidden),groups=new Map();
+ const groupStats=new Map();for(const o of input){const b=bounds(o),g=groupStats.get(o.sourceHandle)||{name:o.sourceGroup?.name||'',count:0,bounds:[Infinity,Infinity,-Infinity,-Infinity],kinds:{}};g.count++;g.name=g.name||o.sourceGroup?.name||'';for(let i=0;i<4;i++)g.bounds[i]=i<2?Math.min(g.bounds[i],b[i]):Math.max(g.bounds[i],b[i]);g.kinds[o.type||o.kind]=(g.kinds[o.type||o.kind]||0)+1;groupStats.set(o.sourceHandle,g)}
  const rackLabels=notes.filter(n=>/弱电机柜[:：]|\brack\b/i.test(n.text));
  const cableGrid=new Map();for(const n of notes.filter(n=>/CAT\s*[5678]|光纤/.test(n.text))){const key=[Math.floor(n.anchor[0]/10000),Math.floor(n.anchor[1]/10000)].join(',');const cell=cableGrid.get(key)||[];cell.push(n);cableGrid.set(key,cell)}
  for(const n of notes){const xs=groups.get(n.sourceHandle)||[];xs.push(n);groups.set(n.sourceHandle,xs)}
  return input.map(o=>{
-  const own=explainText(o.text),same=groups.get(o.sourceHandle)||[];
-  const candidates=own.matches.length?own.matches:same.flatMap(n=>explainText(n.text).matches);
+  const own=explainText(o.text),named=explainText(o.sourceGroup?.name).matches,same=groups.get(o.sourceHandle)||[];
+  const candidates=own.matches.length?own.matches:named.length?named:same.flatMap(n=>explainText(n.text).matches);
   const systems=[...new Set(candidates.map(x=>x.system))];
   // Multiple systems in the same placed group must not recolor every child.
-  let system=own.matches[0]?.system||(systems.length===1?systems[0]:o.system)||'unknown';
+  let system=own.matches[0]?.system||named[0]?.system||(systems.length===1?systems[0]:o.system)||'unknown';
   let role=o.kind==='text'?(own.matches[0]?.code||'annotation'):(systems.length===1?'symbol':'geometry');
-  let evidence=o.kind==='text'&&own.matches.length?'source-text':systems.length===1?'same-source-handle':'existing-layer-candidate';
+  let evidence=o.kind==='text'&&own.matches.length?'source-text':named.length?'native-block-name':systems.length===1?'same-source-handle':'existing-layer-candidate';
+  if(o.kind==='path'&&/^(框架|系统图外框)$/.test(o.sourceGroup?.name||'')){system='context';role='drawing-frame';evidence='native-block-name'}
   let linked=same.filter(n=>n.id!==o.id&&explainText(n.text).matches.length).slice(0,10).map(n=>({id:n.id,text:n.text,sourceHandle:n.sourceHandle,relation:'same-source-handle'}));
   if(o.kind==='path'&&o.points?.length===5&&o.points[0][0]===o.points[4][0]&&o.points[0][1]===o.points[4][1]){
    const xs=o.points.map(p=>p[0]),ys=o.points.map(p=>p[1]),b=[Math.min(...xs),Math.min(...ys),Math.max(...xs),Math.max(...ys)],w=b[2]-b[0],h=b[3]-b[1];
@@ -60,14 +64,16 @@ export function enrichScene(input){
    let near=null,best=Infinity;for(let i=1;i<o.points.length;i++){const a=o.points[i-1],b=o.points[i],x0=Math.floor((Math.min(a[0],b[0])-1200)/10000),x1=Math.floor((Math.max(a[0],b[0])+1200)/10000),y0=Math.floor((Math.min(a[1],b[1])-1200)/10000),y1=Math.floor((Math.max(a[1],b[1])+1200)/10000);if((x1-x0+1)*(y1-y0+1)>100)continue;for(let x=x0;x<=x1;x++)for(let y=y0;y<=y1;y++)for(const n of cableGrid.get(x+','+y)||[]){const d=segmentDistance(n.anchor,a,b);if(d<=Math.min(1200,n.height*3)&&d<best){near=n;best=d}}}
    if(near){system='data';role='route-candidate';evidence='near-cable-label-not-connectivity';linked=[{id:near.id,text:near.text,sourceHandle:near.sourceHandle,relation:'spatial-label-candidate'}]}
   }
-  return {...o,originalSystem:o.system,system,semantic:{role,evidence,explanations:own.matches,linked,reviewRequired:true}};
+  if(o.sourceFrame){system='context';role='drawing-frame';evidence='source-frame-boundary'}if(role==='drawing-frame')linked=[];
+  return {...o,group:groupStats.get(o.sourceHandle),originalSystem:o.system,system,semantic:{role,evidence,explanations:own.matches.length?own.matches:named,linked,reviewRequired:true}};
  });
 }
 // Screen-space text hit region matches the approximate rendered font and rotation.
 export function textHit(o,p,x,y){
  const sx=p.w/(p.b[2]-p.b[0]),sy=p.h/(p.b[3]-p.b[1]),a=[(o.anchor[0]-p.b[0])*sx,(p.b[3]-o.anchor[1])*sy];
  const f=Math.max(3,Math.min(72,o.height*sy)),theta=(o.rotation||0)*Math.PI/180,dx=x-a[0],dy=y-a[1];
- const u=dx*Math.cos(theta)-dy*Math.sin(theta),v=dx*Math.sin(theta)+dy*Math.cos(theta);
+ let u=dx*Math.cos(theta)-dy*Math.sin(theta),v=dx*Math.sin(theta)+dy*Math.cos(theta);
  const lines=String(o.text||'').split('\n'),width=Math.max(...lines.map(s=>[...s].reduce((n,c)=>n+(/[\u2e80-\u9fff]/.test(c)?1:.62),0)))*f;
+ u+=o.textAlign==='middle'?width/2:o.textAlign==='end'?width:0;v-=o.textBaseline==='middle'?f/2:o.textBaseline==='hanging'?f:0;
  return u>=-3&&u<=width+3&&v>=-f-3&&v<=(lines.length-1)*f*1.2+3?Math.abs(v)/Math.max(f,1):null;
 }

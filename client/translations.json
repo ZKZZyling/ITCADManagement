@@ -1618,5 +1618,25 @@
   "สรุปหมวดวัตถุ ไม่ใช่จำนวนอุปกรณ์": {
     "en": "Object category summary, not equipment quantities",
     "zh-CN": "对象分类汇总，并非设备数量"
+  },
+  "เน้นทั้งกลุ่ม": {
+    "en": "Highlight source group",
+    "zh-CN": "突出整个源对象组"
+  },
+  "ยกเลิกเน้นกลุ่ม": {
+    "en": "Clear group highlight",
+    "zh-CN": "取消组高亮"
+  },
+  "กลุ่มต้นฉบับ": {
+    "en": "Source object group",
+    "zh-CN": "源对象组"
+  },
+  "ส่วนย่อย ไม่ใช่จำนวนอุปกรณ์": {
+    "en": "parts, not equipment quantities",
+    "zh-CN": "子对象，并非设备数量"
+  },
+  "พื้นหลัง / กรอบแบบ": {
+    "en": "Background / drawing frames",
+    "zh-CN": "背景 / 图框"
   }
 }

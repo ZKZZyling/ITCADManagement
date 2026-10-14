@@ -14,5 +14,5 @@ class Pipeline(unittest.TestCase):
    manifest=json.loads((prepared/'drawing.json').read_text(encoding='utf-8'))
    self.assertEqual(hashlib.sha256(source.read_bytes()).hexdigest(),before)
    self.assertEqual(manifest['sourceSHA256'],before);self.assertEqual(manifest['fieldReadiness']['status'],'blocked')
-   self.assertEqual(manifest['metrics']['matchedFrameViews'],0);self.assertIn('full-model',[v['id'] for v in manifest['views']])
+   self.assertEqual(manifest['datasetId'],'review-v3-native-primitives');self.assertEqual(manifest['metrics']['matchedFrameViews'],0);self.assertIn('full-model',[v['id'] for v in manifest['views']])
 if __name__=='__main__':unittest.main()

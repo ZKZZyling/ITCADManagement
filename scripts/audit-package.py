@@ -25,7 +25,7 @@ for view in meta['views']:
  (root/'views'/view['file']).write_text(json.dumps(subset,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
 coverage=sum(1 for _,bb in index if any(not(bb[2]<v['bounds'][0] or bb[0]>v['bounds'][2] or bb[3]<v['bounds'][1] or bb[1]>v['bounds'][3]) for v in meta['views'] if v['id']!='full-model'))
 meta['metrics'].update({'sourceRectangularFrames':len(frames),'matchedFrameViews':matched,'outsideReviewedRegions':len(objects)-coverage,'sourceHiddenObjects':sum(bool(o.get('sourceHidden')) for o in objects),'systemCounts':dict(collections.Counter(o['system'] for o in objects))})
-meta['datasetId']='review-v2-frame-audit';meta['fieldReadiness']['status']='blocked';meta['fieldReadiness']['reasons']=['ยังไม่มีหลักฐานอนุมัติ revision และ legend','ต้องตรวจฟอนต์และภาพ native AutoCAD โดยละเอียด','กรอบที่ตรวจพบต้องยืนยันการจับคู่กับชื่อแผ่น','ภาพกรอง geometry มีวัตถุและรูปแบบข้อความที่ไม่รองรับ']
+meta['datasetId']=meta.get('datasetId','review-v2-frame-audit');meta['fieldReadiness']['status']='blocked';meta['fieldReadiness']['reasons']=['ยังไม่มีหลักฐานอนุมัติ revision และ legend','ต้องตรวจฟอนต์และภาพ native AutoCAD โดยละเอียด','กรอบที่ตรวจพบต้องยืนยันการจับคู่กับชื่อแผ่น','ภาพกรอง geometry มีวัตถุและรูปแบบข้อความที่ไม่รองรับ']
 if matched<len(meta['views'])-1:meta['fieldReadiness']['reasons'].append('ยังมีพื้นที่ที่ไม่พบกรอบต้นฉบับ')
 for o in meta['assets']:o['viewIds']=[v['id'] for v in meta['views'] if v['id']!='full-model' and v['bounds'][0]<=o['anchor'][0]<=v['bounds'][2] and v['bounds'][1]<=o['anchor'][1]<=v['bounds'][3]]
 (root/'drawing.json').write_text(json.dumps(meta,ensure_ascii=False,separators=(',',':')),encoding='utf-8')

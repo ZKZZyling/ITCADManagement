@@ -3,6 +3,7 @@ import argparse, json, math, csv, hashlib, time, itertools
 from pathlib import Path
 import ezdxf
 from ezdxf import disassemble
+from cad_primitives import supplemental_geometry
 
 def category(name, text=''):
     s=(name+' '+text).lower()
@@ -45,7 +46,12 @@ def main():
                 if text.strip(): objects.append({'id':f'{source}:{len(objects)}','sourceHandle':source,'layer':layer,'kind':'text','text':text,'anchor':anchor,'height':float(height),'rotation':float(e.dxf.get('rotation',0)), 'system':category(layer,text),'sourceHidden':layer in hidden})
             except Exception: skips[typ]=skips.get(typ,0)+1
             return
-        if typ in ('XLINE','RAY','HATCH','IMAGE','ACAD_PROXY_ENTITY','OLE2FRAME','WIPEOUT'):
+        if typ in ('POINT','HATCH'):
+            try:
+                geometry=supplemental_geometry(e);geometry.update(id=f'{source}:{len(objects)}',sourceHandle=source,layer=layer,system=category(layer),sourceHidden=layer in hidden);objects.append(geometry)
+            except Exception as exc:skips[typ+':'+type(exc).__name__]=skips.get(typ+':'+type(exc).__name__,0)+1
+            return
+        if typ in ('XLINE','RAY','IMAGE','ACAD_PROXY_ENTITY','OLE2FRAME','WIPEOUT'):
             skips[typ]=skips.get(typ,0)+1; return
         try:
             p=disassemble.make_primitive(e,max_flattening_distance=15)
@@ -76,7 +82,7 @@ def main():
         if o['kind']=='text' and any(x in o['text'] for x in ('机柜','配线架','光纤','AP','CAT6')):
             assets.append({'id':o['id'],'title':o['text'][:160],'sourceHandle':o['sourceHandle'],'layer':o['layer'],'anchor':o['anchor'],'system':o['system'],'classification':'Candidate — needs legend confirmation'})
     warnings=['Native font warnings exist. Browser text is a substitute, not a verified native plot.','Sheet boundaries and system mapping are provisional.','2D geometry is not installed cable length.','Nested geometry may have skipped entities; review source evidence.']
-    payload={'schemaVersion':1,'project':'โรงงานระยอง • IT Field','drawing':Path(summary['source']).name,'sourceSHA256':summary['source_sha256'],'units':'mm' if doc.units==4 else 'unverified','revisionStatus':'Unapproved source revision','objects':objects,'views':views,'layers':layers,'assets':assets,'warnings':warnings,'skips':skips,'metrics':{'traversed':traversed,'objectCount':len(objects),'layerDefinitions':len(layers),'sourceBytes':Path(summary['source']).stat().st_size},'generatedAt':time.strftime('%Y-%m-%dT%H:%M:%S')}
+    payload={'schemaVersion':1,'datasetId':'review-v3-native-primitives','project':'โรงงานระยอง • IT Field','drawing':Path(summary['source']).name,'sourceSHA256':summary['source_sha256'],'units':'mm' if doc.units==4 else 'unverified','revisionStatus':'Unapproved source revision','objects':objects,'views':views,'layers':layers,'assets':assets,'warnings':warnings,'skips':skips,'metrics':{'traversed':traversed,'objectCount':len(objects),'layerDefinitions':len(layers),'sourceBytes':Path(summary['source']).stat().st_size},'generatedAt':time.strftime('%Y-%m-%dT%H:%M:%S')}
     if a.full:
         views_dir=out/'views';views_dir.mkdir(exist_ok=True)
         def obounds(o):
