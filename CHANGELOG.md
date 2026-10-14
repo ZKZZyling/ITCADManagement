@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Reopened inspection details when an already-selected drawing object is chosen again after fullscreen closes its drawer.
+
 - Added local Chinese/English CAD terminology explanations in Thai, Chinese and English, traceable candidate categorization, conservative same-handle and contained-rack evidence, and nearby cable-label route candidates. Preserved original categories/text and engineering review requirements.
 - Added optional technical-text boxes, glyph-area text selection, a searchable sheet text inventory, category/evidence summaries and extracted title comparison. Inventory processing reads large scene parts sequentially with bounded output/cache.
 
