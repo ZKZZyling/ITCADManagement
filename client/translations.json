@@ -1427,6 +1427,70 @@
     "zh-CN": "显示更多",
     "en": "Show more"
   },
+  "เต็มจอ": {
+    "zh-CN": "全屏",
+    "en": "Full screen"
+  },
+  "ออกเต็มจอ": {
+    "zh-CN": "退出全屏",
+    "en": "Exit full screen"
+  },
+  "พอดีทั้งแผ่น": {
+    "zh-CN": "适合整张图纸",
+    "en": "Fit whole sheet"
+  },
+  "ลากภาพเพื่อเลื่อน ใช้ล้อเลื่อนตามปกติ หรือ Ctrl + ล้อเลื่อนเพื่อซูม ภาพนี้ยังไม่มีพิกัดที่รับรองสำหรับปักจุด": {
+    "zh-CN": "拖动平移，滚轮滚动，Ctrl 加滚轮缩放；此图坐标尚未认证，不能用于定位标记",
+    "en": "Drag to pan, scroll normally, or Ctrl + wheel to zoom; reference coordinates are not certified for pins"
+  },
+  "ซ่อนหมวดอื่น": {
+    "zh-CN": "隐藏其他专业",
+    "en": "Hide other systems"
+  },
+  "ทุก layer": {
+    "zh-CN": "所有图层",
+    "en": "All layers"
+  },
+  "ชี้วัตถุเพื่อดูหลักฐาน": {
+    "zh-CN": "指向对象查看证据",
+    "en": "Point at objects for evidence"
+  },
+  "วัตถุในชุดสกัด ไม่ใช่จำนวนอุปกรณ์": {
+    "zh-CN": "提取对象数，并非设备数量",
+    "en": "Extracted objects, not equipment counts"
+  },
+  "วัตถุเรขาคณิตจากแบบ": {
+    "zh-CN": "图纸几何对象",
+    "en": "Drawing geometry object"
+  },
+  "หมวดผู้สมัคร": {
+    "zh-CN": "候选分类",
+    "en": "Candidate system"
+  },
+  "ชนิดข้อมูล": {
+    "zh-CN": "数据类型",
+    "en": "Geometry type"
+  },
+  "ความยาวเรขาคณิต": {
+    "zh-CN": "几何长度",
+    "en": "Geometry length"
+  },
+  "ไม่ใช่ความยาวสายติดตั้ง": {
+    "zh-CN": "并非安装线缆长度",
+    "en": "Not installed cable length"
+  },
+  "การจัดหมวดมาจาก layer และข้อความ ต้องตรวจ legend ไม่ยืนยันอุปกรณ์หรือการเชื่อมต่อ": {
+    "zh-CN": "分类来自图层和文本，需核对图例，不能确认设备或连接",
+    "en": "Classification uses layers/text and requires legend review; equipment and connectivity are unverified"
+  },
+  "ข้อความใกล้เคียง ไม่ได้ยืนยันว่าต่อกัน": {
+    "zh-CN": "附近文本，不代表已确认连接",
+    "en": "Nearby text; connection not confirmed"
+  },
+  "ขยายวัตถุที่เลือก": {
+    "zh-CN": "放大所选对象",
+    "en": "Zoom selected object"
+  },
   "เลือกแผ่นที่จะนำไปตรวจ แล้วเตรียมชุดออฟไลน์": {
     "zh-CN": "选择现场检查图纸，然后准备离线包",
     "en": "Select field sheets, then prepare the offline pack"

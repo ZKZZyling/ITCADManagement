@@ -94,3 +94,7 @@ public/field/assets/    Generated browser bundles; not tracked
 Application source is licensed under [MIT](LICENSE). Real drawings, Xrefs, PDFs, site photos, inspection records, credentials, and pairing tokens are **not included in this repository or licensed as application source**. Dependencies and CAD converters retain their own terms; see [third-party notices](THIRD_PARTY_NOTICES.md).
 
 Before production inspections, verify Approved for Construction (AFC) revisions, legends, specifications (SPEC), inspection and test plans (ITP), fonts, sheet boundaries, and dependencies. Test real devices and networks using the [acceptance checklist](docs/testing.md).
+
+### Drawing focus and source evidence
+
+The field workspace includes whole-sheet reference fitting, zoom/drag scrolling, fullscreen focus (with a browser fallback), reversible system highlighting/isolation, and exact-layer filtering. Interactive extracted geometry exposes original text, source handles, nearby notes and geometry lengths in both the inspector and contextual assistant. Read [Drawing review and evidence](docs/field-guide.md#fullscreen-drawing-review-and-object-evidence) before interpreting these values: classification and connectivity remain provisional; image registration and engineering approval are not certified by this interface.

@@ -1,3 +1,4 @@
+import {ObjectEvidence} from './ObjectEvidence.jsx';
 import React,{useEffect,useRef,useState} from 'react';
 import {t} from './locale.mjs';import {WorkspaceHelp,guides} from './WorkspaceHelp.jsx';import {adviceFor} from './assistant-state.mjs';import './assistant.css';
 
@@ -23,7 +24,7 @@ export function FieldAssistant({mode,state={},staticMode=false,open:controlled,o
   {open&&<section ref={panel} className="assistant-panel" role="region" aria-label={t('ผู้ช่วยหน้างาน')}>
    <header><div><strong>{t('ผู้ช่วยหน้างาน')}</strong><small>{t(guides[mode].name)}</small></div><button type="button" onClick={toggle} aria-label={t('ย่อผู้ช่วย')}>×</button></header>
    <div className="assistant-advice" aria-live="polite" aria-atomic="true"><b>{t(advice.title)}</b><p>{t(advice.body)}</p></div>
-   <div className="assistant-actions"><button type="button" onClick={locate}>{located?t('ชี้ตำแหน่งแล้ว'):t('ชี้ให้ดู')}</button><button type="button" onClick={()=>setGuide(!guide)} aria-expanded={guide}>{t('คู่มือเต็ม')}</button></div>
+   <ObjectEvidence object={state.evidence} units={state.units}/><div className="assistant-actions"><button type="button" onClick={locate}>{located?t('ชี้ตำแหน่งแล้ว'):t('ชี้ให้ดู')}</button><button type="button" onClick={()=>setGuide(!guide)} aria-expanded={guide}>{t('คู่มือเต็ม')}</button></div>
    {guide&&<WorkspaceHelp mode={mode} staticMode={staticMode} initialOpen/>}
    <p className="assistant-privacy">{t('คำแนะนำจากสถานะในเครื่อง ไม่ส่งข้อมูล ไม่บันทึกหรืออนุมัติงานแทนคุณ')}</p>
   </section>}

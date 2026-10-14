@@ -29,3 +29,15 @@ Select the preferred UI language and review records by status within the same so
 The UI language does not alter drawing text, tags, units, notes, or assignee names. Users share a workspace with separate operator and server-enforced read-only viewer capabilities. This is not individual identity, enterprise RBAC, or per-tenant isolation.
 
 For Simplified Chinese users, the same workflow applies: select language, select a sheet, search an identifier, then review the record and pending synchronization count. Prepare and test offline packs before disconnecting. Synthetic demo drawings cannot be used for construction.
+
+## Fullscreen drawing review and object evidence
+
+Open **Fullscreen** to dedicate the viewport to the drawing; if the browser cannot enter native fullscreen, the application uses a full-viewport focus layout. Exit with the same button or Escape. Engineering readiness warnings remain visible.
+
+For the reference image, **Fit whole sheet** fits both dimensions. Zoom, drag with a mouse, or scroll normally; Ctrl/Command + wheel zooms. Touch devices retain native image scrolling. Pan preserves reference mode. This image is a comparison source, with no certified pixel-to-CAD registration or semantic hover overlay.
+
+Choose **Point at objects for evidence** for interactive extracted geometry. Selecting a system highlights it while retaining other categories; **Hide other systems** explicitly isolates that category. Exact layer filters provide a second level of inspection. Restore all layers/categories to review context. Inventory counts represent extracted objects, including text and lines, rather than installed equipment quantities. A viewport can contain fewer objects than the sheet inventory; hidden-source objects remain excluded.
+
+Hover with a mouse or tap/click an object to read its layer, source handle, original text and nearby source notes. The assistant presents this same evidence. **Zoom selected object** enlarges its geometry. Nearby notes do not establish an electrical/network connection. Layer-based system classification is provisional until checked against the legend. Geometry length is in source drawing units and is not an installed cable takeoff. Large sheets require zoom for legible labels; dense viewport requests fail explicitly rather than silently discarding objects.
+
+This verifies interaction with a prepared review package. It does not certify fresh DWG conversion, fonts, Xrefs, block semantics, equipment identity, drawing approval, or physical tablet acceptance. Compare the reference and obtain the responsible engineer's confirmation before using results for acceptance.

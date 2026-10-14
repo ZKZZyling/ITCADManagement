@@ -26,6 +26,7 @@ test('isolated server: pairing, source, preview, save/retry/conflict, photos and
   const token=fs.readFileSync(path.join(temp,'data/pair-token'),'utf8');
   const pair=await fetch(base+'/api/pair',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({token})});assert.equal(pair.status,200);assert.match(pair.headers.get('set-cookie'),/HttpOnly/);const cookie=pair.headers.get('set-cookie').split(';')[0],headers={cookie,'content-type':'application/json'};
   const drawing=await (await fetch(base+'/api/drawing',{headers})).json();assert.equal(drawing.datasetId,'synthetic-demo-v1');assert.equal(drawing.fieldReadiness.status,'blocked');
+  const info=await (await fetch(base+'/api/scene-info?view=demo-plan',{headers})).json();assert.equal(info.total,5);
   const image=await fetch(base+'/api/reference.png?view=demo-plan',{headers});assert.equal(image.status,200);assert.equal(Buffer.from(await image.arrayBuffer()).subarray(1,4).toString(),'PNG');
   const pdf=await fetch(base+'/api/reference.pdf?view=demo-plan',{headers});assert.equal(pdf.status,200);assert.equal(Buffer.from(await pdf.arrayBuffer()).subarray(0,5).toString(),'%PDF-');
   const raster=await fetch(base+'/api/viewport.png?view=demo-plan&b=-500,-500,12500,8500&w=1000&h=700',{headers});assert.equal(raster.status,200);assert.equal(raster.headers.get('x-object-count'),'5');

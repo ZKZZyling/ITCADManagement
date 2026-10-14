@@ -358,3 +358,21 @@ DWG ใหม่ต้องมีตัวแปลงพร้อมใช้�
 มีเรื่องให้ตรวจสอบ|有事项需要检查|An item needs attention
 เปิดหรือเปลี่ยนชุดนำเสนอ|打开或更换演示包|Open or replace presentation
 แสดงเพิ่ม|显示更多|Show more
+
+เต็มจอ|全屏|Full screen
+ออกเต็มจอ|退出全屏|Exit full screen
+พอดีทั้งแผ่น|适合整张图纸|Fit whole sheet
+ลากภาพเพื่อเลื่อน ใช้ล้อเลื่อนตามปกติ หรือ Ctrl + ล้อเลื่อนเพื่อซูม ภาพนี้ยังไม่มีพิกัดที่รับรองสำหรับปักจุด|拖动平移，滚轮滚动，Ctrl 加滚轮缩放；此图坐标尚未认证，不能用于定位标记|Drag to pan, scroll normally, or Ctrl + wheel to zoom; reference coordinates are not certified for pins
+ซ่อนหมวดอื่น|隐藏其他专业|Hide other systems
+ทุก layer|所有图层|All layers
+ชี้วัตถุเพื่อดูหลักฐาน|指向对象查看证据|Point at objects for evidence
+วัตถุในชุดสกัด ไม่ใช่จำนวนอุปกรณ์|提取对象数，并非设备数量|Extracted objects, not equipment counts
+วัตถุเรขาคณิตจากแบบ|图纸几何对象|Drawing geometry object
+หมวดผู้สมัคร|候选分类|Candidate system
+ชนิดข้อมูล|数据类型|Geometry type
+ความยาวเรขาคณิต|几何长度|Geometry length
+ไม่ใช่ความยาวสายติดตั้ง|并非安装线缆长度|Not installed cable length
+การจัดหมวดมาจาก layer และข้อความ ต้องตรวจ legend ไม่ยืนยันอุปกรณ์หรือการเชื่อมต่อ|分类来自图层和文本，需核对图例，不能确认设备或连接|Classification uses layers/text and requires legend review; equipment and connectivity are unverified
+ข้อความใกล้เคียง ไม่ได้ยืนยันว่าต่อกัน|附近文本，不代表已确认连接|Nearby text; connection not confirmed
+
+ขยายวัตถุที่เลือก|放大所选对象|Zoom selected object
