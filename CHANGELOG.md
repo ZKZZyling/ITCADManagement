@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Documented the proposed local analysis worker, IT review package, real-data manager presentation, and Thailand/China validation plan. This is a design update; it does not deploy a new workspace or upload company data.
+
 - Made the README, installation, field, and offline guides English-first for international users and contributors.
 - Recorded the owner's standing authorization for gated automatic commit/push after verified project updates, with English change descriptions.
 - Added a publication helper that checks the target, upstream, selected staged paths, build/tests, and private-data scan before normal push and remote verification.

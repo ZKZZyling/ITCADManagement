@@ -58,6 +58,7 @@ npm start
 | CAD preparer | [CAD pipeline and quality gates](docs/cad-pipeline.md) |
 | Developer | [Architecture](docs/architecture.md), [API/data formats](docs/api-data.md), [testing](docs/testing.md), [contribution guide](CONTRIBUTING.md) |
 | Maintainer | [Publication workflow](docs/publishing.md), [project instructions](AGENTS.md), [changelog](CHANGELOG.md) |
+| Analysis and presentation planner | [Local analysis workspace and real-drawing presentation design](docs/analysis-workspace-design.md) (proposed, not implemented) |
 | Deployment reviewer | [Validation evidence](docs/release-validation.md), [roadmap](docs/roadmap.md), [third-party notices](THIRD_PARTY_NOTICES.md) |
 
 ## Repository layout
