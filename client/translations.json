@@ -1638,5 +1638,13 @@
   "พื้นหลัง / กรอบแบบ": {
     "en": "Background / drawing frames",
     "zh-CN": "背景 / 图框"
+  },
+  "กลุ่ม block ที่พบ": {
+    "en": "Native block groups",
+    "zh-CN": "发现的原始块组"
+  },
+  "ข้อความต้นฉบับในพื้นที่": {
+    "en": "Source text in this region",
+    "zh-CN": "此区域的原始文字"
   }
 }

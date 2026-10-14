@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Included native block groups in the searchable drawing inventory, including groups without standalone captions, and preserved source block names in future extraction.
+
 - Restored native solid-HATCH boundaries/holes and POINT markers in the review pipeline. Added a source-hash-checked region restoration tool that creates a separate package, preserves existing IDs, records skips and retains engineering blocks.
 - Added native source-group names, part counts and explicit whole-group highlighting/zoom. Distinguished drawing frames from equipment and preserved native text alignment in server rendering and hit testing.
 - Hardened native-boundary verification and added synthetic restoration/render regressions. New full extraction uses a separate dataset identity to prevent legacy inspection records from attaching to shifted primitive IDs.

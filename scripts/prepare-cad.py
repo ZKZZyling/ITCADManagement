@@ -22,7 +22,7 @@ def main():
     summary=json.loads((root/'summary.json').read_text(encoding='utf-8-sig'))
     doc=ezdxf.readfile(root/'drawing.dxf'); msp=doc.modelspace(); objects=[]; notes=[]; skips={}; traversed=0
     hidden={l.dxf.name for l in doc.layers if l.is_off() or l.is_frozen()}
-    def add(e,parent='',layer_override='',depth=0):
+    def add(e,parent='',layer_override='',depth=0,source_group=None):
         nonlocal traversed
         traversed+=1
         if (not a.full and traversed>60000 and depth>0) or depth>14:
@@ -30,11 +30,12 @@ def main():
         typ=e.dxftype(); layer=e.dxf.get('layer','0'); layer=layer_override if layer=='0' and layer_override else layer
         handle=e.dxf.get('handle','') or ''; source=parent or handle
         if typ=='INSERT':
+            source_group=source_group or {'name':e.dxf.name,'sourceType':'INSERT'}
             try:
                 inserts=e.multi_insert() if e.mcount>1 else [e]
                 for insert in inserts:
-                    for child in insert.virtual_entities(): add(child,source,layer,depth+1)
-                    for att in insert.attribs: add(att,source,layer,depth+1)
+                    for child in insert.virtual_entities(): add(child,source,layer,depth+1,source_group)
+                    for att in insert.attribs: add(att,source,layer,depth+1,source_group)
             except Exception as exc: skips['INSERT:'+type(exc).__name__]=skips.get('INSERT:'+type(exc).__name__,0)+1
             return
         text=''; anchor=None
@@ -43,12 +44,12 @@ def main():
                 text=e.plain_text() if callable(getattr(e,'plain_text',None)) else e.dxf.text
                 p=e.dxf.insert; anchor=[round(p.x,3),round(p.y,3)]
                 height=e.dxf.get('char_height',200) if typ=='MTEXT' else e.dxf.get('height',200)
-                if text.strip(): objects.append({'id':f'{source}:{len(objects)}','sourceHandle':source,'layer':layer,'kind':'text','text':text,'anchor':anchor,'height':float(height),'rotation':float(e.dxf.get('rotation',0)), 'system':category(layer,text),'sourceHidden':layer in hidden})
+                if text.strip(): objects.append({'id':f'{source}:{len(objects)}','sourceHandle':source,'sourceGroup':source_group,'layer':layer,'kind':'text','text':text,'anchor':anchor,'height':float(height),'rotation':float(e.dxf.get('rotation',0)), 'system':category(layer,text),'sourceHidden':layer in hidden})
             except Exception: skips[typ]=skips.get(typ,0)+1
             return
         if typ in ('POINT','HATCH'):
             try:
-                geometry=supplemental_geometry(e);geometry.update(id=f'{source}:{len(objects)}',sourceHandle=source,layer=layer,system=category(layer),sourceHidden=layer in hidden);objects.append(geometry)
+                geometry=supplemental_geometry(e);geometry.update(id=f'{source}:{len(objects)}',sourceHandle=source,sourceGroup=source_group,layer=layer,system=category(layer),sourceHidden=layer in hidden);objects.append(geometry)
             except Exception as exc:skips[typ+':'+type(exc).__name__]=skips.get(typ+':'+type(exc).__name__,0)+1
             return
         if typ in ('XLINE','RAY','IMAGE','ACAD_PROXY_ENTITY','OLE2FRAME','WIPEOUT'):
@@ -63,7 +64,7 @@ def main():
                 if len(pts)>50000: skips['point_limit']=skips.get('point_limit',0)+1; return
             if any(not math.isfinite(v) or abs(v)>2e8 for xy in pts for v in xy):
                 skips['outlier']=skips.get('outlier',0)+1; return
-            objects.append({'id':f'{source}:{len(objects)}','sourceHandle':source,'layer':layer,'kind':'path','points':pts,'system':category(layer),'type':typ,'sourceHidden':layer in hidden})
+            objects.append({'id':f'{source}:{len(objects)}','sourceHandle':source,'sourceGroup':source_group,'layer':layer,'kind':'path','points':pts,'system':category(layer),'type':typ,'sourceHidden':layer in hidden})
         except Exception: skips[typ]=skips.get(typ,0)+1
     source_entities=list(msp)
     source_entities.sort(key=lambda e: -1 if e.dxftype() in ('TEXT','MTEXT','ATTRIB') else 0 if category(e.dxf.get('layer','0')) not in ('unknown','context') else 1)
