@@ -376,3 +376,11 @@ DWG ใหม่ต้องมีตัวแปลงพร้อมใช้�
 ข้อความใกล้เคียง ไม่ได้ยืนยันว่าต่อกัน|附近文本，不代表已确认连接|Nearby text; connection not confirmed
 
 ขยายวัตถุที่เลือก|放大所选对象|Zoom selected object
+คำอธิบายจากข้อความต้นฉบับ	Explanation of source terminology	原文术语说明
+หลักฐานการจัดหมวด	Classification evidence	分类依据
+กรอบข้อความสำคัญ	Important text boxes	重要文字框
+รายการคำอธิบาย	Drawing text inventory	图纸文字清单
+จัดหมวดเป็นข้อมูลตรวจทาน ยังไม่รับรองอุปกรณ์หรือความเชื่อมต่อ	Candidate categories for review; equipment and connectivity are not certified	分类仅供审阅；设备及连接尚未认证
+ตรวจชื่อแผ่นกับหัวเรื่องในแบบก่อนใช้งาน	Compare the sheet name with extracted drawing titles before use	使用前核对图纸名称与提取的标题
+ค้นหาคำอธิบาย	Search drawing explanations	搜索图纸说明
+สรุปหมวดวัตถุ ไม่ใช่จำนวนอุปกรณ์	Object category summary, not equipment quantities	对象分类汇总，并非设备数量

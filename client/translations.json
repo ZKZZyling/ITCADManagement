@@ -1586,5 +1586,37 @@
   "กลับภาพแบบ": {
     "zh-CN": "返回图纸",
     "en": "Back to drawing"
+  },
+  "คำอธิบายจากข้อความต้นฉบับ": {
+    "en": "Explanation of source terminology",
+    "zh-CN": "原文术语说明"
+  },
+  "หลักฐานการจัดหมวด": {
+    "en": "Classification evidence",
+    "zh-CN": "分类依据"
+  },
+  "กรอบข้อความสำคัญ": {
+    "en": "Important text boxes",
+    "zh-CN": "重要文字框"
+  },
+  "รายการคำอธิบาย": {
+    "en": "Drawing text inventory",
+    "zh-CN": "图纸文字清单"
+  },
+  "จัดหมวดเป็นข้อมูลตรวจทาน ยังไม่รับรองอุปกรณ์หรือความเชื่อมต่อ": {
+    "en": "Candidate categories for review; equipment and connectivity are not certified",
+    "zh-CN": "分类仅供审阅；设备及连接尚未认证"
+  },
+  "ตรวจชื่อแผ่นกับหัวเรื่องในแบบก่อนใช้งาน": {
+    "en": "Compare the sheet name with extracted drawing titles before use",
+    "zh-CN": "使用前核对图纸名称与提取的标题"
+  },
+  "ค้นหาคำอธิบาย": {
+    "en": "Search drawing explanations",
+    "zh-CN": "搜索图纸说明"
+  },
+  "สรุปหมวดวัตถุ ไม่ใช่จำนวนอุปกรณ์": {
+    "en": "Object category summary, not equipment quantities",
+    "zh-CN": "对象分类汇总，并非设备数量"
   }
 }

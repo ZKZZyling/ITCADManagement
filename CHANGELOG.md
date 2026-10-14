@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Added local Chinese/English CAD terminology explanations in Thai, Chinese and English, traceable candidate categorization, conservative same-handle and contained-rack evidence, and nearby cable-label route candidates. Preserved original categories/text and engineering review requirements.
+- Added optional technical-text boxes, glyph-area text selection, a searchable sheet text inventory, category/evidence summaries and extracted title comparison. Inventory processing reads large scene parts sequentially with bounded output/cache.
+
 - Made explicit system isolation exclude unknown-category objects as well, while ordinary highlighting continues to retain them.
 
 - Added a fullscreen drawing focus mode with a browser fallback, true whole-sheet reference fitting, mouse drag/native touch scrolling, and explicit zoom-to-selection. Pan no longer silently switches away from the reference image.

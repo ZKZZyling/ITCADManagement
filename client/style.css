@@ -19,3 +19,7 @@
 .canvas-stage{touch-action:auto}.canvas-stage>canvas{touch-action:none}.reference-scroll{touch-action:pan-x pan-y pinch-zoom;-webkit-overflow-scrolling:touch}
 
 @media(max-width:800px){.view-bar{flex-wrap:wrap;padding:8px}.view-bar>span{flex-basis:100%}.view-bar>div{flex-wrap:wrap;gap:5px;width:100%}.view-bar>div .soft{font-size:11px!important;min-width:44px;padding:6px 8px}.view-bar .icon{min-width:44px;min-height:44px}.focus-mode .view-bar small{display:none}}
+
+.drawing-inventory{position:absolute;inset:8px;z-index:8;background:white;border:1px solid #a5bec9;border-radius:10px;padding:14px;overflow:auto;max-width:580px;box-shadow:0 5px 22px #203b4920}.drawing-inventory>button{display:block;min-height:44px;width:100%;text-align:left;border-bottom:1px solid #dce6eb;padding:10px}.drawing-inventory small{display:block;color:#617787;font-size:12px}.drawing-inventory b{overflow-wrap:anywhere}.object-evidence .badge{font-size:12px}
+
+.drawing-inventory input{width:100%;min-height:44px;padding:8px;border:1px solid #b6cbd6;border-radius:6px}.drawing-inventory summary{cursor:pointer;padding:12px 0}
