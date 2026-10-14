@@ -32,7 +32,7 @@ test('isolated server: pairing, source, preview, save/retry/conflict, photos and
   assert.equal((await fetch(base+'/api/viewport.png?view=demo-plan&b=0,0,1,1&w=2000&h=700',{headers})).status,400);
   const id=drawing.sourceSHA256+'-synthetic-demo-v1-DEMO:0',record={id,opId:crypto.randomUUID(),sourceSHA256:drawing.sourceSHA256,title:'Synthetic QA',status:'installed',version:0,notes:'Training only',checks:[{id:'loc',label:'location',result:'pass'}],photos:[]};
   const post=x=>fetch(base+'/api/records',{method:'POST',headers,body:JSON.stringify(x)});
-  assert.equal((await post(record)).status,200);assert.equal((await post(record)).status,200);
+  assert.equal((await post({...record,trial:true})).status,422);assert.equal((await post(record)).status,200);assert.equal((await post(record)).status,200);
   assert.equal((await post({...record,opId:crypto.randomUUID()})).status,409);
   assert.equal((await post({...record,opId:crypto.randomUUID(),version:1,status:'accepted'})).status,422);
   assert.equal((await fetch(base+'/api/records',{method:'POST',headers:{...headers,origin:'https://evil.invalid'},body:JSON.stringify(record)})).status,403);
@@ -40,6 +40,16 @@ test('isolated server: pairing, source, preview, save/retry/conflict, photos and
   const png=fs.readFileSync(path.join(temp,'data/native-references',drawing.sourceSHA256,'demo-plan.png'));
   const photo=await fetch(base+'/api/photos',{method:'POST',headers:{cookie,'content-type':'image/png'},body:png});assert.equal(photo.status,200);const photoId=(await photo.json()).id;assert.deepEqual(Buffer.from(await (await fetch(base+'/api/photos/'+photoId,{headers})).arrayBuffer()),png);
   assert.equal((await fetch(base+'/api/photos',{method:'POST',headers:{cookie,'content-type':'text/html'},body:'bad'})).status,415);
+  assert.equal((await post({...record,opId:crypto.randomUUID(),version:1,photos:[photoId]})).status,200);
   const old=fs.readFileSync(path.join(temp,'data/active-package'),'utf8');execFileSync(process.execPath,['scripts/create-demo.mjs'],{cwd:temp});assert.equal(fs.readFileSync(path.join(temp,'data/active-package'),'utf8'),old);
+  const viewerToken=fs.readFileSync(path.join(temp,'data/viewer-token'),'utf8');
+  const viewerPair=await fetch(base+'/api/pair-viewer',{method:'POST',headers:{'content-type':'application/json',origin:base},body:JSON.stringify({token:viewerToken})});assert.equal(viewerPair.status,200);
+  const viewerCookie=viewerPair.headers.get('set-cookie').split(';')[0],viewerHeaders={cookie:viewerCookie,'content-type':'application/json'};
+  const manager=await fetch(base+'/api/manager',{headers:viewerHeaders});assert.equal(manager.status,200);assert.equal((await manager.json()).role,'viewer');
+  assert.equal((await fetch(base+'/api/records',{method:'POST',headers:viewerHeaders,body:JSON.stringify(record)})).status,403);
+  assert.equal((await fetch(base+'/api/photos',{method:'POST',headers:{cookie:viewerCookie,'content-type':'image/png'},body:png})).status,403);
+  assert.equal((await fetch(base+'/api/server-info',{headers:viewerHeaders})).status,403);
+  assert.equal((await fetch(base+'/api/reference.png?view=demo-plan',{headers:viewerHeaders})).status,200);
+  const {exportPresentation}=await import('../server/presentation-export.mjs');const exported=exportPresentation(path.join(temp,'data'));assert.equal(exported.p.records.length,1);assert.equal(exported.p.images.length,1);assert.equal(exported.p.photos.length,1);assert.ok(!exported.text.includes(token));assert.ok(!exported.text.includes(viewerToken));assert.ok(!exported.text.includes(temp));
  }finally{if(child&&child.exitCode===null){child.kill();await once(child,'exit')}fs.rmSync(temp,{recursive:true,force:true})}
 });

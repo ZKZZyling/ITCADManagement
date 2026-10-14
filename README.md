@@ -2,7 +2,7 @@
 
 A self-hosted CAD review and field inspection workspace for **IT networks, LAN, fiber, CCTV, access control, cable pathways, and electrical coordination**. It provides traceable drawing references, server-side previews, checklists, progress summaries, and a separate offline inspection workspace.
 
-**Status: 0.4.0 · pilot / review workspace.** This is not an engineering approval system or a full DWG editor. All included demo geometry and reference images are synthetic. Construction acceptance remains blocked until approved revisions and project acceptance criteria have been independently verified.
+**Status: 0.5.0 · pilot / review workspace.** This is not an engineering approval system or a full DWG editor. All included demo geometry and reference images are synthetic. Construction acceptance remains blocked until approved revisions and project acceptance criteria have been independently verified.
 
 The application supports **English, Thai, and Simplified Chinese**. Repository documentation, commit messages, pull requests, and release notes use English as the primary language. Drawing text, identifiers, units, and inspection evidence retain their original language.
 
@@ -34,6 +34,15 @@ npm start
 
 `npm start` starts only the server; it does not open or pair a browser. Use the Windows launcher, or POST the local token from `data/pair-token` to `/api/pair` for development. Never publish that token in Git, an issue, or a screenshot.
 
+## New workspaces in 0.5.0
+
+- **Local analysis:** separate loopback admin service and durable single-worker queue; verify every scene part, cancel/retry, and explicitly activate review packages. Original drawings remain unchanged.
+- **Management:** read-only viewer links, multilingual evidence dashboard, and private checksum-verified presentation bundles.
+- **Isolated trial:** demonstrate checklist entry using real snapshot references without writing production progress.
+- **Static presentation:** build a code-only Render/Netlify artifact; supervisors import a privately supplied bundle locally.
+
+See [workspace operations and static hosting](docs/workspaces.md) for configuration, data boundaries, and exact launch steps. Raw DWG conversion still requires a verified ODA installation. A static viewer is not the field backend.
+
 ## Capabilities and boundaries
 
 | Area | Implemented behavior | Boundary |
@@ -58,7 +67,7 @@ npm start
 | CAD preparer | [CAD pipeline and quality gates](docs/cad-pipeline.md) |
 | Developer | [Architecture](docs/architecture.md), [API/data formats](docs/api-data.md), [testing](docs/testing.md), [contribution guide](CONTRIBUTING.md) |
 | Maintainer | [Publication workflow](docs/publishing.md), [project instructions](AGENTS.md), [changelog](CHANGELOG.md) |
-| Analysis and presentation planner | [Local analysis workspace and real-drawing presentation design](docs/analysis-workspace-design.md) (proposed, not implemented) |
+| Analysis and presentation planner | [Local analysis workspace and real-drawing presentation design](docs/analysis-workspace-design.md) (implemented foundations; remaining engineering gates documented) |
 | Deployment reviewer | [Validation evidence](docs/release-validation.md), [roadmap](docs/roadmap.md), [third-party notices](THIRD_PARTY_NOTICES.md) |
 
 ## Repository layout

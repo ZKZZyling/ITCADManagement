@@ -6,7 +6,7 @@ test('UI catalogs cover source labels; drawing evidence remains original',()=>{
  const drawingText='一层视频监控平面图 / CCTV-01 / 230 V';assert.equal(t(drawingText,'en'),drawingText);assert.equal(t(drawingText,'zh-CN'),drawingText);
  setLocale('zh-CN');assert.equal(t('บันทึกผลตรวจ'),'保存检查结果');assert.equal(sheetTitle('一层视频监控平面图'),'一层视频监控平面图');
  setLocale('en');assert.equal(sheetTitle('一层视频监控平面图'),'CCTV plan · Floor 1');setLocale('invalid');assert.equal(getLocale(),'th');
- for(const file of ['main.jsx','WorkflowGuide.jsx','OfflineApp.jsx']){const code=fs.readFileSync(new URL('../client/'+file,import.meta.url),'utf8'),f=ts.createSourceFile(file,code,ts.ScriptTarget.Latest,true,ts.ScriptKind.JSX);
+ for(const file of ['main.jsx','WorkflowGuide.jsx','OfflineApp.jsx','AnalysisApp.jsx','ManagerApp.jsx','SandboxApp.jsx']){const code=fs.readFileSync(new URL('../client/'+file,import.meta.url),'utf8'),f=ts.createSourceFile(file,code,ts.ScriptTarget.Latest,true,ts.ScriptKind.JSX);
  function check(n){if(ts.isJsxText(n)&&n.text.trim()!=='ไทย')assert.ok(!/[\u0e00-\u0e7f]/.test(n.text),'Unlocalized JSX text: '+n.text);if(ts.isCallExpression(n)&&n.expression.getText(f)==='t'&&ts.isStringLiteral(n.arguments[0])&&/[\u0e00-\u0e7f]/.test(n.arguments[0].text))assert.ok(catalog[n.arguments[0].text.trim()],'Missing catalog: '+n.arguments[0].text);ts.forEachChild(n,check)}check(f);}
 });
 test('Progress does not mix datasets or invent completion percentage',()=>{

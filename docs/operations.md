@@ -28,3 +28,7 @@ Private logs: `data/server*.log`, `team*.log`, controller operation result/error
 Stop owned services and copy **entire data/** to authorized backup, including active package, native references, SQLite, photos and pair token if preserving sessions. Verify counts/hashes in destination and restore on a separate local port before declaring backup valid. Keep per-device exported results too; server backup does not contain unsynced browser work. Do not delete logs/photos/packages based on age automatically.
 
 Token rotation is manual: stop server, securely replace/remove `data/pair-token`, restart and re-pair authorized team. Previous HMAC sessions become invalid; revoke old shared links. Do not perform rotation until pending offline results have been exported and an updated access plan is ready.
+
+## Version 0.5.0 workspace extension
+
+See [analysis, management, trial, and static hosting](workspaces.md) for the implemented endpoints, launcher/configuration changes, separate data stores, validation, and remaining limits.

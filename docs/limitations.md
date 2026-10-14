@@ -13,3 +13,7 @@ Release evidence is in [release-validation](release-validation.md). Passing auto
 - Controller is Windows-only and uses port 42873. CLI host/port settings do not reconfigure Windows tooling.
 - Local filesystem access by another Windows user/process may reveal private data. exFAT offers no promised per-file ACLs. Server auth does not secure unencrypted disk.
 - No background account/model retraining or API access configured. ChatGPT Pro and API usage are separate products.
+
+## Version 0.5.0 workspace extension
+
+See [analysis, management, trial, and static hosting](workspaces.md) for the implemented endpoints, launcher/configuration changes, separate data stores, validation, and remaining limits.

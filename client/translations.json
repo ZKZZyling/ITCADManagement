@@ -867,6 +867,238 @@
     "zh-CN": "Model — 全部提取区域",
     "en": "Model — all extracted areas"
   },
+  "วิเคราะห์และเตรียมแบบ": {
+    "zh-CN": "分析与准备图纸",
+    "en": "Analyze and prepare drawings"
+  },
+  "งานวิเคราะห์แยกจากเว็บหน้างาน ต้นฉบับไม่ถูกแก้ไข ชุดแบบเดิมคงอยู่จนกดเปิดใช้ชุดใหม่": {
+    "zh-CN": "分析独立于现场网页，原文件保持不变，手动启用前保留原图纸包",
+    "en": "Analysis runs separately; originals and the active package are preserved until explicit activation"
+  },
+  "เลือกแบบต้นฉบับ": {
+    "zh-CN": "选择原始图纸",
+    "en": "Select source drawing"
+  },
+  "เลือกไฟล์": {
+    "zh-CN": "选择文件",
+    "en": "Choose a file"
+  },
+  "เริ่มวิเคราะห์": {
+    "zh-CN": "开始分析",
+    "en": "Start analysis"
+  },
+  "DWG ใหม่ต้องมี ODA ที่ติดตั้งและใช้ได้อย่างถูกต้อง ไม่มีการเปิด AutoCAD อัตโนมัติ": {
+    "zh-CN": "新 DWG 需要合法安装的 ODA，不会自动启动 AutoCAD",
+    "en": "New DWG input requires a lawful ODA installation; AutoCAD is never started automatically"
+  },
+  "ตรวจชุดแบบที่เตรียมแล้ว": {
+    "zh-CN": "验证已准备的图纸包",
+    "en": "Verify a prepared package"
+  },
+  "เลือกชุดแบบ": {
+    "zh-CN": "选择图纸包",
+    "en": "Choose a package"
+  },
+  "ตรวจความครบถ้วน": {
+    "zh-CN": "验证完整性",
+    "en": "Verify integrity"
+  },
+  "การตรวจชุดเดิมตรวจไฟล์ผลลัพธ์ ไม่ได้ยืนยัน hash ของต้นฉบับใหม่หรืออนุมัติทางวิศวกรรม": {
+    "zh-CN": "验证现有输出并非重新校验原图或工程批准",
+    "en": "Existing-package verification checks output files, not a fresh original hash or engineering approval"
+  },
+  "คิวงานและผลตรวจ": {
+    "zh-CN": "任务队列与结果",
+    "en": "Job queue and results"
+  },
+  "ประมวลผลครั้งละหนึ่งงาน เปิดใช้ชุดใหม่ได้เมื่อผลตรวจผ่านเท่านั้น": {
+    "zh-CN": "一次处理一个任务，验证通过后方可启用",
+    "en": "One analysis job at a time; activate only after integrity verification"
+  },
+  "ยังไม่มีงาน": {
+    "zh-CN": "尚无任务",
+    "en": "No jobs yet"
+  },
+  "แผ่น": {
+    "zh-CN": "张图纸",
+    "en": "sheets"
+  },
+  "รายการผู้สมัคร ยังไม่ใช่จำนวนอุปกรณ์ยืนยัน": {
+    "zh-CN": "候选记录，并非确认设备数量",
+    "en": "candidates, not confirmed device counts"
+  },
+  "ยกเลิกงาน": {
+    "zh-CN": "取消任务",
+    "en": "Cancel job"
+  },
+  "ลองงานใหม่": {
+    "zh-CN": "重试任务",
+    "en": "Retry job"
+  },
+  "เปิดใช้เพื่อการตรวจทาน ไม่ใช่อนุมัติตรวจรับ": {
+    "zh-CN": "启用审阅包，并非验收批准",
+    "en": "Activate for review, not engineering acceptance"
+  },
+  "ดูบันทึกงาน": {
+    "zh-CN": "查看任务日志",
+    "en": "View job log"
+  },
+  "เปิดใช้แล้ว": {
+    "zh-CN": "已启用",
+    "en": "Activated"
+  },
+  "ชุดที่ใช้อยู่": {
+    "zh-CN": "当前图纸包",
+    "en": "Active package"
+  },
+  "ภาพรวมและหลักฐานงาน IT": {
+    "zh-CN": "IT 工作概览与证据",
+    "en": "IT overview and evidence"
+  },
+  "หน้าอ่านอย่างเดียว ไม่แก้แบบหรือผลตรวจ และไม่คำนวณเปอร์เซ็นต์ก่อสร้างจากจำนวนบันทึก": {
+    "zh-CN": "只读页面，不修改图纸或记录，不以记录数量推算施工百分比",
+    "en": "Read-only view; records do not imply construction completion percentages"
+  },
+  "เปิดชุดนำเสนอจากไฟล์ส่วนตัว": {
+    "zh-CN": "打开私人演示文件",
+    "en": "Open a private presentation bundle"
+  },
+  "ข้อมูลไฟล์เก็บในเบราว์เซอร์ ไม่ส่งกลับอัตโนมัติ ชุด snapshot แสดงข้อมูล ณ เวลาที่ส่งออก": {
+    "zh-CN": "文件保存在浏览器，不自动上传，快照显示导出时的数据",
+    "en": "Imported files stay in browser storage; snapshots reflect their export time"
+  },
+  "โหลดข้อมูลสดจากเซิร์ฟเวอร์": {
+    "zh-CN": "从服务器加载实时数据",
+    "en": "Load live server data"
+  },
+  "ข้อมูล snapshot": {
+    "zh-CN": "快照数据",
+    "en": "Snapshot data"
+  },
+  "ข้อมูลสด": {
+    "zh-CN": "实时数据",
+    "en": "Live data"
+  },
+  "สถานะแบบ": {
+    "zh-CN": "图纸状态",
+    "en": "Drawing readiness"
+  },
+  "บันทึกในชุดแบบนี้": {
+    "zh-CN": "此图纸包的记录",
+    "en": "Records in this package"
+  },
+  "อัปเดตบันทึกล่าสุด": {
+    "zh-CN": "最新记录更新",
+    "en": "Last record update"
+  },
+  "เลือกพื้นที่และดูแบบ": {
+    "zh-CN": "选择区域并查看图纸",
+    "en": "Select area and view reference"
+  },
+  "ไม่มีภาพอ้างอิงสำหรับพื้นที่นี้": {
+    "zh-CN": "此区域暂无参考图",
+    "en": "No prepared reference for this area"
+  },
+  "ภาพใช้ดูหลักฐาน ยังไม่มีการรับรองพิกัดสำหรับการวัดหรือปักจุด": {
+    "zh-CN": "图像用于证据审阅，测量或标记坐标尚未认证",
+    "en": "Reference images have no certified measurement or coordinate mapping"
+  },
+  "รายการตรวจและข้อความจากแบบ": {
+    "zh-CN": "检查记录与图纸原文",
+    "en": "Inspection records and source text"
+  },
+  "ค้นหา tag ข้อความหรือหมายเหตุ": {
+    "zh-CN": "搜索编号、原文或备注",
+    "en": "Search tags, source text or notes"
+  },
+  "รายการข้อความอาจครอบคลุมหลายแผ่น ไม่ใช่จำนวนอุปกรณ์ที่ยืนยันแล้ว": {
+    "zh-CN": "原文记录可能跨多张图纸，并非确认的设备数量",
+    "en": "Text candidates may span sheets and are not confirmed equipment counts"
+  },
+  "แสดงผลค้นหา 150 รายการแรก กรุณาค้นหาให้เฉพาะเจาะจง": {
+    "zh-CN": "显示前 150 项，请缩小搜索范围",
+    "en": "Showing the first 150 candidates; refine your search"
+  },
+  "ภาพรวมผู้จัดการ": {
+    "zh-CN": "管理概览",
+    "en": "Manager overview"
+  },
+  "ทดลองตรวจงานแยกจากงานจริง": {
+    "zh-CN": "独立试用检查",
+    "en": "Try inspection in an isolated sandbox"
+  },
+  "พื้นที่ทดลองเท่านั้น ผลไม่รวมในความคืบหน้า ไม่ส่งเซิร์ฟเวอร์ และไม่ใช้ตรวจรับ": {
+    "zh-CN": "仅供试用：结果不计入进度，不发送到服务器，也不用于验收",
+    "en": "Trial only: results do not affect progress, do not synchronize, and cannot be used for acceptance"
+  },
+  "บันทึกทดลองในเครื่องแล้ว ไม่ส่งเข้าผลตรวจจริง": {
+    "zh-CN": "试用结果已保存在本机，不会写入正式检查",
+    "en": "Trial saved locally; production inspections are unchanged"
+  },
+  "บันทึกผลทดลอง": {
+    "zh-CN": "保存试用结果",
+    "en": "Save trial inspection"
+  },
+  "บันทึกทดลองทั้งหมด": {
+    "zh-CN": "试用记录总数",
+    "en": "All trial records"
+  },
+  "ส่งออกผลทดลองแยกต่างหาก": {
+    "zh-CN": "单独导出试用结果",
+    "en": "Export separate trial results"
+  },
+  "แสดงผลค้นหา 100 รายการแรก กรุณาค้นหาให้เฉพาะเจาะจง": {
+    "zh-CN": "显示前100项，请缩小搜索范围",
+    "en": "Showing the first 100 matches; refine your search"
+  },
+  "รอคิว": {
+    "zh-CN": "排队中",
+    "en": "Queued"
+  },
+  "กำลังประมวลผล": {
+    "zh-CN": "处理中",
+    "en": "Processing"
+  },
+  "พร้อมตรวจทาน": {
+    "zh-CN": "可供审核",
+    "en": "Ready for review"
+  },
+  "ทำงานไม่สำเร็จ": {
+    "zh-CN": "处理失败",
+    "en": "Failed"
+  },
+  "ยกเลิกแล้ว": {
+    "zh-CN": "已取消",
+    "en": "Cancelled"
+  },
+  "หยุดระหว่างงาน": {
+    "zh-CN": "处理已中断",
+    "en": "Interrupted"
+  },
+  "กำลังยกเลิก": {
+    "zh-CN": "正在取消",
+    "en": "Cancelling"
+  },
+  "ตรวจต้นฉบับ": {
+    "zh-CN": "检查源文件",
+    "en": "Source preflight"
+  },
+  "แยกข้อมูลแบบ": {
+    "zh-CN": "提取图纸数据",
+    "en": "Extracting drawing data"
+  },
+  "เตรียมชุดแบบ": {
+    "zh-CN": "准备图纸包",
+    "en": "Preparing package"
+  },
+  "ตรวจคุณภาพ": {
+    "zh-CN": "质量检查",
+    "en": "Quality audit"
+  },
+  "ปรับข้อมูลสำหรับหน้างาน": {
+    "zh-CN": "优化现场数据",
+    "en": "Optimizing field data"
+  },
   "เลือกแผ่นที่จะนำไปตรวจ แล้วเตรียมชุดออฟไลน์": {
     "zh-CN": "选择现场检查图纸，然后准备离线包",
     "en": "Select field sheets, then prepare the offline pack"

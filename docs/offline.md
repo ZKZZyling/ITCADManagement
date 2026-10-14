@@ -26,3 +26,7 @@ A new origin has a separate IndexedDB store. Export pack and results from the ol
 Free tunnel URLs may disappear permanently. Export before a URL changes rather than relying on recovering the old origin later.
 
 Pack and results files contain company data readable as JSON. Export encryption at rest is not implemented. Use company-approved storage and access controls.
+
+## Version 0.5.0 workspace extension
+
+See [analysis, management, trial, and static hosting](workspaces.md) for the implemented endpoints, launcher/configuration changes, separate data stores, validation, and remaining limits.

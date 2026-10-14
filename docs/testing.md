@@ -23,3 +23,7 @@ CI runs install/build/tests/release scan on Windows and Linux with Node 22 and 2
 3. Prepare pack online, airplane-mode reload, save/reload results, reconnect and explicit sync; inspect server record/photos and conflicts.
 4. Approved tunnel: pairing Secure cookie, protected drawing without cookie=401, exact Origin guard, URL rotation, laptop sleep/restart; user verifies ERP session works.
 5. Engineer verifies approved references, scale/fonts/Xrefs/legend and every warning; sign release independently. Do not edit fieldReadiness to bypass this.
+
+## Version 0.5.0 workspace extension
+
+See [analysis, management, trial, and static hosting](workspaces.md) for the implemented endpoints, launcher/configuration changes, separate data stores, validation, and remaining limits.

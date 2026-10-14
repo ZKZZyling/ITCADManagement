@@ -1,0 +1,3 @@
+import fs from 'node:fs';import path from 'node:path';import {fileURLToPath} from 'node:url';import {exportPresentation} from '../server/presentation-export.mjs';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),data=path.resolve(process.env.ITFIELD_DATA_DIR||path.join(root,'data'));
+const {text,p}=exportPresentation(data),folder=path.join(data,'exports');fs.mkdirSync(folder,{recursive:true});const file=path.join(folder,'ITCAD-presentation-'+Date.now()+'.json');fs.writeFileSync(file,text,'utf8');console.log(JSON.stringify({file,bytes:Buffer.byteLength(text),sheets:p.images.length,records:p.records.length,engineeringReadiness:p.drawing.fieldReadiness.status}));

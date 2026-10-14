@@ -25,3 +25,5 @@ public/field/sw-shell.json
 *.key
 *.url
 ITField-offline-*.json
+
+/dist/

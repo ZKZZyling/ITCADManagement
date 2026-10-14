@@ -23,3 +23,13 @@ Initial clean install attempt while the synthetic preview was running encountere
 Configured CI is a separate check after push, not a claimed successful remote run. This local validation does not establish Node 22/Linux execution until their CI jobs pass. No actual field tablet/phone camera, 4G, prolonged offline durability, load benchmark, arbitrary DWG completeness or signed engineering acceptance was established by this release check.
 
 Dependency audit covers npm's current advisory database, not a security guarantee or a Python/native-tool audit. The optional MLight viewer bundles successfully with the override; complete CAD-engine interaction across browsers remains a separate compatibility check.
+
+## 0.5.0 local validation
+
+- Build and code-only static artifact generation passed; 27 Node tests passed.
+- Added queue/activation/hash, source containment, malformed-part, restart, admin token/Origin, viewer-write denial, private-bundle export, and sandbox sync-denial coverage.
+- PowerShell syntax passed for 21 scripts. Existing control-state and tunnel-origin regressions remain publication gates.
+- Browser tests imported a real private snapshot locally, rendered its reference, saved an isolated multilingual trial, and reloaded that trial with the preview server stopped. The live factory record count remained unchanged.
+- A prepared production package passed verification of every referenced scene file; this is output verification, not native source or construction approval. Detailed company evidence remains in private runtime reports.
+- A temporary live tunnel returned 502 during repeat testing. A stable static shell/private snapshot is the presentation path; temporary-provider reliability is unresolved.
+- No physical tablet/phone, camera, mainland-China network, enterprise identity, approved revision, or fresh binary DWG conversion acceptance is claimed.

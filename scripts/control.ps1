@@ -32,7 +32,7 @@ Invoke-ITFieldCommand -Command {
  try{
   $form=New-Object Windows.Forms.Form
   $form.Text='IT Field Rayong — ตัวควบคุมระบบ v4'
-  $form.ClientSize=New-Object Drawing.Size(660,490)
+ $form.ClientSize=New-Object Drawing.Size(660,560)
   $form.StartPosition='CenterScreen';$form.FormBorderStyle='FixedDialog';$form.MaximizeBox=$false
   $form.BackColor=[Drawing.Color]::FromArgb(244,248,250)
   $form.Font=New-Object Drawing.Font('Tahoma',10)
@@ -50,7 +50,11 @@ Invoke-ITFieldCommand -Command {
   $copy=Add-Button 'คัดลอกลิงก์จับคู่สำหรับทีม' 340 260 296 46
   $stop=Add-Button 'หยุดระบบทั้งหมด' 24 320 296 46
   $tools=Add-Button 'เปิดโฟลเดอร์เครื่องมือ' 340 320 296 46
-  $note=Add-Label "ต้องเชื่อมต่อไดรฟ์โครงการและเปิดเครื่องเซิร์ฟเวอร์ไว้ขณะใช้งาน\nลิงก์ทีมให้สิทธิเข้าถึงงาน • ส่งเฉพาะทีมที่ได้รับอนุญาต\nปิดหน้าต่างนี้ไม่หยุดเซิร์ฟเวอร์ • ลิงก์ชั่วคราวอาจเปลี่ยนเมื่อเริ่ม Tunnel ใหม่" 24 389 612 78
+  $analysis=Add-Button 'วิเคราะห์และเตรียมแบบ' 24 382 296 46
+  $manager=Add-Button 'เปิดภาพรวมผู้จัดการ' 340 382 296 46
+  $analysis.Add_Click({Start-Process $powerShellExe -ArgumentList @('-NoProfile','-ExecutionPolicy','Bypass','-File',('"'+$appRoot+'/scripts/start-analysis.ps1"')) -WindowStyle Hidden})
+  $manager.Add_Click({try{if(!(Get-LocalReady)){throw 'เริ่มเว็บในเครื่องก่อน'};$token=(Get-Content (Join-Path $appRoot 'data/viewer-token') -Raw -Encoding UTF8).Trim();Start-Process ('http://localhost:42873/field/manager.html#view='+$token)}catch{Show-Error $_.Exception.Message}})
+  $note=Add-Label "ต้องเชื่อมต่อไดรฟ์โครงการและเปิดเครื่องเซิร์ฟเวอร์ไว้ขณะใช้งาน\nลิงก์ทีมให้สิทธิเข้าถึงงาน • ส่งเฉพาะทีมที่ได้รับอนุญาต\nปิดหน้าต่างนี้ไม่หยุดเซิร์ฟเวอร์ • ลิงก์ชั่วคราวอาจเปลี่ยนเมื่อเริ่ม Tunnel ใหม่" 24 456 612 78
   $note.Text=$note.Text.Replace('\n',"`r`n")
   $state=@{busy=$false;operation='';job=$null;log='';errorLog='';resultFile='';startedAt=$null;opened=$false;readySeen=$false;errorShowing=$false}
   function Show-Error($message){

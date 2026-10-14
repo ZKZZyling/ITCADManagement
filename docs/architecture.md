@@ -44,3 +44,7 @@ Raster: viewport at most 1600×1200, at most 5000 visible objects; dense view fa
 ## Deliberate boundaries
 
 No multi-tenant accounts, RBAC, enterprise SSO, automatic engineering release, native DWG save, full BIM coordination or AI reasoning service. Browser language/local cache belongs to origin and device. Offline export is manual disaster recovery. Public release isolates source from factory data and old hosting Git history.
+
+## Version 0.5.0 workspace extension
+
+See [analysis, management, trial, and static hosting](workspaces.md) for the implemented endpoints, launcher/configuration changes, separate data stores, validation, and remaining limits.

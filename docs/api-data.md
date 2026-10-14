@@ -42,3 +42,24 @@ Statuses: planned, installed, tested, accepted, failed, blocked. Checklist answe
 JSON request limits: records 100000 bytes; general/photo read 6 MB. Errors are JSON with error text and HTTP 400/401/403/409/415/422 as appropriate; some preparation/render errors currently use 400 instead of specialized status codes. clients retain local draft/queue on failure.
 
 `itfield-offline-v1`: drawing source/dataset, selected views, assets, images with data URL/SHA/bytes/preparedAt. `itfield-results-v1`: source/dataset, records, JPEG data URLs, exportedAt. Server does not import files automatically. Validator is executable source of truth; see `lib/validation.mjs` and `client/offline-pack.mjs`.
+
+## Version 0.5.0 workspace extension
+
+See [analysis, management, trial, and static hosting](workspaces.md) for the implemented endpoints, launcher/configuration changes, separate data stores, validation, and remaining limits.
+
+### New endpoint summary
+
+| Service | Endpoint | Access / behavior |
+|---|---|---|
+| Field | POST `/api/pair-viewer` | Private viewer token; separate read-only cookie |
+| Field | GET `/api/manager` | Operator or viewer; active-source records and drawing metadata |
+| Admin | GET `/admin/health` | Local service identity only |
+| Admin | POST `/admin/pair` | Separate admin token and exact Origin |
+| Admin | GET `/admin/state` | Authenticated local sources, packages, jobs, limits |
+| Admin | POST `/admin/jobs` | `kind:analyze, source:<relative path>` or `kind:verify, packageId:<UUID>` |
+| Admin | POST `/admin/jobs/<UUID>/cancel` or `/retry` | Owned job lifecycle |
+| Admin | POST `/admin/jobs/<UUID>/activate` | `acknowledgeReviewOnly:true`; rechecks output hashes |
+| Admin | GET `/admin/jobs/<UUID>/log` | Last 12,000 characters; English operational output |
+| Admin | POST `/admin/shutdown` | Graceful owned-worker/service stop |
+
+Manager bundles use `itcad-presentation-v1`; trial exports use `itcad-trial-v1`. Neither is an ordinary production offline result file. Viewer-only mutation attempts are denied. Explicit `trial:true` record payloads are rejected even for operators.

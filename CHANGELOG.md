@@ -1,6 +1,15 @@
 # Changelog
 
-## Unreleased
+## 0.5.0 — 2026-10-14
+
+- Added a separate loopback analysis admin service with a durable single-worker queue, source containment, subprocess cancellation, restart interruption, and explicit hash-verified review-package activation.
+- Added read-only management authorization, source-scoped summaries, and private presentation export/import with image checksums and a bounded file size.
+- Added an isolated local trial workspace with separate IndexedDB, no production synchronization, and backend rejection of explicitly marked trial records.
+- Added code-only static presentation builds for stable hosting without publishing company drawings, credentials, records, or snapshots.
+- Added Windows analysis/export launchers and controller entry points, while preserving existing private runtime data through an optional data-directory configuration.
+- Preserved English/Thai/Chinese source evidence and engineering acceptance blocks. New native DWG conversion, physical field-device acceptance, and China-network availability remain separately verifiable requirements.
+
+## Earlier maintenance updates
 
 - Documented the proposed local analysis worker, IT review package, real-data manager presentation, and Thailand/China validation plan. This is a design update; it does not deploy a new workspace or upload company data.
 

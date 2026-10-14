@@ -215,3 +215,64 @@ Separation / firestop ตาม SPEC|按 SPEC 核查间距 / 防火封堵|Separa
 ร่างยังไม่เป็นผลตรวจ กดบันทึกเมื่อพร้อม|草稿尚非检查结果，完成后请保存|This is a draft; save when ready
 ยังไม่ใช่ภาพรับรองจาก AutoCAD|并非经认证的 AutoCAD 原图|Not a certified Reference image
 Model — ทั้งพื้นที่ที่สกัดได้|Model — 全部提取区域|Model — all extracted areas
+
+วิเคราะห์และเตรียมแบบ|分析与准备图纸|Analyze and prepare drawings
+งานวิเคราะห์แยกจากเว็บหน้างาน ต้นฉบับไม่ถูกแก้ไข ชุดแบบเดิมคงอยู่จนกดเปิดใช้ชุดใหม่|分析独立于现场网页，原文件保持不变，手动启用前保留原图纸包|Analysis runs separately; originals and the active package are preserved until explicit activation
+เลือกแบบต้นฉบับ|选择原始图纸|Select source drawing
+เลือกไฟล์|选择文件|Choose a file
+เริ่มวิเคราะห์|开始分析|Start analysis
+DWG ใหม่ต้องมี ODA ที่ติดตั้งและใช้ได้อย่างถูกต้อง ไม่มีการเปิด AutoCAD อัตโนมัติ|新 DWG 需要合法安装的 ODA，不会自动启动 AutoCAD|New DWG input requires a lawful ODA installation; AutoCAD is never started automatically
+ตรวจชุดแบบที่เตรียมแล้ว|验证已准备的图纸包|Verify a prepared package
+เลือกชุดแบบ|选择图纸包|Choose a package
+ตรวจความครบถ้วน|验证完整性|Verify integrity
+การตรวจชุดเดิมตรวจไฟล์ผลลัพธ์ ไม่ได้ยืนยัน hash ของต้นฉบับใหม่หรืออนุมัติทางวิศวกรรม|验证现有输出并非重新校验原图或工程批准|Existing-package verification checks output files, not a fresh original hash or engineering approval
+คิวงานและผลตรวจ|任务队列与结果|Job queue and results
+ประมวลผลครั้งละหนึ่งงาน เปิดใช้ชุดใหม่ได้เมื่อผลตรวจผ่านเท่านั้น|一次处理一个任务，验证通过后方可启用|One analysis job at a time; activate only after integrity verification
+ยังไม่มีงาน|尚无任务|No jobs yet
+แผ่น|张图纸|sheets
+รายการผู้สมัคร ยังไม่ใช่จำนวนอุปกรณ์ยืนยัน|候选记录，并非确认设备数量|candidates, not confirmed device counts
+ยกเลิกงาน|取消任务|Cancel job
+ลองงานใหม่|重试任务|Retry job
+เปิดใช้เพื่อการตรวจทาน ไม่ใช่อนุมัติตรวจรับ|启用审阅包，并非验收批准|Activate for review, not engineering acceptance
+ดูบันทึกงาน|查看任务日志|View job log
+เปิดใช้แล้ว|已启用|Activated
+ชุดที่ใช้อยู่|当前图纸包|Active package
+ภาพรวมและหลักฐานงาน IT|IT 工作概览与证据|IT overview and evidence
+หน้าอ่านอย่างเดียว ไม่แก้แบบหรือผลตรวจ และไม่คำนวณเปอร์เซ็นต์ก่อสร้างจากจำนวนบันทึก|只读页面，不修改图纸或记录，不以记录数量推算施工百分比|Read-only view; records do not imply construction completion percentages
+เปิดชุดนำเสนอจากไฟล์ส่วนตัว|打开私人演示文件|Open a private presentation bundle
+ข้อมูลไฟล์เก็บในเบราว์เซอร์ ไม่ส่งกลับอัตโนมัติ ชุด snapshot แสดงข้อมูล ณ เวลาที่ส่งออก|文件保存在浏览器，不自动上传，快照显示导出时的数据|Imported files stay in browser storage; snapshots reflect their export time
+โหลดข้อมูลสดจากเซิร์ฟเวอร์|从服务器加载实时数据|Load live server data
+ข้อมูล snapshot|快照数据|Snapshot data
+ข้อมูลสด|实时数据|Live data
+สถานะแบบ|图纸状态|Drawing readiness
+บันทึกในชุดแบบนี้|此图纸包的记录|Records in this package
+อัปเดตบันทึกล่าสุด|最新记录更新|Last record update
+เลือกพื้นที่และดูแบบ|选择区域并查看图纸|Select area and view reference
+ไม่มีภาพอ้างอิงสำหรับพื้นที่นี้|此区域暂无参考图|No prepared reference for this area
+ภาพใช้ดูหลักฐาน ยังไม่มีการรับรองพิกัดสำหรับการวัดหรือปักจุด|图像用于证据审阅，测量或标记坐标尚未认证|Reference images have no certified measurement or coordinate mapping
+รายการตรวจและข้อความจากแบบ|检查记录与图纸原文|Inspection records and source text
+ค้นหา tag ข้อความหรือหมายเหตุ|搜索编号、原文或备注|Search tags, source text or notes
+รายการข้อความอาจครอบคลุมหลายแผ่น ไม่ใช่จำนวนอุปกรณ์ที่ยืนยันแล้ว|原文记录可能跨多张图纸，并非确认的设备数量|Text candidates may span sheets and are not confirmed equipment counts
+แสดงผลค้นหา 150 รายการแรก กรุณาค้นหาให้เฉพาะเจาะจง|显示前 150 项，请缩小搜索范围|Showing the first 150 candidates; refine your search
+ภาพรวมผู้จัดการ|管理概览|Manager overview
+
+ทดลองตรวจงานแยกจากงานจริง|独立试用检查|Try inspection in an isolated sandbox
+พื้นที่ทดลองเท่านั้น ผลไม่รวมในความคืบหน้า ไม่ส่งเซิร์ฟเวอร์ และไม่ใช้ตรวจรับ|仅供试用：结果不计入进度，不发送到服务器，也不用于验收|Trial only: results do not affect progress, do not synchronize, and cannot be used for acceptance
+บันทึกทดลองในเครื่องแล้ว ไม่ส่งเข้าผลตรวจจริง|试用结果已保存在本机，不会写入正式检查|Trial saved locally; production inspections are unchanged
+บันทึกผลทดลอง|保存试用结果|Save trial inspection
+บันทึกทดลองทั้งหมด|试用记录总数|All trial records
+ส่งออกผลทดลองแยกต่างหาก|单独导出试用结果|Export separate trial results
+แสดงผลค้นหา 100 รายการแรก กรุณาค้นหาให้เฉพาะเจาะจง|显示前100项，请缩小搜索范围|Showing the first 100 matches; refine your search
+
+รอคิว|排队中|Queued
+กำลังประมวลผล|处理中|Processing
+พร้อมตรวจทาน|可供审核|Ready for review
+ทำงานไม่สำเร็จ|处理失败|Failed
+ยกเลิกแล้ว|已取消|Cancelled
+หยุดระหว่างงาน|处理已中断|Interrupted
+กำลังยกเลิก|正在取消|Cancelling
+ตรวจต้นฉบับ|检查源文件|Source preflight
+แยกข้อมูลแบบ|提取图纸数据|Extracting drawing data
+เตรียมชุดแบบ|准备图纸包|Preparing package
+ตรวจคุณภาพ|质量检查|Quality audit
+ปรับข้อมูลสำหรับหน้างาน|优化现场数据|Optimizing field data

@@ -1,6 +1,6 @@
 # Local analysis workspace and real-drawing presentation design
 
-Status: **proposed architecture**, not an implemented feature or a deployment readiness claim. This document separates verified current behavior from the work needed to introduce an analysis workspace, manager presentation, and controlled field-package release.
+Status: **0.5.0 foundations implemented**. The separate local queue, worker lifecycle, manager authorization, private snapshots, and isolated trial are implemented. See [current workspace operations](workspaces.md) for actual behavior. The remaining sections retain the target architecture; dependency-aware reuse, complete native fidelity, enterprise identity, and engineering release are still planned, not deployment readiness claims.
 
 ## Decision
 
@@ -20,7 +20,7 @@ Use the existing approved local server/tunnel for live real-data presentation fi
 
 The project already has independent extraction, preparation, audit and optimization scripts, a local HTTP server, server-generated raster views, source/dataset-scoped records, offline pack export/import, and multilingual interfaces. CAD preparation is not performed by a field browser request today.
 
-The missing pieces are a dedicated analysis interface, durable job queue, job progress/cancellation, restart recovery, resource isolation, reviewed package selection, dependency/configuration-aware reuse, dedicated manager permissions, and a unified presentation bundle. The existing standalone offline page is a useful starting point, but importing a pack does not establish a production read-only management role.
+Version 0.5.0 implements the analysis interface, JSON job queue, progress/cancellation, restart interruption, separate worker process, explicit reviewed-package activation, shared viewer capability, and presentation bundle. Dependency/configuration-aware reuse and full resource admission controls remain open. The existing standalone offline page is a useful starting point, but importing a pack does not establish a production read-only management role.
 
 ## Proposed architecture
 
