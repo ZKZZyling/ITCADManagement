@@ -4,7 +4,7 @@ if(target!==path.join(process.cwd(),'dist','manager'))throw Error('Unexpected ge
 // Only this fixed, ignored build output is replaced; private data is elsewhere.
 fs.rmSync(target,{recursive:true,force:true});fs.mkdirSync(target,{recursive:true});
 const shell=JSON.parse(fs.readFileSync('public/field/sw-shell.json','utf8'));
-const release=shell.version;
+const release=crypto.createHash('sha256').update(shell.version).update(fs.readFileSync('scripts/build-manager-static.mjs')).digest('hex').slice(0,12);
 const needed=new Set(['/field/manager.html','/field/sandbox.html','/field/assets/manager.css','/field/assets/sandbox.css']);
 function visit(file){if(needed.has(file))return;needed.add(file);for(const m of fs.readFileSync('public'+file,'utf8').matchAll(/["'](\.\/[^"']+\.js)["']/g))visit(path.posix.join(path.posix.dirname(file),m[1]))}
 visit('/field/assets/manager.js');visit('/field/assets/sandbox.js');
@@ -12,7 +12,7 @@ const files=[...needed];
 for(const file of [...files,'/field/sw.js','/field/sw-shell.json']){
  if(!/^\/field\/(?:[\w.-]+\.html|sw\.js|sw-shell\.json|assets\/[\w.-]+\.(?:js|css))$/.test(file))throw Error('Unexpected shell asset');
  const out=path.join(target,file);fs.mkdirSync(path.dirname(out),{recursive:true});let content=fs.readFileSync('public'+file);
- if(['/field/manager.html','/field/sandbox.html'].includes(file))content=Buffer.from(content.toString('utf8').replace('<html lang="en">','<html lang="en" data-mode="snapshot-only">'));
+ if(['/field/manager.html','/field/sandbox.html'].includes(file))content=Buffer.from(content.toString('utf8').replace('<html lang="en">','<html lang="en" data-mode="snapshot-only">').replace(/assets\/(manager|sandbox)\.(js|css)(\?v=[a-f0-9]+)?/g,(_,entry,ext)=>'assets/'+entry+'.'+ext+'?release='+release));
  // Give dependency requests a release-specific cache key too. A CDN can retain a
  // negative response even after the new static files have been published.
  if(file.endsWith('.js'))content=Buffer.from(content.toString('utf8')
