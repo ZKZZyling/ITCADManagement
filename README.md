@@ -10,6 +10,8 @@ The application supports **English, Thai, and Simplified Chinese**. Repository d
 
 ## Quick start on Windows
 
+Read [Start here: workspace map and complete first-use workflow](docs/getting-started.md) before choosing a link. Static hosting is the presentation/trial shell; the Windows field server is the full inspection application.
+
 1. Install [Node.js](https://nodejs.org/) 22.13 or later and Git, then clone:
 
    ```powershell

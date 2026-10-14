@@ -26,6 +26,6 @@ HTTP 409 means the server version has changed. Local evidence is retained. Compa
 
 Select the preferred UI language and review records by status within the same source SHA and dataset. Progress counts cover recorded inspection items only; they are not construction completion percentages because an approved bill-of-quantities denominator is unavailable.
 
-The UI language does not alter drawing text, tags, units, notes, or assignee names. All paired users currently share one workspace. There are no individual user roles or server-enforced read-only manager permissions.
+The UI language does not alter drawing text, tags, units, notes, or assignee names. Users share a workspace with separate operator and server-enforced read-only viewer capabilities. This is not individual identity, enterprise RBAC, or per-tenant isolation.
 
 For Simplified Chinese users, the same workflow applies: select language, select a sheet, search an identifier, then review the record and pending synchronization count. Prepare and test offline packs before disconnecting. Synthetic demo drawings cannot be used for construction.

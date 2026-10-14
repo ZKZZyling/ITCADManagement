@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- Added contextual multilingual onboarding and troubleshooting to all five workspaces. Clarified that static presentation imports prepared snapshots locally and does not analyze uploaded DWG or host the full inspection backend.
+- Added a complete workspace/format/startup guide and corrected obsolete documentation about read-only manager authorization.
+
 ## 0.5.0 — 2026-10-14
 
 - Hardened static deployment against CDN-cached 404 responses with release-specific dependency/page requests, a complete management-only dependency closure, and an artifact regression test. Pinned the hosting Node major to the tested version 24.
