@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Made explicit system isolation exclude unknown-category objects as well, while ordinary highlighting continues to retain them.
+
 - Added a fullscreen drawing focus mode with a browser fallback, true whole-sheet reference fitting, mouse drag/native touch scrolling, and explicit zoom-to-selection. Pan no longer silently switches away from the reference image.
 - Preserved extracted context and unknown objects when highlighting systems, added reversible isolation and exact-layer filters, and improved small-label rendering.
 - Added source-backed hover/selection evidence to the inspector and contextual assistant, including handles, original nearby text, and geometry length with explicit engineering limits. Added scene inventory and synthetic regression coverage.
