@@ -1,6 +1,7 @@
 import http from 'node:http';import fs from 'node:fs';import path from 'node:path';import crypto from 'node:crypto';import os from 'node:os';import {DatabaseSync} from 'node:sqlite';import {fileURLToPath} from 'node:url';import {validateRecord} from '../lib/validation.mjs';
 import {SceneService} from './scene.mjs';
 import {secureOriginRequest} from './proxy-origin.mjs';
+import {ReadinessStore} from './readiness-store.mjs';
 const sceneService=new SceneService();
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),data=path.resolve(process.env.ITFIELD_DATA_DIR||path.join(root,'data'));fs.mkdirSync(data,{recursive:true});fs.mkdirSync(path.join(data,'photos'),{recursive:true});
 const tokenPath=path.join(data,'pair-token');const token=fs.existsSync(tokenPath)?fs.readFileSync(tokenPath,'utf8').trim():crypto.randomBytes(24).toString('hex');if(!fs.existsSync(tokenPath))fs.writeFileSync(tokenPath,token,'utf8');
@@ -8,6 +9,7 @@ const instance=crypto.createHash('sha256').update(root.toLowerCase()).digest('he
 const viewerPath=path.join(data,'viewer-token');if(!fs.existsSync(viewerPath))fs.writeFileSync(viewerPath,crypto.randomBytes(24).toString('hex'));const viewerToken=fs.readFileSync(viewerPath,'utf8').trim();
 function viewerAuthenticated(req){const c=req.headers.cookie?.match(/(?:^|;\s*)itfield_viewer=([^;]+)/)?.[1]||'';const [time,sig]=c.split('.');if(!/^\d+$/.test(time||'')||Date.now()-Number(time)>86400000*30||Number(time)>Date.now())return false;const h=crypto.createHmac('sha256',viewerToken).update(time).digest('hex');return sig?.length===h.length&&crypto.timingSafeEqual(Buffer.from(sig),Buffer.from(h))}
 const db=new DatabaseSync(path.join(data,'inspections.sqlite'));db.exec('PRAGMA journal_mode=DELETE; PRAGMA synchronous=FULL; CREATE TABLE IF NOT EXISTS records(id TEXT PRIMARY KEY,payload TEXT NOT NULL,version INTEGER NOT NULL,updated TEXT NOT NULL); CREATE TABLE IF NOT EXISTS operations(id TEXT PRIMARY KEY,payload TEXT NOT NULL); CREATE TABLE IF NOT EXISTS audit(id TEXT PRIMARY KEY,record_id TEXT NOT NULL,payload TEXT NOT NULL,updated TEXT NOT NULL);');
+const readinessStore=new ReadinessStore(db);
 const portArg=process.argv.find(a=>a.startsWith('--itfield-port='))?.split('=')[1];
 const port=Number(portArg||process.env.ITFIELD_PORT||42873),host=process.env.ITFIELD_HOST||'127.0.0.1';
 if(!Number.isInteger(port)||port<1||port>65535)throw Error('Invalid IT Field port');
@@ -20,13 +22,18 @@ function authenticated(req){const cookie=req.headers.cookie?.match(/(?:^|;\s*)it
 function send(res,data,status=200,headers={}){res.writeHead(status,{'content-type':'application/json; charset=utf-8','cache-control':'no-store',...headers});res.end(JSON.stringify(data));}
 async function read(req,max=6*1024*1024){const chunks=[];let bytes=0;for await(const c of req){bytes+=c.length;if(bytes>max)throw new Error('Request too large');chunks.push(c)}return Buffer.concat(chunks);}
 const server=http.createServer(async(req,res)=>{try{const localPeer=['127.0.0.1','::1','::ffff:127.0.0.1'].includes(req.socket.remoteAddress),secure=secureOriginRequest(req.socket.remoteAddress,req.headers,fs.existsSync(path.join(data,'team-origin'))?fs.readFileSync(path.join(data,'team-origin'),'utf8').trim():'');const u=new URL(req.url,(secure?'https://':'http://')+req.headers.host);let p;try{p=decodeURIComponent(u.pathname)}catch{return send(res,{error:'Invalid path'},400)};
- if(p==='/api/health')return send(res,{service:'itfield-rayong',mode:'local',instance,storage:true,photoStorage:true,version:'0.5.0'});
+ if(p==='/api/health')return send(res,{service:'itfield-rayong',mode:'local',instance,dataScope:crypto.createHash('sha256').update(data.toLowerCase()).digest('hex').slice(0,16),storage:true,photoStorage:true,readinessPlanning:true,version:'0.5.0'});
  if(req.method==='POST'&&req.headers.origin&&req.headers.origin!==u.origin)return send(res,{error:'Origin mismatch'},403);
  if(p==='/api/pair'&&req.method==='POST'){const x=JSON.parse((await read(req,4096)).toString());if(x.token!==token)return send(res,{error:'Invalid pairing token'},401);const t=String(Date.now());return send(res,{paired:true},200,{'set-cookie':`itfield=${t}.${hash(t)}; Path=/; HttpOnly; SameSite=Strict; Max-Age=2592000${secure?'; Secure':''}`});}
  if(p==='/api/pair-viewer'&&req.method==='POST'){const x=JSON.parse((await read(req,4096)).toString());if(x.token!==viewerToken)return send(res,{error:'Invalid viewer token'},401);const time=String(Date.now()),sig=crypto.createHmac('sha256',viewerToken).update(time).digest('hex');return send(res,{role:'viewer'},200,{'set-cookie':`itfield_viewer=${time}.${sig}; Path=/; HttpOnly; SameSite=Strict; Max-Age=2592000${secure?'; Secure':''}`})}
  if(viewerAuthenticated(req)&&!authenticated(req)&&(!['GET','HEAD'].includes(req.method)||p==='/api/server-info'))return send(res,{error:'Read-only viewer access'},403);
  if(p==='/api/manager'&&req.method==='GET'&&(authenticated(req)||viewerAuthenticated(req))){const d=activeDrawing(),prefix=d.sourceSHA256+'-'+(d.datasetId?d.datasetId+'-':'');const records=db.prepare('SELECT payload FROM records').all().map(x=>JSON.parse(x.payload)).filter(r=>r.sourceSHA256===d.sourceSHA256&&r.id.startsWith(prefix));return send(res,{drawing:d,records,loadedAt:new Date().toISOString(),role:authenticated(req)?'operator':'viewer'})}
  if((p.startsWith('/api/')||p.startsWith('/cad/')||p.startsWith('/reference/'))&&!authenticated(req)&&!viewerAuthenticated(req))return send(res,{error:'Authentication required. Open the one-click launcher first.'},401);
+ if(p==='/api/readiness'&&req.method==='GET')return send(res,{plan:readinessStore.get(activeDrawing()),role:authenticated(req)?'operator':'viewer'});
+ if(p==='/api/readiness'&&req.method==='POST'){
+  if(!authenticated(req))return send(res,{error:'Read-only viewer access'},403);
+  try{return send(res,readinessStore.save(JSON.parse((await read(req,2*1024*1024+4096)).toString()),activeDrawing()));}catch(e){return send(res,{error:e.message},e.status||422);}
+ }
  if(p==='/api/drawing'&&req.method==='GET'){
   if(fs.existsSync(path.join(data,'active-package'))){const key=fs.readFileSync(path.join(data,'active-package'),'utf8').trim();if(!/^[-a-f0-9]{36}$/.test(key))throw new Error('Invalid active package');const file=path.join(data,'packets',key,'drawing.json');const drawing=JSON.parse(fs.readFileSync(file,'utf8'));return send(res,{...drawing,basePath:'/api/cad/',nativeReferenceAvailable:fs.existsSync(path.join(data,'native-references',drawing.sourceSHA256,'reference-index.json')),rendering:{mode:'server-raster',reference:'derived-review-not-native',offline:'current in-memory viewport only'}})}
   return send(res,JSON.parse(fs.readFileSync(path.join(root,'public','cad','drawing.json'),'utf8')));

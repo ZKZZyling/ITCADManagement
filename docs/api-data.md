@@ -21,6 +21,26 @@ Mutating requests with a supplied mismatched Origin are rejected. Loopback+exact
 
 ## Record example (synthetic)
 
+### Readiness plans (separate from inspection records)
+
+`GET /api/readiness` returns `{plan, role}` for the active drawing identity;
+an absent plan is `null`. Operators and read-only viewers may read it.
+`POST /api/readiness` accepts `{opId, plan}` from paired operators only.
+The plan schema is `itcad-readiness-v1`, version 1, bounded to 2 MiB; the HTTP
+envelope permits 4096 additional bytes. Source SHA-256 and dataset must match
+the active drawing. See `lib/readiness.mjs` for the executable schema.
+
+Saves require the current integer version, advance it once, and record a private
+audit row. Retrying the same operation ID and exact normalized payload returns
+the same committed plan; changed payload or stale version returns 409. Viewer
+mutations return 403. Plans never enter inspection records or change the
+drawing's field/engineering approval state. Evidence references may identify
+other source drawings, but the plan's primary identity remains fixed.
+
+The browser retains the pending operation before sending so a lost reply can be
+retried after reload. Draft edits after a lost reply may still conflict and must
+be reconciled explicitly. Export the local draft before loading another version.
+
 ```json
 {
   "id": "<sourceSHA256>-synthetic-demo-v1-DEMO:0",

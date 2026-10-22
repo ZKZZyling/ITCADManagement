@@ -2,6 +2,18 @@
 
 ## Unreleased
 
+- Added a separate multilingual IT–ERP readiness workspace with 36 generic
+  construction-stage requirements, room/rack and equipment registers, explicit
+  cable endpoint/port links, a relationship map, ERP service dependencies and
+  decisions. Source/dataset-scoped planning remains separate from inspections
+  and engineering acceptance.
+- Added private browser drafts and explicit JSON import/export, authenticated
+  versioned saves, operation retry recovery and viewer write restrictions.
+  Evidence states require matching meaningful references; unknown load values
+  remain distinct from zero and capacity totals are not engineering sizing.
+- Documented room, pathways, cabling, China-hosted ERP/printing/interface
+  dependencies and construction hold points with primary-source guidance.
+
 - Included native block groups in the searchable drawing inventory, including groups without standalone captions, and preserved source block names in future extraction.
 
 - Restored native solid-HATCH boundaries/holes and POINT markers in the review pipeline. Added a source-hash-checked region restoration tool that creates a separate package, preserves existing IDs, records skips and retains engineering blocks.

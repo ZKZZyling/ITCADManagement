@@ -49,6 +49,20 @@ See [workspace operations and static hosting](docs/workspaces.md) for configurat
 
 ## Capabilities and boundaries
 
+### IT–ERP implementation readiness
+
+Open **IT–ERP readiness** from the field workspace to prepare rooms, racks,
+equipment loads, explicit cable/port links, ERP service dependencies and
+construction-stage evidence. The planner provides 36 generic requirements in
+Thai, Simplified Chinese and English, drawing-scoped private drafts, validated
+JSON exchange, versioned server saves and a read-only viewer mode.
+
+The topology shows only manually recorded links. Unknown loads stay unknown;
+known-input totals do not size a UPS or cooling system. Planning evidence and
+test records do not grant engineering approval, prove installation, or configure
+ERP/network equipment. Factory-specific plans must remain private.
+See [Readiness planning and construction coordination](docs/readiness.md).
+
 | Area | Implemented behavior | Boundary |
 |---|---|---|
 | Drawing selection and filtering | LAN/fiber, CCTV, access, power, pathways, coordination, and unknown candidates | Classification uses layer/text heuristics and requires legend verification; it is not AI-certified identification. |
