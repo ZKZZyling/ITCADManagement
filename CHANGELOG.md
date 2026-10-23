@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Simplified the field workspace with reachable three-step onboarding, expandable display options, and secondary workspace links under More tools. Added a work-picker close action, selected-control semantics, reduced-motion support and scrollable short-screen layouts.
+- Connected contextual guidance to hidden search and inspection panels, including checklist highlighting and focus; reset outdated guidance when the sheet or selection changes.
+- Added bounded transient raster retries, explicit image retry actions, stale-result disposal and request cancellation. Resizing now renders the latest viewport state rather than a captured earlier sheet or mode.
+- Normalized legacy translation rows so the generated Thai/Chinese/English catalog includes existing source-evidence and new workflow labels.
+
 - Added a separate multilingual IT–ERP readiness workspace with 36 generic
   construction-stage requirements, room/rack and equipment registers, explicit
   cable endpoint/port links, a relationship map, ERP service dependencies and

@@ -1,4 +1,4 @@
-const BUILD='400275e6c47f';
+const BUILD='43abd30403eb';
 const PREFIX='itfield-shell-v3-';
 self.addEventListener('install',e=>e.waitUntil((async()=>{const manifest=await (await fetch('/field/sw-shell.json',{cache:'no-store'})).json();if(manifest.version!==BUILD)throw Error('Shell version mismatch');const cache=await caches.open(PREFIX+manifest.version);await cache.addAll(manifest.files.map(file=>new Request(file,{cache:'reload'})));self.skipWaiting()})()));
 self.addEventListener('activate',e=>e.waitUntil(self.clients.claim()));

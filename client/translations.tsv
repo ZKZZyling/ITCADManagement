@@ -376,18 +376,24 @@ DWG ใหม่ต้องมีตัวแปลงพร้อมใช้�
 ข้อความใกล้เคียง ไม่ได้ยืนยันว่าต่อกัน|附近文本，不代表已确认连接|Nearby text; connection not confirmed
 
 ขยายวัตถุที่เลือก|放大所选对象|Zoom selected object
-คำอธิบายจากข้อความต้นฉบับ	Explanation of source terminology	原文术语说明
-หลักฐานการจัดหมวด	Classification evidence	分类依据
-กรอบข้อความสำคัญ	Important text boxes	重要文字框
-รายการคำอธิบาย	Drawing text inventory	图纸文字清单
-จัดหมวดเป็นข้อมูลตรวจทาน ยังไม่รับรองอุปกรณ์หรือความเชื่อมต่อ	Candidate categories for review; equipment and connectivity are not certified	分类仅供审阅；设备及连接尚未认证
-ตรวจชื่อแผ่นกับหัวเรื่องในแบบก่อนใช้งาน	Compare the sheet name with extracted drawing titles before use	使用前核对图纸名称与提取的标题
-ค้นหาคำอธิบาย	Search drawing explanations	搜索图纸说明
-สรุปหมวดวัตถุ ไม่ใช่จำนวนอุปกรณ์	Object category summary, not equipment quantities	对象分类汇总，并非设备数量
-เน้นทั้งกลุ่ม	Highlight source group	突出整个源对象组
-ยกเลิกเน้นกลุ่ม	Clear group highlight	取消组高亮
-กลุ่มต้นฉบับ	Source object group	源对象组
-ส่วนย่อย ไม่ใช่จำนวนอุปกรณ์	parts, not equipment quantities	子对象，并非设备数量
-พื้นหลัง / กรอบแบบ	Background / drawing frames	背景 / 图框
-กลุ่ม block ที่พบ	Native block groups	发现的原始块组
-ข้อความต้นฉบับในพื้นที่	Source text in this region	此区域的原始文字
+คำอธิบายจากข้อความต้นฉบับ|原文术语说明|Explanation of source terminology
+หลักฐานการจัดหมวด|分类依据|Classification evidence
+กรอบข้อความสำคัญ|重要文字框|Important text boxes
+รายการคำอธิบาย|图纸文字清单|Drawing text inventory
+จัดหมวดเป็นข้อมูลตรวจทาน ยังไม่รับรองอุปกรณ์หรือความเชื่อมต่อ|分类仅供审阅；设备及连接尚未认证|Candidate categories for review; equipment and connectivity are not certified
+ตรวจชื่อแผ่นกับหัวเรื่องในแบบก่อนใช้งาน|使用前核对图纸名称与提取的标题|Compare the sheet name with extracted drawing titles before use
+ค้นหาคำอธิบาย|搜索图纸说明|Search drawing explanations
+สรุปหมวดวัตถุ ไม่ใช่จำนวนอุปกรณ์|对象分类汇总，并非设备数量|Object category summary, not equipment quantities
+เน้นทั้งกลุ่ม|突出整个源对象组|Highlight source group
+ยกเลิกเน้นกลุ่ม|取消组高亮|Clear group highlight
+กลุ่มต้นฉบับ|源对象组|Source object group
+ส่วนย่อย ไม่ใช่จำนวนอุปกรณ์|子对象，并非设备数量|parts, not equipment quantities
+พื้นหลัง / กรอบแบบ|背景 / 图框|Background / drawing frames
+กลุ่ม block ที่พบ|发现的原始块组|Native block groups
+ข้อความต้นฉบับในพื้นที่|此区域的原始文字|Source text in this region
+
+เริ่มตรงนี้ | 从这里开始 | Start here
+ตัวเลือกการมองเห็น | 显示选项 | Display options
+ลองโหลดภาพอีกครั้ง | 重新加载图纸图像 | Retry drawing image
+
+ปิดรายการเลือกงาน|关闭工作选择列表|Close work picker

@@ -23,3 +23,23 @@
 .drawing-inventory{position:absolute;inset:8px;z-index:8;background:white;border:1px solid #a5bec9;border-radius:10px;padding:14px;overflow:auto;max-width:580px;box-shadow:0 5px 22px #203b4920}.drawing-inventory>button{display:block;min-height:44px;width:100%;text-align:left;border-bottom:1px solid #dce6eb;padding:10px}.drawing-inventory small{display:block;color:#617787;font-size:12px}.drawing-inventory b{overflow-wrap:anywhere}.object-evidence .badge{font-size:12px}
 
 .drawing-inventory input{width:100%;min-height:44px;padding:8px;border:1px solid #b6cbd6;border-radius:6px}.drawing-inventory summary{cursor:pointer;padding:12px 0}
+
+/* Progressive disclosure: secondary controls never consume the entire drawing. */
+.drawing-options{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.drawing-filters [hidden]{display:none!important}
+.drawing-filters .filter-toggle{background:#edf5f7;color:#176e80}
+.drawing-filters .filter-toggle[aria-expanded="true"]{border-color:#16849a;background:#e0eff2}
+.app>header .soft:hover,.drawing-filters button:hover{background:#e3eff2}
+.app>header a{text-decoration:none}
+.app>header .start-guide{border-color:#a6cbd4;color:#126c80}
+.reference-feedback{padding:20px;display:grid;gap:12px;justify-items:start;font-size:14px}
+.reference-feedback button{border:1px solid #aac6ce;border-radius:8px;padding:10px 16px;min-height:44px}
+@media(max-width:1000px){.app>header{justify-content:flex-start;gap:8px}.app>header .brand{margin-right:auto}.app>header .assistant-header{display:none}.drawing-filters{max-height:150px;overflow:auto}.drawing-filters>small{flex-basis:100%}.drawing-options{width:100%}.view-bar>div{overflow-x:auto;max-width:100%;flex-wrap:nowrap!important}.view-bar>div>button{flex-shrink:0}.drawing-area>.action-hint{font-size:12px}.app{overflow-y:auto}.app>.body{flex:1 0 340px;min-height:340px!important}.app.focus-mode>.body{flex:1;min-height:0!important}.focus-mode .drawing-area{overflow-y:auto}.focus-mode .canvas-stage{flex:1 0 180px}.focus-mode .view-bar>span{flex-basis:auto}.focus-mode .view-bar>div{width:auto}}
+@media(prefers-reduced-motion:reduce){.app *, .field-assistant *{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+
+.raster-feedback{position:absolute;z-index:12;top:14px;left:50%;transform:translateX(-50%);background:#fff2df;border:1px solid #dfb979;border-radius:10px;padding:8px;box-shadow:0 4px 18px #243c4820}.raster-feedback button{min-height:44px;padding:8px 16px}
+
+.picker-heading{display:flex;justify-content:space-between;align-items:center;flex:none;gap:8px;margin-bottom:8px}.picker-heading p{margin:0}.picker-heading button{min-width:44px;min-height:44px}.left>.picker-heading{flex-shrink:0}
+@media(max-width:1000px){.app:not(.focus-mode)>.body{flex-basis:460px;min-height:460px!important}.app:not(.focus-mode) .canvas-stage{min-height:240px!important}}
+
+.render-progress{position:absolute;top:16px;left:50%;transform:translateX(-50%);z-index:10;pointer-events:none;padding:10px 16px;border:1px solid #b7d3db;border-radius:22px;background:#fff;color:#1b7283;font-size:13px;box-shadow:0 3px 14px #24465318}

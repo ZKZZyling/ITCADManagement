@@ -4,10 +4,11 @@ import {t} from './locale.mjs';import {WorkspaceHelp,guides} from './WorkspaceHe
 
 function Clip(){return <svg viewBox="0 0 64 76" aria-hidden="true"><path d="M45 24V52c0 13-25 16-25 1V18C20 3 51 3 51 20v31c0 24-39 23-39 1V25" fill="none" stroke="currentColor" strokeWidth="6" strokeLinecap="round"/><path d="M45 24V51c0 7-12 8-12 0V24" fill="none" stroke="currentColor" strokeWidth="5" strokeLinecap="round"/><ellipse cx="27" cy="27" rx="7" ry="9" fill="white"/><ellipse cx="43" cy="27" rx="7" ry="9" fill="white"/><circle cx="29" cy="29" r="2.5" fill="#163744"/><circle cx="41" cy="29" r="2.5" fill="#163744"/><path d="M29 42q7 6 13-1" fill="none" stroke="#163744" strokeWidth="2.5" strokeLinecap="round"/></svg>}
 
-export function FieldAssistant({mode,state={},staticMode=false,open:controlled,onOpenChange,avoidRight=false,onNavigate}){
+export function FieldAssistant({mode,state={},staticMode=false,open:controlled,onOpenChange,avoidRight=false,onNavigate,contextKey}){
  const [localOpen,setLocalOpen]=useState(false),[focus,setFocus]=useState(''),[located,setLocated]=useState(false),[guide,setGuide]=useState(false);
  const open=controlled??localOpen,panel=useRef(null),launcher=useRef(null),highlight=useRef(null),frames=useRef([]);
  const setOpen=value=>{onOpenChange?onOpenChange(value):setLocalOpen(value)};
+ useEffect(()=>{setFocus('')},[contextKey]);
  const advice=adviceFor(mode,state,focus);
  function clearHighlight(){frames.current.forEach(cancelAnimationFrame);frames.current=[];highlight.current?.classList.remove('assistant-target');highlight.current=null;setLocated(false)}
  useEffect(()=>{const focusIn=e=>{if(e.target.closest?.('.field-assistant'))return;const context=e.target.closest?.('[data-assist]')?.getAttribute('data-assist');if(context)setFocus(context)};document.addEventListener('focusin',focusIn);document.addEventListener('pointerup',focusIn);return()=>{document.removeEventListener('focusin',focusIn);document.removeEventListener('pointerup',focusIn)}},[]);

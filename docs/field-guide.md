@@ -57,3 +57,13 @@ A native-supplement review revision can restore solid HATCH areas (including hol
 The restoration tool writes a separate private package, keeps the old package and existing object IDs, validates source hashes and reports exactly which regions were restored. Activate through the local analysis verification gate. Other regions and previously prepared offline snapshots are not silently claimed to be repaired. Pattern hatches currently show boundaries; native fonts, line types/weights, wipeouts, proxy objects, cross-sheet associations and engineering acceptance require further verification. A fresh full extraction uses the `review-v3-native-primitives` dataset so records from older primitive sequences remain isolated. Bounded region restoration preserves the existing dataset only when all original identities are retained.
 
 The drawing inventory also includes native block groups with no standalone caption. Search the group name or localized system explanation, select the group, then highlight and zoom its members in the prepared region. Names and counts describe source CAD structure, not approved installed devices.
+
+## Simplified field workspace
+
+Use **Start here** to open the three-step guide whenever needed. Choose a sheet, locate a source-backed inspection point, then inspect and save. The contextual assistant can open a closed work picker or inspector and highlight its checklist; it never fills answers or approves work for you.
+
+**More tools** contains management, offline inspection, IT-ERP readiness and administration. **Display options** reveals exact-layer filtering, isolation and text-box settings. Collapsing options preserves their values; the dot beside the options button indicates an active layer or isolation filter. Group highlighting and selection zoom appear after an object is selected. Close the work picker to recover drawing space.
+
+On narrow or short displays, the workspace scrolls instead of shrinking the drawing away. Use **Fullscreen** for focused drawing review. Interface labels support Thai, Simplified Chinese and English; source drawing text stays unchanged.
+
+Temporary network errors and HTTP 429/503 responses trigger at most two raster retries. After failure, use **Retry drawing image** without reloading the application or discarding drafts. Reference-image failures have a separate retry button. Changing the viewport cancels obsolete requests, and late images cannot replace the latest view. Server-rendered/reference images still need a connection; prepare an offline pack before departure.

@@ -1491,6 +1491,82 @@
     "zh-CN": "放大所选对象",
     "en": "Zoom selected object"
   },
+  "คำอธิบายจากข้อความต้นฉบับ": {
+    "zh-CN": "原文术语说明",
+    "en": "Explanation of source terminology"
+  },
+  "หลักฐานการจัดหมวด": {
+    "zh-CN": "分类依据",
+    "en": "Classification evidence"
+  },
+  "กรอบข้อความสำคัญ": {
+    "zh-CN": "重要文字框",
+    "en": "Important text boxes"
+  },
+  "รายการคำอธิบาย": {
+    "zh-CN": "图纸文字清单",
+    "en": "Drawing text inventory"
+  },
+  "จัดหมวดเป็นข้อมูลตรวจทาน ยังไม่รับรองอุปกรณ์หรือความเชื่อมต่อ": {
+    "zh-CN": "分类仅供审阅；设备及连接尚未认证",
+    "en": "Candidate categories for review; equipment and connectivity are not certified"
+  },
+  "ตรวจชื่อแผ่นกับหัวเรื่องในแบบก่อนใช้งาน": {
+    "zh-CN": "使用前核对图纸名称与提取的标题",
+    "en": "Compare the sheet name with extracted drawing titles before use"
+  },
+  "ค้นหาคำอธิบาย": {
+    "zh-CN": "搜索图纸说明",
+    "en": "Search drawing explanations"
+  },
+  "สรุปหมวดวัตถุ ไม่ใช่จำนวนอุปกรณ์": {
+    "zh-CN": "对象分类汇总，并非设备数量",
+    "en": "Object category summary, not equipment quantities"
+  },
+  "เน้นทั้งกลุ่ม": {
+    "zh-CN": "突出整个源对象组",
+    "en": "Highlight source group"
+  },
+  "ยกเลิกเน้นกลุ่ม": {
+    "zh-CN": "取消组高亮",
+    "en": "Clear group highlight"
+  },
+  "กลุ่มต้นฉบับ": {
+    "zh-CN": "源对象组",
+    "en": "Source object group"
+  },
+  "ส่วนย่อย ไม่ใช่จำนวนอุปกรณ์": {
+    "zh-CN": "子对象，并非设备数量",
+    "en": "parts, not equipment quantities"
+  },
+  "พื้นหลัง / กรอบแบบ": {
+    "zh-CN": "背景 / 图框",
+    "en": "Background / drawing frames"
+  },
+  "กลุ่ม block ที่พบ": {
+    "zh-CN": "发现的原始块组",
+    "en": "Native block groups"
+  },
+  "ข้อความต้นฉบับในพื้นที่": {
+    "zh-CN": "此区域的原始文字",
+    "en": "Source text in this region"
+  },
+  "เริ่มตรงนี้": {
+    "zh-CN": "从这里开始",
+    "en": "Start here"
+  },
+  "ตัวเลือกการมองเห็น": {
+    "zh-CN": "显示选项",
+    "en": "Display options"
+  },
+  "ลองโหลดภาพอีกครั้ง": {
+    "zh-CN": "重新加载图纸图像",
+    "en": "Retry drawing image"
+  },
+  "ปิดรายการเลือกงาน": {
+    "zh-CN": "关闭工作选择列表",
+    "en": "Close work picker"
+  },
   "เลือกแผ่นที่จะนำไปตรวจ แล้วเตรียมชุดออฟไลน์": {
     "zh-CN": "选择现场检查图纸，然后准备离线包",
     "en": "Select field sheets, then prepare the offline pack"
@@ -1586,65 +1662,5 @@
   "กลับภาพแบบ": {
     "zh-CN": "返回图纸",
     "en": "Back to drawing"
-  },
-  "คำอธิบายจากข้อความต้นฉบับ": {
-    "en": "Explanation of source terminology",
-    "zh-CN": "原文术语说明"
-  },
-  "หลักฐานการจัดหมวด": {
-    "en": "Classification evidence",
-    "zh-CN": "分类依据"
-  },
-  "กรอบข้อความสำคัญ": {
-    "en": "Important text boxes",
-    "zh-CN": "重要文字框"
-  },
-  "รายการคำอธิบาย": {
-    "en": "Drawing text inventory",
-    "zh-CN": "图纸文字清单"
-  },
-  "จัดหมวดเป็นข้อมูลตรวจทาน ยังไม่รับรองอุปกรณ์หรือความเชื่อมต่อ": {
-    "en": "Candidate categories for review; equipment and connectivity are not certified",
-    "zh-CN": "分类仅供审阅；设备及连接尚未认证"
-  },
-  "ตรวจชื่อแผ่นกับหัวเรื่องในแบบก่อนใช้งาน": {
-    "en": "Compare the sheet name with extracted drawing titles before use",
-    "zh-CN": "使用前核对图纸名称与提取的标题"
-  },
-  "ค้นหาคำอธิบาย": {
-    "en": "Search drawing explanations",
-    "zh-CN": "搜索图纸说明"
-  },
-  "สรุปหมวดวัตถุ ไม่ใช่จำนวนอุปกรณ์": {
-    "en": "Object category summary, not equipment quantities",
-    "zh-CN": "对象分类汇总，并非设备数量"
-  },
-  "เน้นทั้งกลุ่ม": {
-    "en": "Highlight source group",
-    "zh-CN": "突出整个源对象组"
-  },
-  "ยกเลิกเน้นกลุ่ม": {
-    "en": "Clear group highlight",
-    "zh-CN": "取消组高亮"
-  },
-  "กลุ่มต้นฉบับ": {
-    "en": "Source object group",
-    "zh-CN": "源对象组"
-  },
-  "ส่วนย่อย ไม่ใช่จำนวนอุปกรณ์": {
-    "en": "parts, not equipment quantities",
-    "zh-CN": "子对象，并非设备数量"
-  },
-  "พื้นหลัง / กรอบแบบ": {
-    "en": "Background / drawing frames",
-    "zh-CN": "背景 / 图框"
-  },
-  "กลุ่ม block ที่พบ": {
-    "en": "Native block groups",
-    "zh-CN": "发现的原始块组"
-  },
-  "ข้อความต้นฉบับในพื้นที่": {
-    "en": "Source text in this region",
-    "zh-CN": "此区域的原始文字"
   }
 }
