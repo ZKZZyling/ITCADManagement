@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Added explicitly configured open access for deployments that authorize anonymous viewing and record writes, while retaining paired access as the default and preserving origin/input/engineering gates. Open-mode links contain no pairing or viewer codes.
+- Corrected free-tunnel hostname rotation recovery: register the latest logged domain before health checks, keep a watcher for direct starts, and refresh unchanged-link health.
+- Added paired-deployment recovery with verified cookie persistence, invitation paste, hash-change handling and separate network/origin/token errors. Unauthorized responses no longer masquerade as a cached online workspace.
+- Fixed a reference-view resize callback after its scroll container unmounts. Documented Thailand-first device/network requirements and bounded testing from China.
+
 - Simplified the field workspace with reachable three-step onboarding, expandable display options, and secondary workspace links under More tools. Added a work-picker close action, selected-control semantics, reduced-motion support and scrollable short-screen layouts.
 - Connected contextual guidance to hidden search and inspection panels, including checklist highlighting and focus; reset outdated guidance when the sheet or selection changes.
 - Added bounded transient raster retries, explicit image retry actions, stale-result disposal and request cancellation. Resizing now renders the latest viewport state rather than a captured earlier sheet or mode.

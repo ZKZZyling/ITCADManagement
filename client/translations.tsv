@@ -397,3 +397,25 @@ DWG ใหม่ต้องมีตัวแปลงพร้อมใช้�
 ลองโหลดภาพอีกครั้ง | 重新加载图纸图像 | Retry drawing image
 
 ปิดรายการเลือกงาน|关闭工作选择列表|Close work picker
+
+เชื่อมต่ออุปกรณ์|连接设备|Connect this device
+เครื่องนี้ยังไม่มีสิทธิ์เข้าเว็บนี้ วางลิงก์เชิญล่าสุดเพื่อจับคู่ ไม่ต้องล็อกอิน ChatGPT|此设备尚未获得此网站的访问权限。请粘贴最新邀请链接进行配对，无需登录 ChatGPT|This browser is not paired with this site. Paste the latest invitation; no ChatGPT sign-in is required
+วางลิงก์เชิญฉบับเต็มที่มี #pair= หรือรหัสจับคู่ 48 ตัว|请粘贴包含 #pair= 的完整邀请链接，或输入48位配对码|Paste the full invitation containing #pair= or the 48-character pairing code
+รหัสจับคู่ไม่ถูกต้อง ขอลิงก์เชิญล่าสุดจากผู้ดูแลเครื่องเซิร์ฟเวอร์|配对码无效。请向服务器管理员索取最新邀请链接|Invalid pairing code. Request the latest invitation from the server operator
+ลิงก์หรือช่องทางไม่ตรงกับเว็บนี้ เปิดลิงก์ล่าสุดทั้งลิงก์ หากยังผิดพลาดให้ผู้ดูแลตรวจ Tunnel|链接或访问通道与此网站不匹配。请打开最新完整链接；如仍失败，请管理员检查隧道|The invitation or access route does not match this site. Open the latest complete link; ask the operator to check the tunnel if it still fails
+เซิร์ฟเวอร์รับรหัสแล้ว แต่ Chrome ยังไม่ส่งสิทธิ์กลับ เปิดใน Chrome โดยตรงและอนุญาตคุกกี้ของเว็บนี้|服务器已接受配对码，但浏览器未返回会话凭证。请直接在 Chrome 中打开并允许此网站的 Cookie|The server accepted the code, but the browser did not return the session cookie. Open directly in Chrome and allow cookies for this site
+ติดต่อเซิร์ฟเวอร์ไม่ได้ ตรวจอินเทอร์เน็ตและใช้ลิงก์ล่าสุด ไม่ต้องเปลี่ยน DNS หรือ VPN อัตโนมัติ|无法连接服务器。请检查网络并使用最新链接，不要自动更改 DNS 或 VPN|Cannot reach the server. Check connectivity and use the latest link; do not automatically change DNS or VPN
+เซิร์ฟเวอร์หรือลิงก์ชั่วคราวยังไม่พร้อม ลองอีกครั้งหรือขอลิงก์ล่าสุด|服务器或临时链接尚未就绪。请重试或索取最新链接|The server or temporary link is not ready. Retry or request the latest link
+ลิงก์เชิญหรือรหัสจับคู่|邀请链接或配对码|Invitation link or pairing code
+วางลิงก์ที่ผู้ดูแลส่งให้|粘贴管理员提供的链接|Paste the invitation from the operator
+กำลังตรวจสิทธิ์…|正在验证访问权限…|Verifying access…
+จับคู่และเปิดแบบ|配对并打开图纸|Pair and open drawings
+ตรวจการเชื่อมต่ออีกครั้ง|重新检查连接|Check connection again
+ต้องใช้เครือข่ายแบบไหน?|需要什么网络？|Which network do I need?
+ลิงก์ HTTPS ภายนอกใช้เน็ตทั่วไปได้ ไม่ต้องอยู่ Wi-Fi โรงงาน และแอพไม่บังคับ VPN หรือซิมไทย|外部 HTTPS 链接可通过普通互联网访问，无需连接工厂 Wi-Fi；应用不要求 VPN 或泰国 SIM 卡|The external HTTPS link uses ordinary internet. Factory Wi-Fi, a VPN and a Thai SIM are not application requirements
+การเข้าถึงจากจีนขึ้นกับเครือข่ายและบริการ Tunnel ที่ใช้ หากเข้าไม่ได้ให้ใช้เครือข่ายที่บริษัทอนุญาต|在中国能否访问取决于当前网络和隧道服务。无法访问时，请使用公司允许的网络|Access from China depends on the network and tunnel service. If unavailable, use a network approved by your company
+ชื่อเว็บชั่วคราวอาจเปลี่ยน สิทธิ์และข้อมูลออฟไลน์อยู่แยกตามชื่อเว็บ เก็บสำรองก่อนเปลี่ยนลิงก์|临时域名可能变更，访问会话和离线数据按网站分别保存。更换链接前请备份|Temporary hostnames can change. Sessions and offline data are separate for each site; back up before changing links
+ไม่ล้างผลตรวจเดิม รหัสไม่ถูกเก็บในโปรแกรม ผู้มีลิงก์มีสิทธิ์เข้าถึงงาน ส่งให้เฉพาะผู้ได้รับอนุญาต|不会清除已有检查结果；应用不会持久保存配对码。持有链接者可访问工作区，请仅向授权人员分享|Existing inspection data is retained; the app does not persist the pairing code. Share access links only with authorized team members
+
+โหมดเปิดโดยตรง ไม่ต้องจับคู่หรือล็อกอิน ผู้ที่เปิดลิงก์นี้สามารถดูแบบและบันทึกงานได้|直接访问模式，无需配对或登录。任何能打开此链接的人都可以查看图纸并保存检查记录|Open access: no pairing or sign-in. Anyone who opens this link can view drawings and save inspection records
+ลิงก์ LAN ใช้ได้เมื่อเซิร์ฟเวอร์เปิดรับเครือข่ายภายใน ลิงก์ภายนอกไม่ต้องอยู่ Wi-Fi เดียวกัน|LAN 链接仅在服务器允许局域网连接时可用；外部链接无需连接同一个 Wi-Fi|LAN links require a LAN-enabled server; external links do not require the same Wi-Fi

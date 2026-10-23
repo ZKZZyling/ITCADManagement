@@ -1,4 +1,5 @@
 import test from 'node:test';
+import http from 'node:http';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import os from 'node:os';
@@ -24,6 +25,15 @@ test('isolated server: pairing, source, preview, save/retry/conflict, photos and
   let ready=false;for(let n=0;n<100;n++){try{ready=(await fetch(base+'/api/health')).ok;if(ready)break}catch{};await new Promise(r=>setTimeout(r,50))}assert.ok(ready,logs);
   assert.equal((await fetch(base+'/api/drawing')).status,401);assert.equal((await fetch(base+'/%63ad/drawing.json')).status,401);
   const token=fs.readFileSync(path.join(temp,'data/pair-token'),'utf8');
+  // Trusted tunnel canonical HTTPS must accept real browser Origin and issue Secure cookies.
+  const tunnelOrigin='https://pair-test.lhr.life';
+  fs.writeFileSync(path.join(temp,'data/team-origin'),tunnelOrigin,'utf8');
+  const tunnelPair=origin=>new Promise((resolve,reject)=>{const req=http.request(base+'/api/pair',{method:'POST',headers:{host:'pair-test.lhr.life',origin,'x-forwarded-proto':'http','content-type':'application/json'}},res=>{res.resume();res.on('end',()=>resolve(res))});req.on('error',reject);req.end(JSON.stringify({token}))});
+  const tunneled=await tunnelPair(tunnelOrigin);
+  assert.equal(tunneled.statusCode,200);assert.match(tunneled.headers['set-cookie'][0],/; Secure/);assert.match(tunneled.headers['set-cookie'][0],/SameSite=Strict/);
+  const denied=await tunnelPair('https://unrelated.invalid');
+  assert.equal(denied.statusCode,403);assert.equal(denied.headers['set-cookie'],undefined);
+  assert.equal((await fetch(base+'/api/pair',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({token:'0'.repeat(48)})})).status,401);
   const pair=await fetch(base+'/api/pair',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({token})});assert.equal(pair.status,200);assert.match(pair.headers.get('set-cookie'),/HttpOnly/);const cookie=pair.headers.get('set-cookie').split(';')[0],headers={cookie,'content-type':'application/json'};
   const drawing=await (await fetch(base+'/api/drawing',{headers})).json();assert.equal(drawing.datasetId,'synthetic-demo-v1');assert.equal(drawing.fieldReadiness.status,'blocked');
   const info=await (await fetch(base+'/api/scene-info?view=demo-plan',{headers})).json();assert.equal(info.total,5);

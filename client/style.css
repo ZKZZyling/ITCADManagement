@@ -43,3 +43,8 @@
 @media(max-width:1000px){.app:not(.focus-mode)>.body{flex-basis:460px;min-height:460px!important}.app:not(.focus-mode) .canvas-stage{min-height:240px!important}}
 
 .render-progress{position:absolute;top:16px;left:50%;transform:translateX(-50%);z-index:10;pointer-events:none;padding:10px 16px;border:1px solid #b7d3db;border-radius:22px;background:#fff;color:#1b7283;font-size:13px;box-shadow:0 3px 14px #24465318}
+
+.pairing-panel{width:min(500px,calc(100vw - 28px));padding:20px;border:1px solid #bdd6de;border-radius:16px;background:#fff;box-shadow:0 8px 30px #234a6018;text-align:left;color:#27424e;font-size:14px;line-height:1.6}
+.pairing-heading{display:flex;align-items:center;justify-content:space-between;gap:12px}.pairing-heading h2{font-size:19px;margin:0}.pairing-heading button{min-width:44px;min-height:44px;font-size:24px}.pairing-panel form{display:grid;gap:10px;margin:16px 0}.pairing-panel input{width:100%;min-height:48px;padding:10px;border:1px solid #b2ccd6;border-radius:8px}.pairing-panel>button,.pairing-panel summary,.pairing-panel>a{min-height:44px;padding:10px;display:block}.pairing-panel summary{cursor:pointer}.pairing-panel .pairing-note{font-size:12px;color:#617883}.pairing-panel a{color:#116e85}.pairing-overlay{position:absolute;inset:0;z-index:90;background:#1d3e5355;overflow:auto;display:grid;place-items:start center;padding:16px}.loading{height:100dvh;overflow:auto;padding:20px 0;align-content:start}.loading>p{max-width:500px;padding:0 16px;overflow-wrap:anywhere}
+
+.connection-recovery{max-width:500px;padding:20px;display:grid;gap:16px;justify-items:center;text-align:center}

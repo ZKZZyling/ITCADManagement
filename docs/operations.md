@@ -32,3 +32,13 @@ Token rotation is manual: stop server, securely replace/remove `data/pair-token`
 ## Version 0.5.0 workspace extension
 
 See [analysis, management, trial, and static hosting](workspaces.md) for the implemented endpoints, launcher/configuration changes, separate data stores, validation, and remaining limits.
+
+## Optional open access
+
+The server defaults to paired access. An operator who intentionally wants every reachable visitor to view drawings and write inspection/planning records can set `ITFIELD_ACCESS_MODE=open` or create `data/access-mode` containing exactly `open`, then restart the local web server. The environment setting takes precedence. Invalid server settings fail startup. Remove the file or set `paired` and restart to restore session enforcement.
+
+Open mode is not an internal network boundary: an internet tunnel makes the workspace publicly reachable to anyone who obtains or discovers its address. It does not provide individual identity, read-only viewer separation or an approval log tied to a person. Use only with explicit data-owner authorization and the intended network exposure. Pairing and viewer credentials are omitted from open-mode discovery links. Existing data, source scope, input validation, same-origin write checks and engineering acceptance gates are preserved.
+
+The separate analysis admin service retains its own authentication and loopback boundary. This setting does not expose that service or change VPN, DNS, ERP, routing or firewall configuration.
+
+Free localhost.run hostnames may rotate while SSH remains connected. Both initial startup and the background watcher select the latest exact provider hostname from local logs. The watcher registers the new origin before probing, updates the shortcut and refreshes unchanged-link health periodically. A link shared earlier cannot redirect to a replacement hostname after the provider withdraws it. Get the current link from the controller; a stable company domain requires a separate deployment decision.
