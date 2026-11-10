@@ -123,3 +123,9 @@ Initial clean public source release, isolated from legacy private drawing/hostin
 - Documentation, MIT license, dependency notices and CI/release scan.
 
 Engineering acceptance, full DWG editing, per-user permissions and real-device field validation are pending, not announced as completed features.
+
+### Guided field workspace
+- Replace the overflowing three-column control wall with a bounded map, four-step selection sidebar and explicit tools/details drawers.
+- Keep source units and view notices visible; preserve all advanced tools, evidence gates and browser-local journals.
+- Separate source text landmarks from known zone membership, exclude pending fragments from room choices, and clear stale downstream selection on floor/area changes.
+- Keep unassigned inventory selectable on the chosen floor without implicit navigation.
