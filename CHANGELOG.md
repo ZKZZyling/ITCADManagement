@@ -3,6 +3,7 @@
 ## Unreleased — revision-safe physical equipment field records
 
 - Displayed source-backed per-view restrictions prominently on the plan and printed field sheet; view bounds do not imply usable installation floor area.
+- Preserved intermediate image revisions through explicit predecessor contracts and rejected stale-tab confirmation when the dataset ID changes even if the DWG hash is unchanged.
 
 - Added explicitly identified physical units under inventory rows, with independent positions, dimensions, photos and evidence; ambiguous inventory quantities never create units automatically.
 - Added actual-field evidence gates for site checks and installation records, explicit process/utility/control relationship evidence, and a printable bilingual field sheet with plan context and source traceability.

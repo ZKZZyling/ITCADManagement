@@ -37,7 +37,7 @@ test('real local server reports changed revision with409 and never serves archiv
  const {root,live,data}=fixture(),file=path.join(root,'dataset.json');fs.writeFileSync(file,JSON.stringify(data));
  const app=await startMachinePlanner({datasetPath:file,port:42983});t.after(()=>app.close());
  const get=p=>fetch('http://127.0.0.1:42983'+p,{headers:{Connection:'close'}});
- assert.equal((await get('/api/machine-source-status')).status,200);
+ const status=await get('/api/machine-source-status');assert.equal(status.status,200);const verified=await status.json();assert.equal(verified.datasetId,data.id);assert.equal(verified.sourceSHA256,data.sourceSHA256);assert.notEqual(verified.datasetId,'same-dwg-other-image-revision');
  assert.equal((await get('/api/machine-file?path=archive.dwg')).status,404);
  fs.writeFileSync(live,'drawing-v2-longer');
  const result=await get('/api/machines');assert.equal(result.status,409);assert.equal((await result.json()).code,'SOURCE_REVISION_CHANGED');

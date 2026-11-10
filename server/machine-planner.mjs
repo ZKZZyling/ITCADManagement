@@ -68,7 +68,7 @@ export async function startMachinePlanner({datasetPath,port=42881,onStop=()=>{}}
   if(!['GET','HEAD'].includes(req.method))return json(res,405,{error:'Method not allowed'});
   if(p.startsWith('/api/')&&!authenticated)return json(res,403,{error:'Pair this device first'});
   if(p==='/api/machine-source-status'){
-   try{return json(res,200,await sourceGuard.checkLive());}
+   try{return json(res,200,{...await sourceGuard.checkLive(),datasetId:dataset.id});}
    catch(e){return json(res,409,{error:e.message,code:'SOURCE_REVISION_CHANGED'});}
   }
   if(p==='/api/machines'){

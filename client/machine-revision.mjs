@@ -1,5 +1,8 @@
 export function previewRevisionMigration(old,d){
- const prev=d.previousRevision;
+ const contracts=[d.previousRevision,...(Array.isArray(d.previousRevisions)?d.previousRevisions:[])].filter(Boolean);
+ const matches=contracts.filter(previous=>previous.identity===old?.identity);
+ if(matches.length!==1)throw Error('ไม่พบข้อมูลเทียบรุ่นที่ตรงและไม่ซ้ำกับไฟล์สำรอง');
+ const prev=matches[0];
  if(!prev||prev.coordinateFrameVerified!==true||old?.identity!==prev.identity||old.schemaVersion!==1)throw Error('ยังไม่มีหลักฐานกรอบพิกัดรุ่นเก่าที่ตรวจแล้ว จึงไม่ย้ายจุดอัตโนมัติ');
  const candidates=[],skipped=[];
  for(const [id,p] of Object.entries(old.placements||{})){
