@@ -129,3 +129,7 @@ Engineering acceptance, full DWG editing, per-user permissions and real-device f
 - Keep source units and view notices visible; preserve all advanced tools, evidence gates and browser-local journals.
 - Separate source text landmarks from known zone membership, exclude pending fragments from room choices, and clear stale downstream selection on floor/area changes.
 - Keep unassigned inventory selectable on the chosen floor without implicit navigation.
+
+### ### Windows launcher test capture
+- Capture PowerShell launcher output in per-invocation files so background-server pipe handles do not outlive the launcher test. Preserve the 25-second deadline, concurrent suite execution and all functional assertions.
+- Register cleanup before startup and reject process errors in both success and package-refusal cases. A controlled pipe-versus-file capture comparison reproduced and isolated the original CI timeout.

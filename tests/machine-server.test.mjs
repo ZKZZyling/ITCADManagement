@@ -18,7 +18,7 @@ let child;
 async function launch(){child=spawn(process.execPath,[path.join(repo,'server/machine-planner.mjs')],{env:{...process.env,ITCAD_MACHINE_DATASET:source,ITCAD_MACHINE_PORT:String(port)},stdio:'ignore'});for(let i=0;i<60;i++){try{const r=await request(base+'/api/machine-server/status');if(r.ok)return r.json();}catch{}await sleep(50);}throw Error('startup timeout');}
 async function post(url,body,management,origin=new URL(url).origin,extra={}){return request(url,{method:'POST',headers:{Origin:origin,'Content-Type':'application/json',...(management?{'X-Machine-Management':management}:{}),...extra},body:JSON.stringify(body)});}
 test('actual private server: source identity, management authorization, LAN pairing and file guards',async t=>{
- const status=await launch();t.after(()=>{child.kill();});
+ t.after(()=>{child?.kill();});const status=await launch();
  assert.equal(status.identity.sourceSHA256,'a'.repeat(64));assert.match(status.identity.datasetSHA256,/^[a-f0-9]{64}$/);
  assert.equal((await request(base+'/api/machines')).status,200);
  assert.equal((await post(base+'/api/machine-server/stop',{},null)).status,403);
@@ -47,12 +47,22 @@ test('actual private server: source identity, management authorization, LAN pair
 });
 test('Windows launcher starts/reuses/restarts/stops only owned process; stale package restarts', {skip:process.platform!=='win32'}, async t=>{
  const script=path.join(repo,'scripts/machine-launcher.ps1'),lp=42982,lb=`http://127.0.0.1:${lp}`;
- const run=action=>spawnSync('powershell.exe',['-NoProfile','-File',script,'-Dataset',source,'-Action',action,'-Port',String(lp),'-NoBrowser'],{encoding:'utf8',timeout:25000});
- let r=run('Start');assert.equal(r.status,0,r.stderr);const h1=await(await request(lb+'/api/machine-server/health')).json();
+ let invocation=0;
+ const run=(action,dataset=source)=>{
+  // A deliberately long-lived server can retain Windows pipe handles after
+  // PowerShell exits. Capture regular files so the deadline observes the launcher.
+  const prefix=path.join(fixture,`launcher-${++invocation}`),outPath=prefix+'.stdout',errPath=prefix+'.stderr';
+  const out=fs.openSync(outPath,'w'),err=fs.openSync(errPath,'w');let result;
+  try{result=spawnSync('powershell.exe',['-NoProfile','-File',script,'-Dataset',dataset,'-Action',action,'-Port',String(lp),'-NoBrowser'],{encoding:'utf8',timeout:25000,stdio:['ignore',out,err]});}
+  finally{fs.closeSync(out);fs.closeSync(err);}
+  result.stdout=fs.readFileSync(outPath,'utf8');result.stderr=fs.readFileSync(errPath,'utf8');
+  assert.ifError(result.error);return result;
+ };
  t.after(async()=>{run('Stop');});
+ let r=run('Start');assert.ifError(r.error);assert.equal(r.status,0,r.stderr);const h1=await(await request(lb+'/api/machine-server/health')).json();
  r=run('Start');assert.equal(r.status,0,r.stderr);assert.match(r.stdout,/Reused/);const h2=await(await request(lb+'/api/machine-server/health')).json();assert.equal(h1.instanceId,h2.instanceId);
  const other=fs.mkdtempSync(path.join(os.tmpdir(),'machine-other-')),otherSource=path.join(other,'dataset.json');fs.copyFileSync(source,otherSource);fs.writeFileSync(path.join(other,'plan.png'),'different-image');
- const mismatch=spawnSync('powershell.exe',['-NoProfile','-File',script,'-Dataset',otherSource,'-Action','Start','-Port',String(lp),'-NoBrowser'],{encoding:'utf8',timeout:25000});assert.notEqual(mismatch.status,0);assert.equal((await(await request(lb+'/api/machine-server/health')).json()).instanceId,h2.instanceId);
+ const mismatch=run('Start',otherSource);assert.notEqual(mismatch.status,0);assert.equal((await(await request(lb+'/api/machine-server/health')).json()).instanceId,h2.instanceId);
  const d=JSON.parse(fs.readFileSync(source));d.title='Updated package';fs.writeFileSync(source,JSON.stringify(d));r=run('Start');assert.equal(r.status,0,r.stderr);const h3=await(await request(lb+'/api/machine-server/health')).json();assert.notEqual(h3.instanceId,h2.instanceId);assert.notEqual(h3.identity.datasetSHA256,h2.identity.datasetSHA256);
  r=run('Restart');assert.equal(r.status,0,r.stderr);const h4=await(await request(lb+'/api/machine-server/health')).json();assert.notEqual(h4.instanceId,h3.instanceId);
  r=run('Stop');assert.equal(r.status,0,r.stderr);await assert.rejects(request(lb+'/api/machine-server/health'));
