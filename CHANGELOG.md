@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased — field dimensions and photo evidence
+
+- Added explicit image-bound scale baselines, measured distances, user-entered centred footprints, clearance and rectangular area estimates without automatic CAD unit assumptions.
+- Added serial/grid/datum references and evidence-based transport checks, keeping grouped inventory records distinct from individual physical units.
+- Migrated machine journals to atomic IndexedDB storage and added captioned machine/site photo copies, full preview and recoverable bounded exports.
+
 ## Unreleased — machine placement planner
 
 - Added a Thai-first private machine planner with floor/line search, approximate zone references, source photos, and proposed process relationships.

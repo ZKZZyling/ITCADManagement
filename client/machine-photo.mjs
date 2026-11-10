@@ -1,0 +1,4 @@
+export async function prepareMachinePhoto(file){
+ if(!['image/jpeg','image/png','image/webp'].includes(file.type)||file.size>20*1024*1024)throw Error('ใช้ JPG / PNG / WebP ไม่เกิน 20 MB ต่อภาพ');
+ const bitmap=await createImageBitmap(file);try{const scale=Math.min(1,2400/Math.max(bitmap.width,bitmap.height)),canvas=document.createElement('canvas');canvas.width=Math.max(1,Math.round(bitmap.width*scale));canvas.height=Math.max(1,Math.round(bitmap.height*scale));const ctx=canvas.getContext('2d');ctx.fillStyle='#ffffff';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.drawImage(bitmap,0,0,canvas.width,canvas.height);const dataUrl=canvas.toDataURL('image/jpeg',.85);if(dataUrl.length>5600000)throw Error('สำเนาภาพยังใหญ่เกิน 4 MB กรุณาลดขนาดก่อนแนบ');return {dataUrl,width:canvas.width,height:canvas.height,originalName:file.name,originalBytes:file.size,storedCopy:true};}finally{bitmap.close()}
+}
