@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased — drawing dimensions and manual laser positioning
+
+- Restored source DIMENSION labels/lines as a readable, selectable image-bound overlay, with source evidence and separate anisotropic drawing-reference scales.
+- Added persistent visible units/ruler and separate planned set-out versus actual manual laser workflows with named A/B, explicit side and horizontal-plane/instrument-reference checks.
+- Added operator/date provenance, saved survey annotations, source-bound import validation and stale-baseline warnings without moving prior points.
+
 ## Unreleased — field navigation and device connection
 
 - Added building/floor/view/zone navigation, explicit view-scoped inventory, line row counts and deliberate cross-floor reference navigation.

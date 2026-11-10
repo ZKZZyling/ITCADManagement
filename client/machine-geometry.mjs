@@ -1,10 +1,11 @@
 export const pixelDistance=(a,b,v)=>Math.hypot((b[0]-a[0])*v.width,(b[1]-a[1])*v.height);
 export function calibration(a,b,mm,v,by,source){const pixels=pixelDistance(a,b,v);if(!Number.isFinite(mm)||mm<=0||pixels<2||!by.trim()||!source.trim()||v.kind==='schematic-reference')throw Error('ระบุระยะจริง ผู้วัด และหลักฐาน พร้อมเลือกสองจุดที่ต่างกัน');return {a,b,mm,by,source,imageSHA256:v.sourceImageSHA256||null,imageWidth:v.width,imageHeight:v.height,drawableHeight:v.drawableHeight||v.height,mmPerPixel:mm/pixels,at:new Date().toISOString()};}
-export const measuredDistance=(a,b,v,c)=>c?pixelDistance(a,b,v)*c.mmPerPixel:null;
+export const measuredDistance=(a,b,v,c)=>c?Math.hypot((b[0]-a[0])*v.width*(c.mmPerPixelX||c.mmPerPixel),(b[1]-a[1])*v.height*(c.mmPerPixelY||c.mmPerPixel)):null;
+export function sourceScaleForView(view){const s=view.sourceScaleCandidate;if(s?.status!=='consistent-source-dimensions'||s.imageSHA256!==view.sourceImageSHA256||![s.xMmPerImagePixel,s.yMmPerImagePixel].every(n=>Number.isFinite(n)&&n>0))return null;return {mmPerPixelX:s.xMmPerImagePixel,mmPerPixelY:s.yMmPerImagePixel,source:'drawing-dimensions',evidence:s};}
 export function footprint(anchor,f,v,c,clearance=false){
  if(!anchor||!f?.lengthMm||!f?.widthMm||!c)return null;
- const extra=clearance?(f.clearanceMm||0):0, l=(f.lengthMm+2*extra)/c.mmPerPixel/2,w=(f.widthMm+2*extra)/c.mmPerPixel/2, t=f.rotationDeg*Math.PI/180;
- return [[-l,-w],[l,-w],[l,w],[-l,w]].map(([x,y])=>[anchor[0]+(x*Math.cos(t)-y*Math.sin(t))/v.width,anchor[1]+(x*Math.sin(t)+y*Math.cos(t))/v.height]);
+ const extra=clearance?(f.clearanceMm||0):0, l=(f.lengthMm+2*extra)/2,w=(f.widthMm+2*extra)/2, t=f.rotationDeg*Math.PI/180;
+ return [[-l,-w],[l,-w],[l,w],[-l,w]].map(([x,y])=>[anchor[0]+(x*Math.cos(t)-y*Math.sin(t))/(c.mmPerPixelX||c.mmPerPixel)/v.width,anchor[1]+(x*Math.sin(t)+y*Math.cos(t))/(c.mmPerPixelY||c.mmPerPixel)/v.height]);
 }
 export function validateExtras(j,d){
  for(const [id,c] of Object.entries(j.calibrations||{})){const v=d.views.find(v=>v.id===id);if(!v||!Array.isArray(c.a)||!Array.isArray(c.b)||![...c.a,...c.b].every(n=>Number.isFinite(n)&&n>=0&&n<=1)||c.a.length!==2||c.b.length!==2||Math.max(c.a[1],c.b[1])>(v.drawableHeight||v.height)/v.height)throw Error('จุดสอบเทียบไม่ถูกต้อง');const expected=calibration(c.a,c.b,c.mm,v,c.by||'',c.source||'');if(c.imageSHA256!==(v.sourceImageSHA256||null)||c.imageWidth!==v.width||c.imageHeight!==v.height||c.drawableHeight!==(v.drawableHeight||v.height)||!Number.isFinite(c.mmPerPixel)||Math.abs(expected.mmPerPixel-c.mmPerPixel)>1e-8)throw Error('อัตราส่วนสอบเทียบไม่ตรงกับหลักฐาน');}
