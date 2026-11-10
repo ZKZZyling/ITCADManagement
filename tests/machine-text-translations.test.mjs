@@ -1,5 +1,5 @@
 import test from 'node:test';import assert from 'node:assert/strict';
-import {textTranslationsForView,searchTranslations,translationNumberCheck,prohibitionReviewNeeded,translationLabels,translationCatalogue,globalTextTranslations,compactTranslationLabel} from '../client/machine-text-translations.mjs';
+import {textTranslationsForView,searchTranslations,translationNumberCheck,prohibitionReviewNeeded,translationLabels,translationCatalogue,globalTextTranslations,compactTranslationLabel,mapTranslationText,fitTranslationLabel} from '../client/machine-text-translations.mjs';
 const data={id:'synthetic',sourceSHA256:'dwg',sourceDXFSHA256:'dxf',views:[{id:'floor',sourceImageSHA256:'png',width:1000,height:1200,drawableHeight:1000}],drawingTextTranslations:[]};
 const row={id:'t1',viewId:'floor',sourceHandle:'AB1',sourceZh:'测试区 750 mm',textTh:'พื้นที่ทดสอบ 750 mm',status:'draft-reviewed',category:'label',anchor:[.3,.4],evidence:{sourceSHA256:'dwg',sourceDXFSHA256:'dxf',sourceImageSHA256:'png'}};
 test('source and image mismatches or invalid anchors reject visibly without changing dataset',()=>{for(const bad of [{evidence:{...row.evidence,sourceSHA256:'old'}},{evidence:{...row.evidence,sourceImageSHA256:'old-image'}},{evidence:{...row.evidence,sourceDXFSHA256:'old-dxf'}},{anchor:[.3,.95]},{anchor:[NaN,.3]}]){const result=textTranslationsForView({...data,drawingTextTranslations:[{...row,...bad}]},'floor');assert.equal(result.rows.length,0);assert.equal(result.rejected.length,1);assert.equal(result.total,1);}const before=JSON.stringify(row);assert.equal(textTranslationsForView({...data,drawingTextTranslations:[row]},'floor').rows.length,1);assert.equal(JSON.stringify(row),before);});
@@ -18,3 +18,31 @@ test('dictionary occurrence must carry identical Chinese source and cannot overr
 test('compact map labels visibly mark truncation and preserve combining graphemes',()=>{assert.equal(compactTranslationLabel('A\u0301B',1),'A\u0301…');assert.equal(compactTranslationLabel('👨‍👩‍👧‍👦X',1),'👨‍👩‍👧‍👦…');assert.equal(compactTranslationLabel('750 mm',30),'750 mm');assert.equal(compactTranslationLabel('  A   B  ',30),'A B');});
 
 test('global note reference cannot override glossary translation or review status',()=>{const entry={id:'g',sourceZh:'通道',textTh:'ทางเดิน',status:'draft-reviewed',reviewRequired:true},ref={entryId:'g',sourceHandle:'N',sourceScope:'Specific scope',locationStatus:'outside-current-views',textTh:'คำอื่น',status:'pending',evidence:{sourceSHA256:'dwg',sourceDXFSHA256:'dxf'}};const row=globalTextTranslations({...data,drawingTextTranslationEntries:[entry],drawingTextGlobalReferences:[ref]}).rows[0];assert.equal(row.textTh,'ทางเดิน');assert.equal(row.effectiveStatus,'draft-reviewed');assert.equal(row.reviewRequired,true);});
+
+
+test('on-plan pending explanations never masquerade as reviewed Thai labels',()=>{
+ assert.equal(mapTranslationText({sourceZh:'4女',textTh:'สมมติความหมายอธิบาย',effectiveStatus:'pending'}),'รอยืนยัน · 4女');
+ assert.equal(mapTranslationText({sourceZh:'750',textTh:'700',effectiveStatus:'needs-review'}),'รอยืนยัน · 750');
+ assert.equal(mapTranslationText({sourceZh:'通道',textTh:'ทางเดิน',effectiveStatus:'draft-reviewed'}),'ทางเดิน');
+});
+test('screen rectangles prevent adjacent-grid overlap, preserve source anchors, and keep edge labels within plan viewport',()=>{
+ const rows=[{id:'a',anchor:[.23,.3],effectiveStatus:'draft-reviewed'},{id:'b',anchor:[.24,.31],effectiveStatus:'draft-reviewed'},{id:'edge',anchor:[.99,.99],effectiveStatus:'draft-reviewed'}],before=JSON.stringify(rows),box={x:0,y:0,w:1,h:1};
+ const labels=translationLabels(rows,null,box,800,.5,'viewport');assert.deepEqual(labels.rows.map(r=>r.id),['a','edge']);assert.equal(labels.visibleCount,3);
+ for(const r of labels.rows){const b=r.labelBox,x=r.anchor[0]*800+b.x,y=r.anchor[1]*400+b.y;assert.ok(x>=0&&x+b.width<=800);assert.ok(y>=0&&y+b.height<=400)}assert.equal(JSON.stringify(rows),before);
+});
+test('reviewed labels win dense space and card boxes never cover known machine pins',()=>{
+ const pending={id:'p',anchor:[.2,.2],effectiveStatus:'pending'},reviewed={id:'r',anchor:[.21,.21],effectiveStatus:'draft-reviewed'},box={x:0,y:0,w:1,h:1};
+ assert.equal(translationLabels([pending,reviewed],null,box,800,1,'viewport').rows[0].id,'r');
+ assert.equal(translationLabels([reviewed],reviewed,box,800,1,'viewport',[[.3,.21]]).rows.length,0);
+ assert.equal(translationLabels([reviewed],reviewed,box,800,1,'viewport',[[.8,.8]]).rows.length,1);
+});
+
+
+test('pixel fit shortens wide glyphs with a visible ellipsis and preserves combining clusters',()=>{
+ const measure=s=>[...new Intl.Segmenter('th',{granularity:'grapheme'}).segment(s)].reduce((n,{segment})=>n+(segment==='W'?20:segment==='…'?8:10),0);
+ assert.equal(fitTranslationLabel('WWWW',49,measure),'WW…');
+ assert.equal(fitTranslationLabel('A\u0301BC',18,measure),'A\u0301…');
+ assert.equal(fitTranslationLabel('750 mm',100,measure),'750 mm');
+ assert.equal(fitTranslationLabel('WWWW',5,measure),'');
+ assert.ok(measure(fitTranslationLabel('WWWWWW',49,measure))<=49);
+});

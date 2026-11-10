@@ -28,7 +28,24 @@ export function searchTranslations(rows,query='',category='all',status='all'){
 }
 export function viewportTranslations(rows,box){return rows.filter(row=>row.anchor[0]>=box.x&&row.anchor[0]<=box.x+box.w&&row.anchor[1]>=box.y&&row.anchor[1]<=box.y+box.h);}
 
-export function translationLabels(rows,selected,box,scale,aspect,mode){const visible=viewportTranslations(rows,box);const selectedVisible=selected&&visible.some(row=>row.id===selected.id)?selected:null;if(mode==='selected')return {rows:selectedVisible?[selectedVisible]:[],visibleCount:visible.length};const occupied=new Set(),result=[];for(const row of [...(selectedVisible?[selectedVisible]:[]),...visible.filter(r=>r.id!==selected?.id)]){const key=Math.floor((row.anchor[0]-box.x)*scale/190)+':'+Math.floor((row.anchor[1]-box.y)*aspect*scale/65);if(!occupied.has(key)){occupied.add(key);result.push(row)}}return {rows:result,visibleCount:visible.length};}
+export function mapTranslationText(row){return row.effectiveStatus==='pending'||row.effectiveStatus==='needs-review'?'รอยืนยัน · '+row.sourceZh:(row.textTh||'รอแปล · '+row.sourceZh);}
+export function translationLabels(rows,selected,box,scale,aspect,mode,pinAnchors=[]){
+ const visible=viewportTranslations(rows,box),selectedVisible=selected&&visible.some(r=>r.id===selected.id)?selected:null;
+ if(!(scale>0&&aspect>0))return {rows:[],visibleCount:visible.length};
+ const width=Math.min(190,Math.max(100,box.w*scale-16)),height=34,occupied=[],result=[];
+ const candidates=mode==='selected'?(selectedVisible?[selectedVisible]:[]):[...(selectedVisible?[selectedVisible]:[]),...visible.filter(r=>r.id!==selected?.id).sort((a,b)=>Number(a.effectiveStatus==='pending')-Number(b.effectiveStatus==='pending'))];
+ for(const row of candidates){
+  const ax=(row.anchor[0]-box.x)*scale,ay=(row.anchor[1]-box.y)*aspect*scale;
+  let left=ax+24;if(left+width>box.w*scale-5)left=ax-width-24;
+  left=Math.max(5,Math.min(box.w*scale-width-5,left));const top=Math.max(5,Math.min(box.h*aspect*scale-height-5,ay-28));
+  const rect={left,top,right:left+width,bottom:top+height};
+  const overlaps=occupied.some(r=>rect.left<r.right+8&&rect.right>r.left-8&&rect.top<r.bottom+8&&rect.bottom>r.top-8);
+  const blocksPin=pinAnchors.some(p=>{const x=(p[0]-box.x)*scale,y=(p[1]-box.y)*aspect*scale;return x+18>rect.left&&x-18<rect.right&&y+18>rect.top&&y-18<rect.bottom});
+  if(blocksPin||overlaps&&row.id!==selectedVisible?.id)continue;
+  occupied.push(rect);result.push({...row,labelBox:{x:left-ax,y:top-ay,width,height}});
+ }
+ return {rows:result,visibleCount:visible.length};
+}
 
 function decorateTranslation(row){
   const pending=row.status==='pending'||!nonempty(row.textTh),numbersMatch=pending?null:translationNumberCheck(row.sourceZh,row.textTh,Array.isArray(row.numeralMappings)?row.numeralMappings:[]),prohibitionNeedsReview=!pending&&prohibitionReviewNeeded(row.sourceZh,row.textTh);
@@ -49,3 +66,15 @@ export function globalTextTranslations(dataset){
 }
 
 export function compactTranslationLabel(value,limit=26){const text=String(value||'').replace(/\s+/g,' ').trim();const parts=typeof Intl.Segmenter==='function'?[...new Intl.Segmenter('th',{granularity:'grapheme'}).segment(text)].map(p=>p.segment):Array.from(text).reduce((out,c)=>{if(/\p{Mark}/u.test(c)&&out.length)out[out.length-1]+=c;else out.push(c);return out},[]);return parts.length>limit?parts.slice(0,limit).join('')+'…':text;}
+
+// Pixel fitting uses the rendered font, not a fixed count of Thai characters.
+export function fitTranslationLabel(value,maxWidth,measure){
+ const text=String(value||'').replace(/\s+/g,' ').trim();
+ if(!Number.isFinite(maxWidth)||maxWidth<=0||typeof measure!=='function')return '';
+ if(measure(text)<=maxWidth)return text;
+ const parts=typeof Intl.Segmenter==='function'?[...new Intl.Segmenter('th',{granularity:'grapheme'}).segment(text)].map(p=>p.segment):Array.from(text).reduce((out,c)=>{if(/\p{Mark}/u.test(c)&&out.length)out[out.length-1]+=c;else out.push(c);return out},[]);
+ if(measure('…')>maxWidth)return '';
+ let low=0,high=parts.length;
+ while(low<high){const mid=Math.ceil((low+high)/2);if(measure(parts.slice(0,mid).join('')+'…')<=maxWidth)low=mid;else high=mid-1;}
+ return parts.slice(0,low).join('')+'…';
+}
