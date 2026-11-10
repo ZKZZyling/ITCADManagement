@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased — prepared Chinese–Thai drawing text
+
+- Added source/image-bound bilingual text search, selected or density-managed map labels, explicit pending/review states, source handles and printable source details.
+- Added shared-glossary all-view search and separate unpinned source notes, retaining complete occurrence counts and explicit view navigation.
+- Flagged changed numeric tokens and potentially omitted prohibitions for review without changing source drawings, equipment points or journal identity; no automatic external translation is performed.
+
+
 ## Unreleased — revision-safe physical equipment field records
 
 - Displayed source-backed per-view restrictions prominently on the plan and printed field sheet; view bounds do not imply usable installation floor area.
