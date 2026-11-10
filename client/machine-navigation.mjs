@@ -8,7 +8,7 @@ export function viewLocation(view){
 }
 export function filterMachines(assets,placement,{viewId,line='',query='',scope='view',unresolved=false,zoneId=''}={}){
  const normalized=s=>String(s||'').toLowerCase().replace(/\s+/g,'');
- return assets.filter(a=>{const p=placement(a);return (!line||a.line===line)&&(!unresolved||!p)&&(unresolved||scope==='all'||p?.viewId===viewId)&&(!zoneId||p?.zoneId===zoneId)&&(!query||normalized([a.id,a.nameTh,a.nameZh,a.model,a.line].join(' ')).includes(normalized(query)))});
+ return assets.filter(a=>{const p=placement(a);return (!line||a.line===line)&&(!unresolved||!p)&&(unresolved||scope==='all'||p?.viewId===viewId)&&(!zoneId||p?.zoneId===zoneId)&&(!query||normalized([a.id,a.nameTh,a.nameZh,a.model,a.line,a.serial,a.instanceLabel].join(' ')).includes(normalized(query)))});
 }
 export function lineSummary(assets,placement,viewId){return [...new Set(assets.map(a=>a.line).filter(Boolean))].map(line=>{const rows=assets.filter(a=>a.line===line);return {line,total:rows.length,here:rows.filter(a=>placement(a)?.viewId===viewId).length,unplaced:rows.filter(a=>!placement(a)).length}})}
 export function pointInZone(point,polygon){if(!Array.isArray(polygon)||polygon.length<3)return false;let inside=false;for(let i=0,j=polygon.length-1;i<polygon.length;j=i++){const a=polygon[j],b=polygon[i],cross=(point[0]-a[0])*(b[1]-a[1])-(point[1]-a[1])*(b[0]-a[0]);if(Math.abs(cross)<1e-10&&point[0]>=Math.min(a[0],b[0])-1e-10&&point[0]<=Math.max(a[0],b[0])+1e-10&&point[1]>=Math.min(a[1],b[1])-1e-10&&point[1]<=Math.max(a[1],b[1])+1e-10)return true;if((a[1]>point[1])!==(b[1]>point[1])&&point[0]<(b[0]-a[0])*(point[1]-a[1])/(b[1]-a[1])+a[0])inside=!inside}return inside}

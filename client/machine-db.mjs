@@ -1,3 +1,5 @@
 const open=()=>new Promise((resolve,reject)=>{const r=indexedDB.open('itcad-machine-field-v2',1);r.onupgradeneeded=()=>r.result.createObjectStore('journals');r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error);});
 export async function readMachineJournal(key){const db=await open();return new Promise((resolve,reject)=>{const tx=db.transaction('journals'),r=tx.objectStore('journals').get(key);r.onsuccess=()=>resolve(r.result);tx.onerror=()=>reject(tx.error);tx.oncomplete=()=>db.close()})}
 export async function writeMachineJournal(key,value){const db=await open();return new Promise((resolve,reject)=>{const tx=db.transaction('journals','readwrite');tx.objectStore('journals').put(value,key);tx.oncomplete=()=>{db.close();resolve(value)};tx.onerror=()=>{db.close();reject(tx.error)};tx.onabort=()=>{db.close();reject(tx.error||Error('Storage transaction aborted'))}})}
+
+export async function listMachineJournals(){const db=await open();return new Promise((resolve,reject)=>{const tx=db.transaction('journals'),r=tx.objectStore('journals').getAllKeys();r.onsuccess=()=>resolve(r.result);tx.onerror=()=>reject(tx.error);tx.oncomplete=()=>db.close()})}

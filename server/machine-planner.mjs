@@ -5,6 +5,7 @@ import path from 'node:path';
 import os from 'node:os';
 import crypto from 'node:crypto';
 import {fileURLToPath} from 'node:url';
+import {createMachineSourceGuard} from './machine-source-guard.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const loopback=a=>['127.0.0.1','::1','::ffff:127.0.0.1'].includes(a);
 export function isPrivateIPv4(a){const p=a?.split('.').map(Number);return p?.length===4&&p.every(n=>Number.isInteger(n)&&n>=0&&n<=255)&&(p[0]===10||p[0]===172&&p[1]>=16&&p[1]<=31||p[0]===192&&p[1]===168);}
@@ -20,7 +21,8 @@ export async function startMachinePlanner({datasetPath,port=42881,onStop=()=>{}}
  if(!Number.isInteger(port)||port<1024||port>65535)throw Error('Invalid port');
  const identity={sourceSHA256:dataset.sourceSHA256,workbookSHA256:dataset.sourceWorkbookSHA256||'',datasetId:dataset.id||'',datasetSHA256:digest(bytes),packagePathSHA256:digest(source.toLowerCase())};
  for(const [env,key] of [['ITCAD_MACHINE_EXPECT_SOURCE','sourceSHA256'],['ITCAD_MACHINE_EXPECT_WORKBOOK','workbookSHA256']])if(process.env[env]&&process.env[env]!==identity[key])throw Error('Dataset identity mismatch');
- const serverCodeSHA256=digest(fs.readFileSync(fileURLToPath(import.meta.url)));
+ const serverCodeSHA256=digest(Buffer.concat([fs.readFileSync(fileURLToPath(import.meta.url)),fs.readFileSync(new URL('./machine-source-guard.mjs',import.meta.url))]));
+ const sourceGuard=await createMachineSourceGuard(dataset,packageRoot);
  const instanceId=crypto.randomUUID(),managementToken=token(),sessions=new Map(),attempts=new Map();
  let lanServer=null,lanAddress=null,pairToken=null,pairExpiry=0,closing=false;
  const allowed=new Set(dataset.views.map(v=>v.image).concat(dataset.assets.flatMap(a=>(a.photos||[]).map(p=>typeof p==='string'?p:p.path)),(dataset.foundationReferences||[]).flatMap(r=>[r.file,r.preview]).filter(Boolean)));
@@ -65,11 +67,19 @@ export async function startMachinePlanner({datasetPath,port=42881,onStop=()=>{}}
   }
   if(!['GET','HEAD'].includes(req.method))return json(res,405,{error:'Method not allowed'});
   if(p.startsWith('/api/')&&!authenticated)return json(res,403,{error:'Pair this device first'});
-  if(p==='/api/machines')return json(res,200,dataset);
+  if(p==='/api/machine-source-status'){
+   try{return json(res,200,await sourceGuard.checkLive());}
+   catch(e){return json(res,409,{error:e.message,code:'SOURCE_REVISION_CHANGED'});}
+  }
+  if(p==='/api/machines'){
+   try{return json(res,200,{...dataset,sourceVerificationStatus:await sourceGuard.checkLive()});}
+   catch(e){return json(res,409,{error:e.message,code:'SOURCE_REVISION_CHANGED'});}
+  }
   let file;
   if(p==='/api/machine-file'){
    const name=u.searchParams.get('path');if(!allowed.has(name))return json(res,404,{error:'File not listed'});
    file=fs.realpathSync(path.resolve(packageRoot,name));const rel=path.relative(packageRoot,file);if(!rel||rel.startsWith('..'+path.sep)||path.isAbsolute(rel))return json(res,404,{error:'File outside package'});
+   try{await sourceGuard.checkLive();await sourceGuard.assertFile(file,name);}catch(e){return json(res,409,{error:e.message,code:'SOURCE_REVISION_CHANGED'});}
   }else if(p==='/'||p==='/field/machines.html')file=path.join(root,'public/field/machines.html');
   else if(/^\/field\/assets\/[a-zA-Z0-9_.-]+$/.test(p))file=path.join(root,'public',p);
   else return json(res,404,{error:'Not found'});

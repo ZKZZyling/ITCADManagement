@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased — revision-safe physical equipment field records
+
+- Added explicitly identified physical units under inventory rows, with independent positions, dimensions, photos and evidence; ambiguous inventory quantities never create units automatically.
+- Added actual-field evidence gates for site checks and installation records, explicit process/utility/control relationship evidence, and a printable bilingual field sheet with plan context and source traceability.
+- Added old-revision backup access and explicit reviewed-coordinate migration to proposed points only; old confirmations, image calibrations and survey baselines are not reused.
+- Added source-status checks before field confirmation and periodic revision status. Archived/live source and image integrity gates preserve offline archived-source operation while rejecting changed sources; byte integrity does not establish geometry or engineering acceptance.
+
+
 ## Unreleased — drawing dimensions and manual laser positioning
 
 - Restored source DIMENSION labels/lines as a readable, selectable image-bound overlay, with source evidence and separate anisotropic drawing-reference scales.

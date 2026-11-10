@@ -23,9 +23,24 @@ $pathHasher=[Security.Cryptography.SHA256]::Create()
 $packagePathHash=([BitConverter]::ToString($pathHasher.ComputeHash([Text.Encoding]::UTF8.GetBytes($datasetPath.ToLowerInvariant())))).Replace('-','').ToLowerInvariant()
 $pathHasher.Dispose()
 $packageHash=(Get-FileHash -LiteralPath $datasetPath -Algorithm SHA256).Hash.ToLowerInvariant()
-$serverHash=(Get-FileHash -LiteralPath $serverPath -Algorithm SHA256).Hash.ToLowerInvariant()
+$codeHasher=[Security.Cryptography.SHA256]::Create()
+$codeBytes=[byte[]]([IO.File]::ReadAllBytes($serverPath)+[IO.File]::ReadAllBytes((Join-Path (Split-Path -Parent $serverPath) 'machine-source-guard.mjs')))
+$serverHash=([BitConverter]::ToString($codeHasher.ComputeHash($codeBytes))).Replace('-','').ToLowerInvariant()
+$codeHasher.Dispose()
 if($ExpectedSourceSHA256 -and $data.sourceSHA256 -cne $ExpectedSourceSHA256){throw 'Source identity mismatch; original package required.'}
 if($ExpectedWorkbookSHA256 -and $data.sourceWorkbookSHA256 -cne $ExpectedWorkbookSHA256){throw 'Workbook identity mismatch; original package required.'}
+if($Action -in @('Start','Restart') -and $data.sourceVerification){
+ $archive=$data.sourceVerification.archivedDrawing
+ if(!$archive -or $archive.sha256 -cne $data.sourceSHA256 -or [IO.Path]::IsPathRooted($archive.path)){throw 'Invalid archived drawing revision binding.'}
+ $archivePath=[IO.Path]::GetFullPath((Join-Path $packageRoot $archive.path))
+ if(!$archivePath.StartsWith($packageRoot.TrimEnd('\','/')+[IO.Path]::DirectorySeparatorChar,[StringComparison]::OrdinalIgnoreCase)){throw 'Archived drawing must stay within the private package.'}
+ if((Get-FileHash -LiteralPath $archivePath -Algorithm SHA256).Hash.ToLowerInvariant() -cne $data.sourceSHA256){throw 'Archived drawing changed; rebuild and review the package.'}
+ $live=$data.sourceVerification.liveDrawing
+ if($live){
+  if($live.sha256 -cne $data.sourceSHA256 -or ![IO.Path]::IsPathRooted($live.path)){throw 'Invalid live drawing revision binding.'}
+  if((Test-Path -LiteralPath $live.path) -and (Get-FileHash -LiteralPath $live.path -Algorithm SHA256).Hash.ToLowerInvariant() -cne $data.sourceSHA256){throw 'Source drawing changed. Review the new revision before field positioning.'}
+ }
+}
 $baseUrl="http://127.0.0.1:$Port"
 function Get-Health {
  try { Invoke-RestMethod -Uri "$baseUrl/api/machine-server/health" -TimeoutSec 2 } catch { $null }
