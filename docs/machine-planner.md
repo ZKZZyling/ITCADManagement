@@ -1,0 +1,11 @@
+# Private machine placement planner
+
+The machine planner is a page in ITCAD Management for discussing approximate installation areas with field technicians. It keeps source-derived room/zone anchors distinct from proposed manual points and explicitly confirmed field points. Process relationships use dashed lines and are not utility or control routing.
+
+Build with `npm run build`. Set `ITCAD_MACHINE_DATASET` to an external private `dataset.json`, then run `node server/machine-planner.mjs`. The default address is `http://127.0.0.1:42881/field/machines.html`. This dedicated adapter binds only loopback, rejects forwarded requests and foreign Host/Origin headers, and does not mount private data on the normal shared server. Do not tunnel it. Only allowlisted package images are served; package real paths cannot escape their root.
+
+The version 1 dataset contains `id`, `sourceSHA256`, `sourceWorkbookSHA256` (or `inventorySHA256`), `views` and `assets`. Views have `id`, `titleTh`, `titleZh`, `image`, `width`, `height`; image paths are relative to the external package. Assets have stable string `id`, `nameTh`, `nameZh`, `line`, `photos`, and optional `placement` with `viewId`, normalized full-image `anchor` and polygon `zone`. Empty placements stay unresolved. `connections` contain asset `from`/`to`, `label`, and evidence status. An anchor describing a shared room does not identify an individual machine footprint.
+
+Choose an inventory item, its drawing view, and **ระบุตำแหน่งบนแบบ**. Tap a point, add field reference notes and explicitly save. Field confirmation additionally requires a named reviewer and a field evidence note. Edits remain in browser local storage keyed to dataset, drawing and inventory identity. Export JSON before changing browser, computer or origin; import validates all points and historical entries before replacing anything. Undo restores the previous placement. Clearing browser storage can remove edits. This is preparation evidence, not engineering or installation approval.
+
+Coordinate, identity, persistence roundtrip and invalid import tests are in `tests/machine-model.test.mjs`. Desktop browser checks do not establish real tablet or physical-site acceptance.

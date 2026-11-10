@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased — machine placement planner
+
+- Added a Thai-first private machine planner with floor/line search, approximate zone references, source photos, and proposed process relationships.
+- Added explicit manual placement confirmation, named field verification, undo, source/workbook-bound local persistence and guarded JSON transfer.
+- Kept private datasets outside source and added a dedicated loopback-only adapter; schematic views cannot be used as installation placement surfaces.
+- Added coordinate, persistence, identity and private-adapter regression tests. Physical installation and tablet acceptance remain separate.
+
 ## Unreleased
 
 - Added explicitly configured open access for deployments that authorize anonymous viewing and record writes, while retaining paired access as the default and preserving origin/input/engineering gates. Open-mode links contain no pairing or viewer codes.
