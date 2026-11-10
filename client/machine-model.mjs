@@ -1,3 +1,4 @@
+import {pointInZone} from './machine-navigation.mjs';
 import {validateExtras} from './machine-geometry.mjs';
 export function pointInPlan(clientX, clientY, rect, viewBox, aspect=1) {
   const scale=Math.min(rect.width/viewBox.w,rect.height/(viewBox.h*aspect));
@@ -15,6 +16,7 @@ export function validateJournal(raw,d){
   for(const [id,p] of Object.entries(raw.placements)){
     if(!ids.has(id)||!views.has(p.viewId)||!Array.isArray(p.anchor)||p.anchor.length!==2||!p.anchor.every(n=>Number.isFinite(n)&&n>=0&&n<=1)||!['proposed','field-confirmed'].includes(p.status)||typeof p.note!=='string'||p.note.length>5000||typeof p.by!=='string'||(p.status==='field-confirmed'&&(!p.by.trim()||!p.note.trim())))throw Error('ข้อมูลตำแหน่งหรือผู้ยืนยันไม่ถูกต้อง');
     const view=d.views.find(v=>v.id===p.viewId);
+    if(p.zoneId){const zone=(d.zones||[]).find(z=>z.id===p.zoneId&&z.viewId===p.viewId);if(!zone||!pointInZone(p.anchor,zone.polygon))throw Error('โซนไม่ตรงกับภาพหรือตำแหน่งที่ระบุ');}
     if(view.kind==='schematic-reference'||(view.drawableHeight&&view.height&&p.anchor[1]>view.drawableHeight/view.height))throw Error('จุดติดตั้งต้องอยู่ในพื้นที่แปลน ไม่ใช่ผังระบบหรือคำอธิบายใต้ภาพ');
   }
   if(raw.history.length>10000)throw Error('ประวัติมีขนาดใหญ่เกินกำหนด');

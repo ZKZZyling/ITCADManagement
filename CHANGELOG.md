@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased — field navigation and device connection
+
+- Added building/floor/view/zone navigation, explicit view-scoped inventory, line row counts and deliberate cross-floor reference navigation.
+- Added phone Map/List/Details tabs and compact position/dimensions/process workflows with Thai-Chinese primary labels.
+- Added a local connection panel for owned-server status, opt-in paired LAN access and link copying; browser evidence remains local, without implicit synchronization.
+
 ## Unreleased — field dimensions and photo evidence
 
 - Added explicit image-bound scale baselines, measured distances, user-entered centred footprints, clearance and rectangular area estimates without automatic CAD unit assumptions.
