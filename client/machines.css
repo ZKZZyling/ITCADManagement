@@ -102,3 +102,8 @@
 
 
 .machine-app:not(.map-expanded) .raster-mismatch-alert{top:62px}
+
+/* V14 direct map gestures: no native image drag/autoscroll and no zoom-growing point disks. */
+.plan-canvas>svg{user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}.plan-canvas>svg image{-webkit-user-drag:none;user-select:none}.plan-canvas>svg.map-is-panning{cursor:grabbing}.plan-canvas.placing.center-placement>svg{cursor:grab}.plan-canvas.placing.center-placement>svg.map-is-panning{cursor:grabbing}.pin-hit-target{pointer-events:fill;stroke-width:0}.plan-pin text,.pin-selection-ring{pointer-events:none}
+
+.plan-pin:focus:not(:focus-visible),.plan-pin:focus-visible{outline:none}.pin-keyboard-ring{display:none;pointer-events:none}.plan-pin:focus-visible .pin-keyboard-ring{display:block}

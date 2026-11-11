@@ -132,3 +132,12 @@ The display panel offers an optional stronger-line filter (off initially) and se
 The app reads the loaded image's natural dimensions and compares them with dataset metadata. Mismatch or dimension-read failure leaves the image viewable but blocks coordinate picking, nudging and point saves. Sampling feedback uses SVG display scale, actual loaded pixels and devicePixelRatio: max(display width/source width, display height/source height) in physical screen pixels. Magnification beyond one screen pixel per image pixel may appear blurred or jagged; this is a presentation limit, not a declaration that geometry became less accurate. Details are available in the display panel. Zoom buttons disable at their existing bounds instead of appearing to work past the limit.
 
 These controls retain the existing source raster. Higher source detail requires a separately verified drawing/detail view or a genuine rerender with new image identity and calibration review; simple upscaling supplies no new drawing information.
+
+
+## Pointer behavior and unobstructed markers (v14)
+
+Mouse panning and point selection accept only the primary/left button. Middle/right clicks do not create field points or move the drawing; native middle autoscroll and image dragging are suppressed on the drawing. Pointer cancellation, lost capture and released-button movement clear temporary gesture state. Touch pinch remains supported. Wheel zoom follows the drawing point under the cursor (subject to source-bound clamping), while toolbar zoom stays centered; the wheel does not scroll the enclosing page.
+
+Pin bodies, selection/keyboard rings, draft crosshairs, measurement labels and overlay borders keep screen-relative sizes as the drawing zooms. Stored anchors, source image, polygon vertices and actual footprint dimensions are unchanged. Mouse focus on an SVG pin no longer relies on the browser's dark default outline; keyboard focus retains an explicit blue ring. Draft points use a thin crosshair and center dot rather than a growing filled disk.
+
+These fixes address reproduced non-primary-button actions and zoom-growing overlays. They do not establish the cause of an intermittent black circle reported outside a captured reproduction; native browser/OS cursor graphics may not appear in page screenshots.

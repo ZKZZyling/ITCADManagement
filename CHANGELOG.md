@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased — predictable map pointers and bounded overlays
+
+- Prevented non-primary mouse buttons from panning or placing points; cleaned up cancelled/lost pointer gestures and suppressed native image drag/middle autoscroll on the map.
+- Kept point markers, focus rings, measurement labels and overlay strokes screen-relative, preserving stored coordinates and footprint geometry.
+- Replaced browser mouse-focus outlines on map pins with an explicit keyboard-only ring, and anchored wheel zoom to the cursor without page scrolling.
+
+
 ## Unreleased — clearer drawing presentation and work-area context
 
 - Kept floor/area scope visible in expanded mode and added viewport-only fit-area/focus-point actions.
