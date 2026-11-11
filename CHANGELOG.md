@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased — clearer drawing presentation and work-area context
+
+- Kept floor/area scope visible in expanded mode and added viewport-only fit-area/focus-point actions.
+- Added reversible stronger-line display and reduced-label modes without altering source imagery or coordinates.
+- Verified loaded image dimensions for coordinate actions and exposed DPR-aware source-pixel sampling feedback; dimension mismatch blocks point operations.
+- Disabled zoom controls at their existing bounds and reduced reference-region fill opacity to preserve machinery linework.
+
+
 ## Unreleased — floor and work-area navigation on the expanded map
 
 - Added floor/area selection, searchable important locations and five display layers within expanded mode.

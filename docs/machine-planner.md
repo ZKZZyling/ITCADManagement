@@ -121,3 +121,14 @@ The drawer distinguishes physical-unit saved points, approximate inventory refer
 Layer switches expose physical units, inventory references, Thai/source labels, DWG dimensions and process relationships. Relationships remain connections for understanding, not approved routing for cables or pipes. Floor-specific restrictions remain visible in both the drawing and navigation drawer.
 
 Changing floor, area or selected item while a point draft or picked measurement references exist asks whether to discard them. Cancel retains the current view and all draft points. Confirm clears temporary point, measurement, laser and comparison context before navigation; saved records are unchanged. The same-current-item selection is guarded as well. Navigation, layer switches and focusing do not write the journal.
+
+
+## Drawing readability and area context (v13)
+
+The expanded header keeps the current drawing/floor and selected work area visible. An approximate polygon is labeled as a reference; a text-only landmark is explicitly a source-text point, not a room boundary. Fit-area and focus-selected-point buttons change only the viewport and preserve unsaved point drafts.
+
+The display panel offers an optional stronger-line filter (off initially) and selected-label-only mode. The filter applies a reversible gamma transfer to the displayed source image; it does not resample, rerender, overwrite or increase its resolution. Source dimensions, annotation overlays and stored coordinates are unchanged. Source-image text that already overlaps cannot be separated by this display filter.
+
+The app reads the loaded image's natural dimensions and compares them with dataset metadata. Mismatch or dimension-read failure leaves the image viewable but blocks coordinate picking, nudging and point saves. Sampling feedback uses SVG display scale, actual loaded pixels and devicePixelRatio: max(display width/source width, display height/source height) in physical screen pixels. Magnification beyond one screen pixel per image pixel may appear blurred or jagged; this is a presentation limit, not a declaration that geometry became less accurate. Details are available in the display panel. Zoom buttons disable at their existing bounds instead of appearing to work past the limit.
+
+These controls retain the existing source raster. Higher source detail requires a separately verified drawing/detail view or a genuine rerender with new image identity and calibration review; simple upscaling supplies no new drawing information.
