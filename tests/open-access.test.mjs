@@ -35,16 +35,23 @@ async function isolatedServer(mode, run) {
   delete env.ITFIELD_ACCESS_MODE;
   if (mode === 'env') env.ITFIELD_ACCESS_MODE = 'open';
   const child = spawn(process.execPath, ['server/local.mjs', '--itfield-port=' + port], { cwd: root, env, stdio: ['ignore', 'ignore', 'pipe'] });
-  child.stderr.resume();
+  let stderr = '', spawnError = null, lastHealth = 'not requested', attempts = 0;
+  child.stderr.setEncoding('utf8');
+  child.stderr.on('data', chunk => { stderr = (stderr + chunk).slice(-8192); });
+  child.on('error', error => { spawnError = error; });
+  const started = performance.now();
+  const diagnostics = () => JSON.stringify({ mode, elapsedMs: Math.round(performance.now() - started), attempts, pid: child.pid, exitCode: child.exitCode, signalCode: child.signalCode, spawnError: spawnError?.message, lastHealth, stderr });
   const base = 'http://127.0.0.1:' + port;
   try {
     let ready = false;
     for (let i = 0; i < 120; i++) {
-      if (child.exitCode !== null) throw new Error('Isolated access-mode server exited during startup');
-      try { ready = (await fetch(base + '/api/health')).ok; if (ready) break; } catch {}
+      attempts++;
+      if (spawnError || child.exitCode !== null) throw new Error('Isolated access-mode server exited during startup: ' + diagnostics());
+      try { const response = await fetch(base + '/api/health', { signal: AbortSignal.timeout(1000) }); lastHealth = 'HTTP ' + response.status; ready = response.ok; await response.arrayBuffer(); if (ready) break; } catch (error) { lastHealth = error.name + ': ' + error.message + (error.cause?.code ? ' [' + error.cause.code + ']' : ''); }
       await pause(25);
     }
-    assert.ok(ready, 'Isolated server must start');
+    assert.ok(ready, 'Isolated server must start: ' + diagnostics());
+    console.info('Isolated startup diagnostics: ' + diagnostics());
     await run({ base, data, drawing });
   } finally {
     if (child.exitCode === null) { const exit = once(child, 'exit'); child.kill(); await exit; }

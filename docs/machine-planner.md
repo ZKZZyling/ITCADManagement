@@ -75,3 +75,14 @@ The map has its own bounded viewport. Desktop inventory and details drawers scro
 ### Thai labels directly on the plan
 
 Prepared, source-bound Thai labels are enabled in the map viewport by default. The main map has an explicit Thai on/off button; switching it never replaces the original Chinese raster or changes coordinates. Label cards retain leader lines to exact source anchors, use screen-rectangle collision handling and avoid known machine pins. Counts state shown labels versus source occurrences in the current zoom; zooming and full-text search expose remaining prepared entries. This does not imply complete DWG translation. Pending or failed-review text shows Chinese with a review-needed marker rather than an explanatory Thai guess. Placement and measurement modes disable label pointer interception. Full Chinese/Thai text, status and provenance remain available by selecting a label.
+
+
+## Physical-unit field workflow (v9)
+
+1. Choose building/floor/area and an inventory reference. Select an existing identified unit or add one from its actual label/serial; inventory quantity does not automatically create equipment.
+2. Record the checked center datum and dimensions for that unit. Machine photos and site photos are separate from inherited inventory reference images. Establish the current A/B reference and calibration.
+3. Propose a point by touch or move the plan under the center crosshair. Optional nudging uses a user-entered millimetre step and the current scale. Normalized image coordinates and raster-derived distances are not survey accuracy claims. Cancel discards the unsaved draft only.
+4. Read expected AP/BP, enter actual measurements and explicitly select the observed side when looking from A toward B. Enter the responsible person's documented tolerance, applicable to both radial distance and reconstructed positional displacement; no passing value is supplied by default.
+5. Save a site check only when the model accepts current evidence. Installation additionally requires the current prior check, dimensions including height, rotation/source/checker and documented door, path, headroom and load reviews. Printed sheets use effective status and expose stale evidence and blockers.
+
+On short landscape screens the controls scroll in a side column while the map retains the remaining height. Rotation preserves the selected unit, view and current detail/map task. Core touch buttons are at least 44 CSS pixels; desktop browser viewport testing does not establish physical-device or construction acceptance.

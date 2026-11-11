@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased — physical-unit field positioning
+
+- Prioritize explicitly identified units, serial labels and separately classified unit/site photographs; inventory rows remain references.
+- Add expected/actual AP/BP comparisons, explicit observed side and center datum, documented tolerance, current-evidence status and printable blockers.
+- Provide center-crosshair capture, scale-based nudging and pinch zoom; preserve the active task across mobile rotation and use 44 px core controls with a height-aware landscape map.
+- Keep legacy records readable while requiring current model evidence before new site/installation confirmation.
+
+
 ## Unreleased — prepared Chinese–Thai drawing text
 
 - Added source/image-bound bilingual text search, selected or density-managed map labels, explicit pending/review states, source handles and printable source details.
