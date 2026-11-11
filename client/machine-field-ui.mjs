@@ -15,3 +15,5 @@ export function pinchViewBox(box,startDistance,distance){
 }
 
 export function localFieldDate(d=new Date()){return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-')}
+
+export function comparisonContext(d,j,id,p){return JSON.stringify({source:d.sourceSHA256,dataset:d.id,id,view:d.views?.find(v=>v.id===p?.viewId),point:p,baseline:j.surveyBaselines?.[p?.viewId],calibration:j.calibrations?.[p?.viewId],reference:j.machineDetails?.[id]?.reference})}

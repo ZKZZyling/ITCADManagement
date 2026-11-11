@@ -1,6 +1,7 @@
 import {validateFieldEvidence} from './machine-field-records.mjs';
 import {validateBaseline,measurePlanPoint} from './machine-survey.mjs';
 import {validateExtras} from './machine-geometry.mjs';
+import {areaReferenceEvidenceBlockers} from './machine-area-reference.mjs';
 
 const units={mm:1,cm:10,m:1000};
 const nonempty=v=>typeof v==='string'&&v.trim().length>0;
@@ -70,18 +71,21 @@ function installationReadiness(j,id){
 }
 
 export function createPositionVerification(d,j,id,p,evidence=p?.fieldEvidence){
- const assessment=siteInputs(d,j,id,p,evidence);if(assessment.blockers.length)throw Error(assessment.blockers.join(' · '));
+ const assessment=siteInputs(d,j,id,p,evidence);assessment.blockers.push(...areaReferenceEvidenceBlockers(d,j,id,p,evidence));if(assessment.blockers.length)throw Error(assessment.blockers.join(' · '));
  return {schemaVersion:1,binding:assessment.binding,evidenceSnapshot:copy(evidence),comparisons:assessment.comparisons,positionComparison:assessment.positionComparison,expectedSide:assessment.expectedSide,toleranceMm:assessment.toleranceMm};
 }
 
 export function confirmationAssessment(d,j,id,p=j.placements?.[id],evidence=p?.fieldEvidence){
  const input=siteInputs(d,j,id,p,evidence),readiness=installationReadiness(j,id);
+ input.blockers.push(...areaReferenceEvidenceBlockers(d,j,id,p,evidence));
+ const toleranceOnly=message=>/^ระยะ [AB]P ต่างจากเป้าหมายเกิน/.test(message)||message==='ตำแหน่งที่คำนวณจาก AP/BP จริงห่างจากเป้าหมายเกินค่าคลาดเคลื่อนที่ระบุ';
+ const canPreviewPosition=!!input.positionComparison&&input.blockers.every(toleranceOnly);
  const wanted=input.blockers.length?null:{schemaVersion:1,binding:input.binding,evidenceSnapshot:copy(evidence),comparisons:input.comparisons,positionComparison:input.positionComparison,expectedSide:input.expectedSide,toleranceMm:input.toleranceMm};
  const verificationCurrent=!!wanted&&same(p?.positionVerification,wanted),checked=['site-checked','installation-confirmed'].includes(p?.status);
  const verificationBlockers=verificationCurrent?[]:[p?.positionVerification?'จุดหรือหลักฐานอ้างอิงเปลี่ยน ต้องตรวจจุดใหม่':'บันทึกเดิมยังไม่ได้ผูกหลักฐานตำแหน่งรุ่นนี้ ต้องตรวจจุดใหม่'];
  const installationBlockers=unique([...(p?.status==='site-checked'||p?.status==='installation-confirmed'?[]:['ต้องบันทึกตรวจจุดจริงก่อนบันทึกติดตั้ง']),...input.blockers,...verificationBlockers,...readiness.missing]);
  const effectiveStatus=checked&&(!verificationCurrent||p.status==='installation-confirmed'&&readiness.missing.length)?'needs-recheck':p?.status==='field-confirmed'?'needs-recheck':p?.status||'unplaced';
- return {effectiveStatus,verificationCurrent,canConfirmSite:input.blockers.length===0,canConfirmInstallation:installationBlockers.length===0,siteBlockers:input.blockers,installationBlockers,blockers:unique([...input.blockers,...(checked?verificationBlockers:[]),...(p?.status==='installation-confirmed'?readiness.missing:[])]),comparisons:input.comparisons,positionComparison:input.positionComparison,expected:input.expected,expectedSide:input.expectedSide,toleranceMm:input.toleranceMm,readiness};
+ return {effectiveStatus,verificationCurrent,canPreviewPosition,canConfirmSite:input.blockers.length===0,canConfirmInstallation:installationBlockers.length===0,siteBlockers:input.blockers,installationBlockers,blockers:unique([...input.blockers,...(checked?verificationBlockers:[]),...(p?.status==='installation-confirmed'?readiness.missing:[])]),comparisons:input.comparisons,positionComparison:input.positionComparison,expected:input.expected,expectedSide:input.expectedSide,toleranceMm:input.toleranceMm,readiness};
 }
 
 export function validateConfirmedTransition(d,j,id,p){

@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased — focused field queue and recoverable local storage
+
+- Added a physical-unit work queue with stage filters and next unfinished task, unit photographs/serials, a local plan preview and a persistent next-action bar.
+- Added explicitly confirmed reusable area reference profiles and per-unit opt-in tolerance application; current source, image, scope and evidence checks remain mandatory.
+- Added current-input target/measured point overlays and A-to-B axis deltas, with invalid/stale preview suppression and guidance outside the drawing.
+- Integrated revision-aware local saves, conflict locking, unsaved-record export and bounded recovery snapshots; load failures never substitute an editable empty record.
+
+
 ## Unreleased — physical-unit field positioning
 
 - Prioritize explicitly identified units, serial labels and separately classified unit/site photographs; inventory rows remain references.

@@ -86,3 +86,18 @@ Prepared, source-bound Thai labels are enabled in the map viewport by default. T
 5. Save a site check only when the model accepts current evidence. Installation additionally requires the current prior check, dimensions including height, rotation/source/checker and documented door, path, headroom and load reviews. Printed sheets use effective status and expose stale evidence and blockers.
 
 On short landscape screens the controls scroll in a side column while the map retains the remaining height. Rotation preserves the selected unit, view and current detail/map task. Core touch buttons are at least 44 CSS pixels; desktop browser viewport testing does not establish physical-device or construction acceptance.
+
+
+## Focused queue and recovery (v10)
+
+The “today” queue is the unfinished physical-unit backlog for the selected floor/area, not a scheduled appointment list. Inventory-derived locations are marked as references; unassigned units remain explicit. Stage filtering and next unfinished selection do not manufacture units or mark work complete.
+
+Each unit presents its serial, attached machine photograph and a small local plan only when the unit has a saved point. The bottom action follows the next stage. A missing unit point shows an unresolved placeholder rather than a source-row point disguised as the unit location.
+
+Reusable area profiles snapshot a checked A/B baseline and calibration with source/image identity, recognized zone or floor scope, responsible checker, date, evidence and documented tolerance. Activation is explicit and warns about affected checks. Applying a profile's criterion to a unit requires a separate explicit action; editing the criterion converts it to a manually documented value. Neither a profile nor an overlay is construction authorization.
+
+For a valid current measurement comparison, the plan distinguishes target P from measured P. Signed deltas are measured minus target along A→B and toward the left when looking A→B, not screen X/Y and not automatic machine movement instructions. Invalid readings, changed reference context and stale checks hide the comparison rather than showing old guidance.
+
+Local storage loads fail closed on read/validation errors. Saves use an expected revision; a conflicting tab or failed storage write retains the attempted journal for export and requires explicit reload/recovery before further writes. Two previous revisions are retained locally; they are not an independent backup. Snapshot restoration is explicit, revision checked and source gated. Corrupt records can be downloaded raw without treating them as valid import files. Normal compact JSON import/export share a 64 MiB limit; advanced raw recovery export preserves access to older oversized records but does not promise they can be imported.
+
+If current content is corrupt but revision metadata is intact, the locked recovery screen can restore a validated local snapshot or explicitly import a validated backup after source verification. It captures the revision before the action so another tab cannot be overwritten silently. Corrupt revision metadata permits raw preservation only until repaired; it does not grant an unsafe overwrite bypass.

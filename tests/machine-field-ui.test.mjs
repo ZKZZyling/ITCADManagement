@@ -16,3 +16,13 @@ test('pinch changes viewport only, keeps center and clamps bounds',()=>{
 
 import {localFieldDate} from '../client/machine-field-ui.mjs';
 test('field date uses local calendar before UTC midnight',()=>{const local=new Date(2026,10,11,0,30);assert.equal(localFieldDate(local),'2026-11-11');assert.equal(localFieldDate(new Date(2026,0,2,23,59)),'2026-01-02')});
+import {comparisonContext} from '../client/machine-field-ui.mjs';
+test('comparison context expires on point, source, baseline and datum changes',()=>{
+ const d={id:'d1',sourceSHA256:'sha1',views:[{id:'v1',image:'one',sourceImageSHA256:'img1'}]},p={viewId:'v1',anchor:[.3,.4],status:'proposed'},j={surveyBaselines:{v1:{a:[0,0],b:[1,0]}},calibrations:{v1:{mmPerPixel:10}},machineDetails:{u1:{reference:{datum:'center',pointType:'machine-center'}}}};
+ const original=comparisonContext(d,j,'u1',p);
+ assert.notEqual(comparisonContext(d,j,'u1',{...p,anchor:[.31,.4]}),original);
+ assert.notEqual(comparisonContext({...d,sourceSHA256:'sha2'},j,'u1',p),original);
+ assert.notEqual(comparisonContext(d,{...j,surveyBaselines:{v1:{a:[0,0],b:[.9,0]}}},'u1',p),original);
+ assert.notEqual(comparisonContext(d,{...j,machineDetails:{u1:{reference:{datum:'corner'}}}},'u1',p),original);
+ assert.equal(comparisonContext(d,structuredClone(j),'u1',structuredClone(p)),original);
+});
