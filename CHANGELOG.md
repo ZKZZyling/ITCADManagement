@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased — expanded field map
+
+- Added an explicit app-contained expanded map workspace, distinct from reset-to-fit zoom, without requiring browser fullscreen permission.
+- Retained unit/source/save context, placement and A/B tools with 44 px controls; exit and rotation preserve the map and unsaved draft.
+- Kept source restrictions and accessible detail/tool overlays while collapsing the normal navigation stack.
+
+
 ## Unreleased — focused field queue and recoverable local storage
 
 - Added a physical-unit work queue with stage filters and next unfinished task, unit photographs/serials, a local plan preview and a persistent next-action bar.

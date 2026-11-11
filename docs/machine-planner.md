@@ -101,3 +101,12 @@ For a valid current measurement comparison, the plan distinguishes target P from
 Local storage loads fail closed on read/validation errors. Saves use an expected revision; a conflicting tab or failed storage write retains the attempted journal for export and requires explicit reload/recovery before further writes. Two previous revisions are retained locally; they are not an independent backup. Snapshot restoration is explicit, revision checked and source gated. Corrupt records can be downloaded raw without treating them as valid import files. Normal compact JSON import/export share a 64 MiB limit; advanced raw recovery export preserves access to older oversized records but does not promise they can be imported.
 
 If current content is corrupt but revision metadata is intact, the locked recovery screen can restore a validated local snapshot or explicitly import a validated backup after source verification. It captures the revision before the action so another tab cannot be overwritten silently. Corrupt revision metadata permits raw preservation only until repaired; it does not grant an unsafe overwrite bypass.
+
+
+## Expanded map workspace (v11)
+
+Use **ขยายพื้นที่แบบ** on the map to enlarge the drawing workspace within the app. This is separate from **ดูเต็มแบบ**, which resets the drawing zoom. Expanded mode does not require the browser Fullscreen API and does not write a field record.
+
+A compact bar retains the selected item/serial, floor, source-check and local-save state. The normal inventory and header stack collapse; unit details, A/B tools, placement and Thai labels remain accessible. Extra placement controls open from **ปรับจุด**. Source floor restrictions remain visible. Exit with **กลับหน้าปกติ** or Escape; selection, zoom/pan and unsaved placement remain intact across entry, exit and viewport rotation. Map tools and details remain overlays with their own close controls.
+
+The image keeps its original aspect ratio. More map canvas does not add source pixels, increase survey accuracy or remove possible letterboxing. Desktop browser viewport tests cover responsive layout and interactions, not physical-device/site acceptance.
