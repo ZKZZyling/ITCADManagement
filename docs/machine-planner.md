@@ -110,3 +110,14 @@ Use **ขยายพื้นที่แบบ** on the map to enlarge the dra
 A compact bar retains the selected item/serial, floor, source-check and local-save state. The normal inventory and header stack collapse; unit details, A/B tools, placement and Thai labels remain accessible. Extra placement controls open from **ปรับจุด**. Source floor restrictions remain visible. Exit with **กลับหน้าปกติ** or Escape; selection, zoom/pan and unsaved placement remain intact across entry, exit and viewport rotation. Map tools and details remain overlays with their own close controls.
 
 The image keeps its original aspect ratio. More map canvas does not add source pixels, increase survey accuracy or remove possible letterboxing. Desktop browser viewport tests cover responsive layout and interactions, not physical-device/site acceptance.
+
+
+## Navigation within the expanded map (v12)
+
+Open **ชั้น / พื้นที่ / จุดสำคัญ** without leaving expanded mode. Choose a floor, then a source-backed reference area or an anchored room label, search for a unit/Serial/source label, and focus it. A reference zone uses its existing approximate polygon; a room-text anchor never becomes an invented room boundary. A focused source label has its own halo and explanatory card even when label collision avoidance would omit its regular annotation.
+
+The drawer distinguishes physical-unit saved points, approximate inventory references, source text positions and entries with no pin. Physical units never inherit a base inventory row's position. Known area-only records remain scoped to their known floor; truly unassigned records are explicitly identified. Selecting an unplaced item opens its details without manufacturing a map center point.
+
+Layer switches expose physical units, inventory references, Thai/source labels, DWG dimensions and process relationships. Relationships remain connections for understanding, not approved routing for cables or pipes. Floor-specific restrictions remain visible in both the drawing and navigation drawer.
+
+Changing floor, area or selected item while a point draft or picked measurement references exist asks whether to discard them. Cancel retains the current view and all draft points. Confirm clears temporary point, measurement, laser and comparison context before navigation; saved records are unchanged. The same-current-item selection is guarded as well. Navigation, layer switches and focusing do not write the journal.

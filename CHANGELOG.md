@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased — floor and work-area navigation on the expanded map
+
+- Added floor/area selection, searchable important locations and five display layers within expanded mode.
+- Distinguished saved unit points, approximate inventory zones, source text anchors and unplaced items; focused labels remain identifiable without inventing boundaries.
+- Added explicit discard guards for unsaved points and picked references before floor, area or item changes, preserving cancellation and saved records.
+
+
 ## Unreleased — expanded field map
 
 - Added an explicit app-contained expanded map workspace, distinct from reset-to-fit zoom, without requiring browser fullscreen permission.
